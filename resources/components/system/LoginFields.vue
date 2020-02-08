@@ -9,8 +9,8 @@
                         <a-form
                             :form="loginForm"
                             method="post"
-                            action="#admin/login/post/url"
-                            @submit="handleSubmit"
+                            action="#"
+                            @submit="handleLoginSubmit"
                         >
                             <a-form-item label="Email Address">
                             <a-input
@@ -74,25 +74,45 @@
 </template>
 
 <script>
+import gql from 'graphql-tag'
+import UserAuth from '../../graphql/UserAuth.gql'
+import isNil from 'lodash/isNil'
 
 export default {
   props: { name:'loginpost', type: String },
   data () {
-    return {
-      loginForm: this.$form.createForm(this),
-      loadingSubmitBtn: false
-    };
-  },
-  methods: {
-    handleSubmit (e) {
-      this.loadingSubmitBtn = true;
-      this.loginForm.validateFields((err, values) => {
-        if (err) {
-          this.loadingSubmitBtn = false;
-          e.preventDefault();
+        return {
+        loginForm: this.$form.createForm(this),
+        loadingSubmitBtn: false
+        };
+    },
+    methods: {
+        async handleLoginSubmit(e) {
+            console.log(e.preventDefault());
+            let values = this.loginForm.getFieldsValue();
+
+            var result = await this.authMutation(values)
+            if (!isNil(result.data.adminLogin.access_token)) {
+                //localStorage.setItem(AUTH_TOKEN, result.auth.access_token);
+                //this.$router.push('/')
+                alert(result.data.adminLogin.access_token)
+            }
+        },
+        async authMutation(values) {
+            //this.$apollo.client = "auth";
+            return this.$apollo.mutate({
+                mutation: UserAuth,
+                //clientId: 'auth',
+                variables: values,
+            }).then((data) => {
+                console.log(data)
+                window.x = data
+                return data;
+            }).catch((error) => {
+                window.y = error;
+                //console.error(error);
+            });
         }
-      });
     }
-  },
 };
 </script>

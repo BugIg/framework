@@ -25,6 +25,7 @@ return [
 
                     
                     'adminCategoryTable' => \AvoRed\Framework\Graphql\Queries\Admin\Catalog\Category\CategoryTableQuery::class,
+                    'adminPropertyTable' => \AvoRed\Framework\Graphql\Queries\Admin\Catalog\Property\PropertyTableQuery::class,
                 ],
                 'mutation' => [
                     'login' => \AvoRed\Framework\Graphql\Mutations\Auth\LoginMutation::class,
@@ -32,9 +33,14 @@ return [
 
 
                     'adminLogin' => \AvoRed\Framework\Graphql\Mutations\Admin\User\LoginMutation::class,
+                    
+                    
                     'adminCategoryCreate' => \AvoRed\Framework\Graphql\Mutations\Admin\Catalog\Category\CategoryCreateMutation::class,
                     'adminCategoryUpdate' => \AvoRed\Framework\Graphql\Mutations\Admin\Catalog\Category\CategoryUpdateMutation::class,
                     'adminCategoryDelete' => \AvoRed\Framework\Graphql\Mutations\Admin\Catalog\Category\CategoryDeleteMutation::class,
+                    // 'adminPropertyCreate' => \AvoRed\Framework\Graphql\Mutations\Admin\Catalog\Property\PropertyCreateMutation::class,
+                    // 'adminPropertyUpdate' => \AvoRed\Framework\Graphql\Mutations\Admin\Catalog\Property\PropertyUpdateMutation::class,
+                    // 'adminPropertyDelete' => \AvoRed\Framework\Graphql\Mutations\Admin\Catalog\Property\PropertyDeleteMutation::class,
                 ],
                 'middleware' => [],
                 'method'     => ['get', 'post'],
@@ -53,7 +59,6 @@ return [
         
         'types' => [
             'menu' => AvoRed\Framework\Graphql\Types\MenuType::class,
-            'category' => AvoRed\Framework\Graphql\Types\CategoryType::class,
             'filter' => AvoRed\Framework\Graphql\Types\FilterType::class,
             'product' => AvoRed\Framework\Graphql\Types\ProductType::class,
             'token' => AvoRed\Framework\Graphql\Types\TokenType::class,
@@ -61,6 +66,9 @@ return [
             'order' => AvoRed\Framework\Graphql\Types\OrderType::class,
             'address' => AvoRed\Framework\Graphql\Types\AddressType::class,
             'delete' => AvoRed\Framework\Graphql\Types\DeleteType::class,
+            
+            'category' => AvoRed\Framework\Graphql\Types\CategoryType::class,
+            'property' => AvoRed\Framework\Graphql\Types\PropertyType::class,
         ],
     ],
 
