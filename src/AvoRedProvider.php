@@ -2,44 +2,23 @@
 
 namespace AvoRed\Framework;
 
-use Illuminate\Support\ServiceProvider;
-use AvoRed\Framework\Support\Console\InstallCommand;
-use Illuminate\Support\Facades\App;
-use AvoRed\Framework\Support\Middleware\AdminAuth;
-use AvoRed\Framework\Support\Middleware\RedirectIfAdminAuth;
 use AvoRed\Framework\Support\Console\AdminMakeCommand;
-use Illuminate\Support\Facades\View;
-use AvoRed\Framework\System\ViewComposers\LayoutComposer;
-use Laravel\Passport\Passport;
+use AvoRed\Framework\Support\Console\InstallCommand;
+use Illuminate\Support\ServiceProvider;
 
 class AvoRedProvider extends ServiceProvider
 {
-    /**
-     * Providers List for the Framework
-     * @var array $providers
-     */
-    protected $providers = [
-        \AvoRed\Framework\Support\Providers\BreadcrumbProvider::class,
-        \AvoRed\Framework\Support\Providers\CartProvider::class,
-        // \AvoRed\Framework\Support\Providers\GraphqlProvider::class,
-        \AvoRed\Framework\Support\Providers\MenuProvider::class,
-        \AvoRed\Framework\Support\Providers\ModelProvider::class,
-        \AvoRed\Framework\Support\Providers\ModuleProvider::class,
-        \AvoRed\Framework\Support\Providers\PermissionProvider::class,
-    ];
-
-
     /**
      * Register services.
      * @return void
      */
     public function register()
     {
-        $this->registerProviders();
+//        $this->registerProviders();
         $this->registerConfigData();
         $this->registerRoutePath();
-        $this->registerMiddleware();
-        $this->registerViewComposerData();
+//        $this->registerMiddleware();
+//        $this->registerViewComposerData();
         $this->registerConsoleCommands();
         $this->registerMigrationPath();
         $this->registerViewPath();
@@ -52,7 +31,7 @@ class AvoRedProvider extends ServiceProvider
     public function boot()
     {
         $this->registerTranslationPath();
-        $this->setupPublishFiles();
+//        $this->setupPublishFiles();
     }
 
     /**
@@ -70,8 +49,8 @@ class AvoRedProvider extends ServiceProvider
      */
     public function registerConsoleCommands()
     {
-        $this->commands([InstallCommand::class]);
-        $this->commands([AdminMakeCommand::class]);
+        $this->commands(InstallCommand::class);
+        $this->commands(AdminMakeCommand::class);
     }
 
     /**
@@ -108,7 +87,7 @@ class AvoRedProvider extends ServiceProvider
     protected function registerProviders()
     {
         foreach ($this->providers as $provider) {
-            App::register($provider);
+            //App::register($provider);
         }
     }
 
@@ -133,20 +112,6 @@ class AvoRedProvider extends ServiceProvider
             __DIR__ . '/../config/avored.php',
             'avored'
         );
-        $avoredConfigData = include __DIR__ . '/../config/avored.php';
-        $fileSystemConfig = $this->app['config']->get('filesystems', []);
-        $authConfig = $this->app['config']->get('auth', []);
-        $this->app['config']->set(
-            'filesystems',
-            array_merge_recursive(
-                $avoredConfigData['filesystems'],
-                $fileSystemConfig
-            )
-        );
-        $this->app['config']->set(
-            'auth',
-            array_merge_recursive($avoredConfigData['auth'], $authConfig)
-        );
     }
 
     /**
@@ -155,7 +120,7 @@ class AvoRedProvider extends ServiceProvider
      */
     public function registerViewComposerData()
     {
-        View::composer('avored::layouts.app', LayoutComposer::class);
+//        View::composer('avored::layouts.app', LayoutComposer::class);
     }
 
    /**
@@ -164,12 +129,12 @@ class AvoRedProvider extends ServiceProvider
     */
     public function setupPublishFiles()
     {
-        $this->publishes([
-            __DIR__.'/../config/avored.php' => config_path('avored.php')
-        ], 'avored-config');
-
-        $this->publishes([
-            __DIR__.'/../assets/avored-admin' => public_path('avored-admin')
-        ], 'avored-public');
+//        $this->publishes([
+//            __DIR__.'/../config/avored.php' => config_path('avored.php')
+//        ], 'avored-config');
+//
+//        $this->publishes([
+//            __DIR__.'/../assets/avored-admin' => public_path('avored-admin')
+//        ], 'avored-public');
     }
 }

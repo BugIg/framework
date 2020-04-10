@@ -11,10 +11,6 @@ use Illuminate\Support\Facades\Session;
 use AvoRed\Framework\AvoRedProvider;
 use Rebing\GraphQL\GraphQLServiceProvider;
 
-//use AvoRed\Framework\Models\Database\Language;
-//use AvoRed\Framework\System\Middleware\LanguageMiddleware;
-//use AvoRed\Framework\Models\Contracts\LanguageInterface;
-
 abstract class BaseTestCase extends OrchestraTestCase
 {
     /**
@@ -31,7 +27,7 @@ abstract class BaseTestCase extends OrchestraTestCase
     {
         parent::setUp();
         $this->app['config']->set('app.key', 'base64:UTyp33UhGolgzCK5CJmT+hNHcA+dJyp3+oINtX+VoPI=');
-        
+
         $this->app->singleton(EloquentFactory::class, function ($app) {
             $faker = $app->make(FakerGenerator::class);
             return EloquentFactory::construct($faker, __DIR__.('/../database/factories'));
