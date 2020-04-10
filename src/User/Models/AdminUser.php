@@ -2,6 +2,7 @@
 
 namespace AvoRed\Framework\Database\Models;
 
+use AvoRed\Framework\User\Notifications\ResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -34,4 +35,16 @@ class AdminUser extends Authenticatable
     {
         return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
     }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
+    }
+
 }

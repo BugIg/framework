@@ -4,6 +4,8 @@ namespace AvoRed\Framework;
 
 use AvoRed\Framework\Support\Console\AdminMakeCommand;
 use AvoRed\Framework\Support\Console\InstallCommand;
+use AvoRed\Framework\Support\Middleware\AdminAuth;
+use AvoRed\Framework\Support\Middleware\RedirectIfAdminAuth;
 use Illuminate\Support\ServiceProvider;
 
 class AvoRedProvider extends ServiceProvider
@@ -17,7 +19,7 @@ class AvoRedProvider extends ServiceProvider
 //        $this->registerProviders();
         $this->registerConfigData();
         $this->registerRoutePath();
-//        $this->registerMiddleware();
+        $this->registerMiddleware();
 //        $this->registerViewComposerData();
         $this->registerConsoleCommands();
         $this->registerMigrationPath();
@@ -31,7 +33,7 @@ class AvoRedProvider extends ServiceProvider
     public function boot()
     {
         $this->registerTranslationPath();
-//        $this->setupPublishFiles();
+        $this->setupPublishFiles();
     }
 
     /**
@@ -112,6 +114,12 @@ class AvoRedProvider extends ServiceProvider
             __DIR__ . '/../config/avored.php',
             'avored'
         );
+        $avoredConfigData = include __DIR__.'/../config/avored.php';
+        $authConfig = $this->app['config']->get('auth', []);
+        $this->app['config']->set(
+            'auth',
+            array_merge_recursive($avoredConfigData['auth'], $authConfig)
+        );
     }
 
     /**
@@ -129,12 +137,11 @@ class AvoRedProvider extends ServiceProvider
     */
     public function setupPublishFiles()
     {
-//        $this->publishes([
-//            __DIR__.'/../config/avored.php' => config_path('avored.php')
-//        ], 'avored-config');
-//
-//        $this->publishes([
-//            __DIR__.'/../assets/avored-admin' => public_path('avored-admin')
-//        ], 'avored-public');
+        $this->publishes([
+            __DIR__.'/../config/avored.php' => config_path('avored.php')
+        ]);
+        $this->publishes([
+            __DIR__.'/../dist' => public_path('vendor/avored')
+        ]);
     }
 }

@@ -13,20 +13,25 @@ return [
     |
     */
 
-    'user-group' => [
-        'name' => 'Name',
-        'is_default' => 'Is Default',
-        'title' => 'User Group',
-        'index' => [
-            'title' => 'User Group List'
+    'auth' => [
+        'login' => [
+            'title' => 'Login to your Avored Admin',
+            'email' => 'Email Address',
+            'password' => 'Password',
+            'remember-me' => 'Remember me',
+            'forgot-password' => 'Forgot Password',
+            'sign-in' => 'Sign In',
         ],
-        'create' => [
-            'title' => 'User Group Create'
+        'reset' => [
+            'title' => 'Reset Password',
+            'reset-btn' => 'Send Password Reset Link'
         ],
-        'edit' => [
-            'title' => 'User Group Edit'
+        'update' => [
+            'title' => 'Reset your password',
+            'email' => 'Email Address',
+            'password' => 'Password',
+            'confirm-password' => 'Confirm passowrd',
+            'reset-btn' => 'Reset Password'
         ],
     ],
-    
-
 ];
