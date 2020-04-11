@@ -12,10 +12,13 @@
     "dependencies": {
         "cross-env": "^7.0.2",
         "laravel-mix": "^5.0.4",
+        "lodash": "^4.17.15",
         "tailwindcss": "^1.2.0",
         "vue": "^2.6.11"
     },
     "devDependencies": {
+        "browser-sync": "^2.26.7",
+        "browser-sync-webpack-plugin": "^2.0.1",
         "sass": "^1.26.3",
         "sass-loader": "^8.0.2",
         "vue-template-compiler": "^2.6.11"

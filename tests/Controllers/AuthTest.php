@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class AuthTest extends BaseTestCase
 {
     use RefreshDatabase;
-    
+
     /* @runInSeparateProcess */
     public function testAdminLoginRouteTest()
     {
@@ -39,19 +39,19 @@ class AuthTest extends BaseTestCase
     /* @runInSeparateProcess */
     public function testAdminLoginPostRoute()
     {
-        $password = 'phpunittest';
-        $this->createAdminUser(['is_super_admin' => 1, 'password' => $password])
+        $this->password = bcrypt('phpunit');
+        $this->createAdminUser(['is_super_admin' => 1, 'password' => $this->password])
             ->actingAs($this->user, 'admin')
-            ->post(route('admin.login.post', ['email' => $this->user->email, 'password' => $password]))
+            ->post(route('admin.login.post', ['email' => $this->user->email, 'password' => $this->password]))
             ->assertRedirect(route('admin.dashboard'));
     }
 
     /* @runInSeparateProcess */
     public function testAdminLoginPostRouteFailed()
     {
-        $password = 'phpunittest';
+        $this->password = bcrypt('phpunit');
         $this
-            ->createAdminUser(['is_super_admin' => 1, 'password' => $password])
+            ->createAdminUser(['password' => $this->password])
             ->post(route('admin.login.post', ['email' => $this->user->email, 'password' => 'wrongpassword']))
             ->assertSessionHasErrors('email');
     }

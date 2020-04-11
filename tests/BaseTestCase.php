@@ -4,10 +4,7 @@ namespace AvoRed\Framework\Tests;
 use AvoRed\Framework\Database\Models\Role;
 use AvoRed\Framework\Database\Models\AdminUser;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
-use Faker\Generator as FakerGenerator;
 use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Facades\Session;
 use AvoRed\Framework\AvoRedProvider;
 use Rebing\GraphQL\GraphQLServiceProvider;
 
@@ -28,10 +25,7 @@ abstract class BaseTestCase extends OrchestraTestCase
         parent::setUp();
         $this->app['config']->set('app.key', 'base64:UTyp33UhGolgzCK5CJmT+hNHcA+dJyp3+oINtX+VoPI=');
 
-        $this->app->singleton(EloquentFactory::class, function ($app) {
-            $faker = $app->make(FakerGenerator::class);
-            return EloquentFactory::construct($faker, __DIR__.('/../database/factories'));
-        });
+        $this->withFactories(__DIR__.('/../database/factories'));
         $this->setUpDatabase();
         Notification::fake();
     }
@@ -45,16 +39,6 @@ abstract class BaseTestCase extends OrchestraTestCase
         $this->artisan('migrate:fresh', [
             '--database' => 'sqlite',
         ]);
-
-        /*
-        Language::create(
-            ['name' => 'English',
-            'code' => 'en',
-            'is_default' => 1]
-        );
-        $middleware = new LanguageMiddleware(app(LanguageInterface::class));
-        $this->defaultLanguage = Session::get('default_language');
-        */
     }
 
     /**
@@ -64,7 +48,6 @@ abstract class BaseTestCase extends OrchestraTestCase
     protected function getPackageProviders($app): array
     {
         return [
-            GraphQLServiceProvider::class,
             AvoRedProvider::class,
         ];
     }
@@ -106,11 +89,11 @@ abstract class BaseTestCase extends OrchestraTestCase
             //'Cart' => 'AvoRed\\Framework\\Cart\\Facade',
             //'DataGrid' => 'AvoRed\\Framework\\DataGrid\\Facade',
             //'Image' => 'AvoRed\\Framework\\Image\\Facade',
-            'Breadcrumb' => \AvoRed\Framework\Support\Facades\Breadcrumb::class,
-            'Menu' => \AvoRed\Framework\Support\Facades\Menu::class,
-            'Module' => \AvoRed\Framework\Support\Facades\Module::class,
-            'Permission' => \AvoRed\Framework\Support\Facades\Permission::class,
-            'GraphQL' => \Rebing\GraphQL\Support\Facades\GraphQL::class,
+//            'Breadcrumb' => \AvoRed\Framework\Support\Facades\Breadcrumb::class,
+//            'Menu' => \AvoRed\Framework\Support\Facades\Menu::class,
+//            'Module' => \AvoRed\Framework\Support\Facades\Module::class,
+//            'Permission' => \AvoRed\Framework\Support\Facades\Permission::class,
+//            'GraphQL' => \Rebing\GraphQL\Support\Facades\GraphQL::class,
             //'Payment' => 'AvoRed\\Framework\\Payment\\Facade',
             //'Permission' => 'AvoRed\\Framework\\Permission\\Facade',
             //'Shipping' => 'AvoRed\\Framework\\Shipping\\Facade',
@@ -125,7 +108,7 @@ abstract class BaseTestCase extends OrchestraTestCase
      * @param array $data
      * @return self
      */
-    protected function createAdminUser($data = ['is_super_admin' => 1]): self
+    protected function createAdminUser($data = []): self
     {
         if (null === $this->user) {
             $this->user = factory(AdminUser::class)->create($data);

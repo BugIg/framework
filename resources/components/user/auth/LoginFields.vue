@@ -1,9 +1,10 @@
 <script>
 
 export default {
-  props: { name:'loginpost', type: String },
+  props: {  },
   data () {
     return {
+        emailAddress: '',
     };
   },
   methods: {

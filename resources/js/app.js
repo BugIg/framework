@@ -12,6 +12,7 @@
 
 window.Vue = require('vue');
 
+Vue.component('a-input', require('../components/core/form/AvoRedInput').default)
 Vue.component('login-fields', require('../components/user/auth/LoginFields.vue').default)
 
 /**

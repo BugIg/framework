@@ -39,12 +39,17 @@
                         <input type="hidden" name="remember" value="true" />
                         <div class="rounded-md shadow-sm">
                             <div class="mt-3">
-                                <input aria-label="Email address"
-                                       name="email"
-                                       autofocus
-                                       type="email" required
-                                       class="form-control placeholder-gray-500"
-                                       placeholder="{{ __('avored::user.auth.login.email') }}" />
+                                <a-input
+                                    name="email"
+                                    v-model="emailAddress"
+                                    :autofocus="true"
+                                    :required="true"
+                                    :errors="{{ $errors }}"
+                                    class="placeholder-gray-500"
+                                    type="email"
+                                    placeholder="{{ __('avored::user.auth.login.email') }}"
+                                ></a-input>
+
                             </div>
                         </div>
                         <div class="mt-6">

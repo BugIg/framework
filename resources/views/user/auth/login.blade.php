@@ -16,7 +16,7 @@
             <div class="min-h-screen flex items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-md w-full">
                     <div>
-                        <a href="https://avored.com" target="_blank">
+                        <a href="https://avored.com" class="block" target="_blank">
                             <img class="mx-auto h-12 w-auto"
                                  src="{{ asset('vendor/avored/images/logo.svg') }}"
                                  alt="AvoRed Ecommerce" />
@@ -30,23 +30,31 @@
                     <form class="mt-8" action="{{ route('admin.login.post') }}" method="POST">
                         @csrf()
                         <input type="hidden" name="remember" value="true" />
-                        <div class="rounded-md shadow-sm">
+                        <div class="rounded-md">
+
                             <div class="mt-3">
-                                <input aria-label="Email address"
-                                       name="email"
-                                       autofocus
-                                       type="email" required
-                                       class="form-control placeholder-gray-500"
-                                       placeholder="{{ __('avored::user.auth.login.email') }}" />
+                                <a-input
+                                    name="email"
+                                    v-model="emailAddress"
+                                    :autofocus="true"
+                                    :required="true"
+                                    :errors="{{ $errors }}"
+                                    class="placeholder-gray-500"
+                                    type="email"
+                                    placeholder="{{ __('avored::user.auth.login.email') }}"
+                                ></a-input>
                             </div>
 
                             <div class="mt-3">
-                                <input aria-label="Password"
-                                       name="password"
-                                       type="password"
-                                       required
-                                       class="form-control placeholder-gray-500"
-                                       placeholder="{{ __('avored::user.auth.login.password') }}" />
+                                <a-input
+                                    aria-label="{{ __('avored::user.auth.login.password') }}"
+                                    name="password"
+                                    required
+                                    class="placeholder-gray-500"
+                                    type="password"
+                                    placeholder="{{ __('avored::user.auth.login.password') }}"
+                                ></a-input>
+
                             </div>
                         </div>
 

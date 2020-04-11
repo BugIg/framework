@@ -33,29 +33,38 @@
                         <input type="hidden" name="token" value="{{ $token }}">
                         <div class="rounded-md shadow-sm">
                             <div class="mt-3">
-                                <input aria-label="Email address"
-                                       name="email"
-                                       autofocus
-                                       type="email" required
-                                       class="form-control placeholder-gray-500"
-                                       placeholder="{{ __('avored::user.auth.update.email') }}" />
+                                <a-input
+                                    name="email"
+                                    :autofocus="true"
+                                    :required="true"
+                                    :errors="{{ $errors }}"
+                                    class="placeholder-gray-500"
+                                    type="email"
+                                    placeholder="{{ __('avored::user.auth.login.email') }}"
+                                ></a-input>
                             </div>
 
                             <div class="mt-3">
-                                <input aria-label="Password"
-                                       name="password"
-                                       type="password"
-                                       required
-                                       class="form-control placeholder-gray-500"
-                                       placeholder="{{ __('avored::user.auth.update.password') }}" />
+                                <a-input
+                                    name="password"
+                                    type="password"
+                                    :autofocus="true"
+                                    :errors="{{ $errors }}"
+                                    class="placeholder-gray-500"
+                                    placeholder="{{ __('avored::user.auth.update.password') }}"
+                                ></a-input>
+
                             </div>
                             <div class="mt-3">
-                                <input aria-label="Password"
-                                       name="password_confirmation"
-                                       type="password"
-                                       required
-                                       class="form-control placeholder-gray-500"
-                                       placeholder="{{ __('avored::user.auth.update.confirm-password') }}" />
+                                <a-input
+                                    name="password_confirmation"
+                                    type="password"
+                                    :autofocus="true"
+                                    :errors="{{ $errors }}"
+                                    class="placeholder-gray-500"
+                                    placeholder="{{ __('avored::user.auth.update.confirm-password') }}"
+                                ></a-input>
+
                             </div>
                         </div>
 
