@@ -4,7 +4,7 @@ const tailwindcss = require('tailwindcss')
 
 const publicPath = '../../public/vendor/avored'
 
-mix.browserSync('avored.test');
+// mix.browserSync('avored.test');
 
 mix.copy('resources/images', publicPath + '/images');
 

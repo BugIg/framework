@@ -4,6 +4,8 @@ namespace AvoRed\Framework\System\Controllers;
 
 //use AvoRed\Framework\Support\Facades\Widget;
 
+use Illuminate\Support\Facades\Auth;
+
 class DashboardController extends  BaseController
 {
     /**
@@ -12,11 +14,13 @@ class DashboardController extends  BaseController
      */
     public function index()
     {
+        $user = Auth::guard('admin')->user();
 
         $orderWidget = ''; // Widget::get('avored-total-order');
         $customerWidget =  ''; //Widget::get('avored-total-customer');
         $revenueWidget = ''; //Widget::get('avored-total-revenue');
 //
-        return view('avored::system.dashboard', compact('orderWidget', 'customerWidget', 'revenueWidget'));
+        return view('avored::system.dashboard')
+            ->with('user', $user);
     }
 }
