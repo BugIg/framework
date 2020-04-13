@@ -115,6 +115,6 @@
 {{--        </div>--}}
 
         <!--Main CONTENT END -->
-    </main>
 
+    </main>
 @endsection
