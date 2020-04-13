@@ -14,11 +14,15 @@
 </head>
 <body>
     <div id="app" class="antialiased h-screen flex flex-col">
-        @include('avored::partials.header')
-        <div class="flex flex-1 overflow-hidden">
-            @include('avored::partials.sidebar')
-            @yield('content')
-        </div>
+        <a-layout inline-template>
+            <div>
+                @include('avored::partials.header')
+                <div class="flex flex-1 overflow-hidden">
+                    @include('avored::partials.sidebar')
+                    @yield('content')
+                </div>
+            </div>
+        </a-layout>
     </div>
     @stack('scripts')
 </body>

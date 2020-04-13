@@ -1,5 +1,5 @@
 <?php
-namespace AvoRed\Framework\Support\Middleware;
+namespace AvoRed\Framework\System\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Support\Facades\Auth;

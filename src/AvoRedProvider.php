@@ -2,10 +2,10 @@
 
 namespace AvoRed\Framework;
 
-use AvoRed\Framework\Support\Console\AdminMakeCommand;
-use AvoRed\Framework\Support\Console\InstallCommand;
-use AvoRed\Framework\Support\Middleware\AdminAuth;
-use AvoRed\Framework\Support\Middleware\RedirectIfAdminAuth;
+use AvoRed\Framework\System\Console\AdminMakeCommand;
+use AvoRed\Framework\System\Console\InstallCommand;
+use AvoRed\Framework\System\Middleware\AdminAuth;
+use AvoRed\Framework\System\Middleware\RedirectIfAdminAuth;
 use Illuminate\Support\ServiceProvider;
 
 class AvoRedProvider extends ServiceProvider

@@ -1,6 +1,6 @@
 <?php
 
-namespace AvoRed\Framework\Support\Console;
+namespace AvoRed\Framework\System\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;

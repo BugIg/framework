@@ -22,7 +22,7 @@ return [
         'providers' => [
             'admin-users' => [
                 'driver' => 'eloquent',
-                'model' => AvoRed\Framework\Database\Models\AdminUser::class,
+                'model' => AvoRed\Framework\User\Models\AdminUser::class,
             ],
         ],
 

@@ -1,6 +1,6 @@
 <header class="flex flex-shrink-0">
-    <div class="w-64 flex-shrink-0 px-4 py-3 bg-red-800">
-        <button class="block w-ful flex items-center">
+    <div class="w-64 flex-shrink-0 px-4 py-3 bg-red-800 relative">
+        <button @click="userDropdown= !userDropdown" class="block w-full flex items-center focus:outline-none">
             <img
                 class="h-8 w-8 rounded-full object-cover"
                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=144&q=80">
@@ -14,7 +14,16 @@
                 />
             </svg>
         </button>
+        <button v-if="userDropdown"
+                @click="userDropdown=false"
+                class="fixed top-0 bottom-0 left-0 right-0 w-full h-full"
+        ></button>
+        <div class="flex w-64 -mx-4 mt-3 flex-col absolute bg-white block" v-if="userDropdown">
+            <a class="p-2" href="#">My Account</a>
+            <a class="p-2" href="#">Logout</a>
+        </div>
     </div>
+
     <div class="flex-1 flex items-center px-6 justify-between bg-red-400">
         <nav class="flex">
             <div href="#" class="ml-2 text-sm px-3 py-2 leading-none

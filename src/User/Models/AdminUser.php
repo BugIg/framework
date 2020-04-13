@@ -1,6 +1,6 @@
 <?php
 
-namespace AvoRed\Framework\Database\Models;
+namespace AvoRed\Framework\User\Models;
 
 use AvoRed\Framework\User\Notifications\ResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;

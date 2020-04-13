@@ -1,6 +1,6 @@
 <?php
 
-namespace AvoRed\Framework\Support\Middleware;
+namespace AvoRed\Framework\System\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

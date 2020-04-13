@@ -1,11 +1,9 @@
 <?php
 
-namespace AvoRed\Framework\Support\Console;
+namespace AvoRed\Framework\System\Console;
 
 use Illuminate\Console\Command;
-use AvoRed\Framework\Database\Models\AdminUser;
-use AvoRed\Framework\Database\Contracts\RoleModelInterface;
-use AvoRed\Framework\Database\Contracts\AdminUserModelInterface;
+use AvoRed\Framework\User\Models\AdminUser;
 
 class AdminMakeCommand extends Command
 {

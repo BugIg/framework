@@ -4,6 +4,7 @@ use AvoRed\Framework\User\Controllers\LoginController;
 use AvoRed\Framework\System\Controllers\DashboardController;
 use AvoRed\Framework\User\Controllers\ForgotPasswordController;
 use AvoRed\Framework\User\Controllers\ResetPasswordController;
+use AvoRed\Framework\Catalog\Controllers\CategoryController;
 
 $baseAdminUrl = config('avored.admin_url');
 
@@ -37,9 +38,10 @@ Route::middleware(['web'])
 
 Route::middleware(['web', 'admin.auth'])
     ->prefix($baseAdminUrl)
-    ->namespace('AvoRed\\Framework')
     ->name('admin.')
     ->group(function () {
         Route::get('', [DashboardController::class, 'index'])
             ->name('dashboard');
+
+        Route::resource('category', CategoryController::class);
     });

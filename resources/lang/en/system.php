@@ -13,6 +13,34 @@ return [
     |
     */
 
+
+    'admin-menus' => [
+        'dashboard' => 'Dashboard',
+        'category' => 'Category',
+        'admin-user' => 'Staff',
+        'attribute' => 'Attribute',
+        'catalog' => 'Catalog',
+        'category' => 'Category',
+        'currency' => 'Currency',
+        'cms' => 'CMS',
+        'menu' => 'Menu',
+        'configuration' => 'Configuration',
+        'language' => 'Language',
+        'order' => 'Order',
+        'order-status' => 'Order Status',
+        'page' => 'Page',
+        'product' => 'Product',
+        'property' => 'Product Property',
+        'role' => 'Role',
+        'system' => 'System',
+        'state' => 'State',
+        'user' => 'User',
+        'user-group' => 'User Group',
+        'tax-group' => 'Tax Group',
+        'tax-rate' => 'Tax Rate',
+    ],
+
+
     'failed' => 'These credentials do not match our records.',
     'password' => 'Passwords must be at least eight characters and match the confirmation.',
     'reset' => 'Your password has been reset!',
@@ -20,7 +48,7 @@ return [
     'token' => 'This password reset token is invalid.',
     'user' => "We can't find a user with that e-mail address.",
 
-    
+
     'password' => 'Password',
     'email' => 'Email Address',
     'login-card' => 'AvoRed E commerce Admin Login',
@@ -85,7 +113,7 @@ return [
             'title' => 'Role Edit'
         ],
     ],
-    
+
     'currency' => [
         'name' => 'Name',
         'code' => 'Code',
@@ -103,7 +131,7 @@ return [
             'title' => 'Currency Edit'
         ],
     ],
-    
+
     'state' => [
         'name' => 'Name',
         'code' => 'Code',
@@ -164,29 +192,7 @@ return [
     'header' => [
         'logout' => 'Logout'
     ],
-    'admin_menus' => [
-        'admin-user' => 'Staff',
-        'attribute' => 'Attribute',
-        'catalog' => 'Catalog',
-        'category' => 'Category',
-        'currency' => 'Currency',
-        'cms' => 'CMS',
-        'menu' => 'Menu',
-        'configuration' => 'Configuration',
-        'language' => 'Language',
-        'order' => 'Order',
-        'order-status' => 'Order Status',
-        'page' => 'Page',
-        'product' => 'Product',
-        'property' => 'Product Property',
-        'role' => 'Role',
-        'system' => 'System',
-        'state' => 'State',
-        'user' => 'User',
-        'user-group' => 'User Group',
-        'tax-group' => 'Tax Group',
-        'tax-rate' => 'Tax Rate',
-    ],
+
     'permissions' => [
         'dashboard' => 'Dashboard',
         'page' => [
