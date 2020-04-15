@@ -4,17 +4,12 @@
 
         data() {
             return {
-                userDropdown: false
+                sidebar: false
             }
         },
         methods: {
-            userDropdownClick(e) {
-                console.log(e.target)
-                if (this.userDropdown) {
-                    this.userDropdown = false
-                } else{
-                    this.userDropdown = true
-                }
+            sidebarClick() {
+                this.sidebar = !this.sidebar
             }
         }
 
