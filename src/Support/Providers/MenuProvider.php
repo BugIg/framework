@@ -76,26 +76,26 @@ class MenuProvider extends ServiceProvider
                 ->label('avored::system.admin-menus.category')
                 ->route('admin.category.index');
         });
-        $catalogMenu->subMenu('product', function (MenuItem $menu) {
-            $menu->key('product')
-                ->type(MenuItem::ADMIN)
-                ->label('avored::system.admin-menus.product')
-                ->route('admin.product.index');
-        });
-
-        $cmsMenu = Menu::make('cms', function (MenuItem $menu) {
-            $menu->label('avored::system.admin-menus.cms')
-                ->type(MenuItem::ADMIN)
-                ->icon('/vendor/avored/images/icons/color-palette.svg')
-                ->route('#');
-        })->get('cms');
-
-        $cmsMenu->subMenu('menu-group', function (MenuItem $menu) {
-            $menu->key('menu-group')
-                ->type(MenuItem::ADMIN)
-                ->label('avored::system.admin-menus.menu')
-                ->route('admin.menu-group.index');
-        });
+//        $catalogMenu->subMenu('product', function (MenuItem $menu) {
+//            $menu->key('product')
+//                ->type(MenuItem::ADMIN)
+//                ->label('avored::system.admin-menus.product')
+//                ->route('admin.product.index');
+//        });
+//
+//        $cmsMenu = Menu::make('cms', function (MenuItem $menu) {
+//            $menu->label('avored::system.admin-menus.cms')
+//                ->type(MenuItem::ADMIN)
+//                ->icon('/vendor/avored/images/icons/color-palette.svg')
+//                ->route('#');
+//        })->get('cms');
+//
+//        $cmsMenu->subMenu('menu-group', function (MenuItem $menu) {
+//            $menu->key('menu-group')
+//                ->type(MenuItem::ADMIN)
+//                ->label('avored::system.admin-menus.menu')
+//                ->route('admin.menu-group.index');
+//        });
 
     }
 }

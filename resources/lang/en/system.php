@@ -15,6 +15,7 @@ return [
 
 
     'admin-menus' => [
+        'logout' => 'Logout',
         'dashboard' => 'Dashboard',
         'category' => 'Category',
         'admin-user' => 'Staff',

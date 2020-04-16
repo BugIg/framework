@@ -2,7 +2,6 @@
 
 namespace AvoRed\Framework\Catalog\Controllers;
 
-use Faker\Provider\Base;
 use Illuminate\Http\Request;
 use AvoRed\Framework\System\Controllers\BaseController;
 

@@ -2,10 +2,12 @@
 
 namespace AvoRed\Framework;
 
+use AvoRed\Framework\System\Composers\LayoutComposer;
 use AvoRed\Framework\System\Console\AdminMakeCommand;
 use AvoRed\Framework\System\Console\InstallCommand;
 use AvoRed\Framework\System\Middleware\AdminAuth;
 use AvoRed\Framework\System\Middleware\RedirectIfAdminAuth;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\App;
 
@@ -29,7 +31,7 @@ class AvoRedProvider extends ServiceProvider
         $this->registerConfigData();
         $this->registerRoutePath();
         $this->registerMiddleware();
-//        $this->registerViewComposerData();
+        $this->registerViewComposerData();
         $this->registerConsoleCommands();
         $this->registerMigrationPath();
         $this->registerViewPath();
@@ -137,7 +139,7 @@ class AvoRedProvider extends ServiceProvider
      */
     public function registerViewComposerData()
     {
-//        View::composer('avored::layouts.app', LayoutComposer::class);
+        View::composer('avored::layouts.admin', LayoutComposer::class);
     }
 
    /**
