@@ -54,10 +54,7 @@
 				"AvoRed\\Framework\\AvoRedProvider"
 			],
 			"aliases" : {
-				"Breadcrumb" : "AvoRed\\Framework\\Support\\Facades\\Breadcrumb",
-				"Menu" : "AvoRed\\Framework\\Support\\Facades\\Menu",
-				"Module" : "AvoRed\\Framework\\Support\\Facades\\Module",
-				"Permission" : "AvoRed\\Framework\\Support\\Facades\\Permission"
+				"Menu" : "AvoRed\\Framework\\Support\\Facades\\Menu"
 			}
 		}
 	},

@@ -1,12 +1,10 @@
 <?php
 namespace AvoRed\Framework\Tests;
 
-use AvoRed\Framework\Database\Models\Role;
-use AvoRed\Framework\Database\Models\AdminUser;
+use AvoRed\Framework\User\Models\AdminUser;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Illuminate\Support\Facades\Notification;
 use AvoRed\Framework\AvoRedProvider;
-use Rebing\GraphQL\GraphQLServiceProvider;
 
 abstract class BaseTestCase extends OrchestraTestCase
 {

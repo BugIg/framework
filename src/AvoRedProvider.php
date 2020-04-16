@@ -7,16 +7,25 @@ use AvoRed\Framework\System\Console\InstallCommand;
 use AvoRed\Framework\System\Middleware\AdminAuth;
 use AvoRed\Framework\System\Middleware\RedirectIfAdminAuth;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\App;
 
 class AvoRedProvider extends ServiceProvider
 {
+    /**
+     * Providers List for the Framework.
+     * @var array
+     */
+    protected $providers = [
+        \AvoRed\Framework\Support\Providers\MenuProvider::class,
+    ];
+
     /**
      * Register services.
      * @return void
      */
     public function register()
     {
-//        $this->registerProviders();
+        $this->registerProviders();
         $this->registerConfigData();
         $this->registerRoutePath();
         $this->registerMiddleware();
@@ -89,7 +98,7 @@ class AvoRedProvider extends ServiceProvider
     protected function registerProviders()
     {
         foreach ($this->providers as $provider) {
-            //App::register($provider);
+            App::register($provider);
         }
     }
 

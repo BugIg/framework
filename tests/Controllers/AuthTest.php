@@ -40,7 +40,7 @@ class AuthTest extends BaseTestCase
     public function testAdminLoginPostRoute()
     {
         $this->password = bcrypt('phpunit');
-        $this->createAdminUser(['is_super_admin' => 1, 'password' => $this->password])
+        $this->createAdminUser(['password' => $this->password])
             ->actingAs($this->user, 'admin')
             ->post(route('admin.login.post', ['email' => $this->user->email, 'password' => $this->password]))
             ->assertRedirect(route('admin.dashboard'));

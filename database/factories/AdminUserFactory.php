@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
-use AvoRed\Framework\Database\Models\AdminUser;
+use AvoRed\Framework\User\Models\AdminUser;
 
 $factory->define(AdminUser::class, function (Faker $faker) {
     return [
