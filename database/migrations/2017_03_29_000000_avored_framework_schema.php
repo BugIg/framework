@@ -36,6 +36,15 @@ class AvoredFrameworkSchema extends Migration
             $table->timestamp('created_at');
         });
 
+        Schema::create('categories', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name')->nullable()->default(null);
+            $table->string('slug')->nullable()->default(null);
+            $table->string('meta_title')->nullable()->default(null);
+            $table->string('meta_description')->nullable()->default(null);
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -47,5 +56,6 @@ class AvoredFrameworkSchema extends Migration
     {
         Schema::dropIfExists('admin_users');
         Schema::dropIfExists('admin_password_resets');
+        Schema::dropIfExists('categories');
     }
 }

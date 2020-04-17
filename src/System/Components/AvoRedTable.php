@@ -7,13 +7,29 @@ use Illuminate\View\Component;
 class AvoRedTable extends Component
 {
     /**
+     * Collection of Model/Array
+     * @var mixed $data
+     */
+    public $data;
+
+    /**
+     * Collection of Model/Array
+     * @var mixed $columns
+     */
+    public $columns;
+
+
+    /**
      * Create a new component instance.
-     *
+     * @param mixed $data
+     * @param mixed $columns
      * @return void
      */
-    public function __construct()
+    public function __construct($data, $columns)
     {
-        //
+
+        $this->data = $data;
+        $this->columns = $columns;
     }
 
     /**
@@ -23,6 +39,13 @@ class AvoRedTable extends Component
      */
     public function render()
     {
-        return view('avored::system.components.table');
+        return view('avored::system.components.table')
+            ->with('data', $this->data);
+    }
+
+    public function value($row, $column)
+    {
+        $key = $column['key'];
+        return $row->{$key};
     }
 }

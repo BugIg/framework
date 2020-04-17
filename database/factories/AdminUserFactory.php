@@ -1,9 +1,9 @@
 <?php
 
 use Faker\Generator as Faker;
-use AvoRed\Framework\User\Models\AdminUser;
+use AvoRed\Framework\User\Models\Category;
 
-$factory->define(AdminUser::class, function (Faker $faker) {
+$factory->define(Category::class, function (Faker $faker) {
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,

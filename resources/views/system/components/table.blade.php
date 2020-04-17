@@ -4,107 +4,44 @@
             <table class="min-w-full">
                 <thead>
                 <tr>
-                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                        Name
-                    </th>
-                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                        Title
-                    </th>
-                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                        Email
-                    </th>
-                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                        Role
-                    </th>
-                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+
+                    <?php
+                    //dd($data);
+                    ?>
+                @foreach($columns as $key => $column)
+
+                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+                            {{ $column['title'] }}
+                        </td>
+{{--                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">--}}
+{{--                            Director, Human Resources--}}
+{{--                        </td>--}}
+{{--                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">--}}
+{{--                            bernardlane@example.com--}}
+{{--                        </td>--}}
+{{--                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">--}}
+{{--                            Owner--}}
+{{--                        </td>--}}
+{{--                        <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">--}}
+{{--                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>--}}
+{{--                        </td>--}}
+
+                @endforeach
                 </tr>
+
+
                 </thead>
                 <tbody>
-                <tr class="bg-white">
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
-                        Bernard Lane
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                        Director, Human Resources
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                        bernardlane@example.com
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                        Owner
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                    </td>
-                </tr>
-                <tr class="bg-gray-50">
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
-                        Bernard Lane
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                        Director, Human Resources
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                        bernardlane@example.com
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                        Owner
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                    </td>
-                </tr>
-                <tr class="bg-white">
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
-                        Bernard Lane
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                        Director, Human Resources
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                        bernardlane@example.com
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                        Owner
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                    </td>
-                </tr>
-                <tr class="bg-gray-50">
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
-                        Bernard Lane
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                        Director, Human Resources
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                        bernardlane@example.com
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                        Owner
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                    </td>
-                </tr>
-                <tr class="bg-white">
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
-                        Bernard Lane
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                        Director, Human Resources
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                        bernardlane@example.com
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                        Owner
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                    </td>
-                </tr>
+                @foreach($data as $key => $row)
+                    <tr class="bg-white">
+                        @foreach($columns as $colId => $col)
+                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+                            {{ $value($row, $col) }}
+                        </td>
+                        @endforeach
+                    </tr>
+                @endforeach
+
                 </tbody>
             </table>
         </div>

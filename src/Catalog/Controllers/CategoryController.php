@@ -2,6 +2,7 @@
 
 namespace AvoRed\Framework\Catalog\Controllers;
 
+use AvoRed\Framework\Catalog\Models\Category;
 use Illuminate\Http\Request;
 use AvoRed\Framework\System\Controllers\BaseController;
 
@@ -14,8 +15,12 @@ class CategoryController extends BaseController
      */
     public function index()
     {
+        $categories = Category::paginate(10);
+        $columns = $this->getColumns();
+
         return view('avored::catalog.category.index')
-            ->with('user', auth()->guard('admin')->user());
+            ->with('categories', $categories)
+            ->with('columns', $columns);
     }
 
     /**
@@ -82,5 +87,31 @@ class CategoryController extends BaseController
     public function destroy($id)
     {
         //
+    }
+
+    private function getColumns()
+    {
+        return [
+            'id' => [
+                'key' => 'id',
+                'title' => __('avored::catalog.category.id')
+            ],
+           'name' => [
+               'key' => 'name',
+                'title' => __('avored::catalog.category.name')
+           ],
+            'slug' => [
+                'key' => 'slug',
+                'title' => __('avored::catalog.category.slug')
+            ],
+            'meta_title' => [
+                'key' => 'meta_title',
+                'title' => __('avored::catalog.category.meta-title')
+            ],
+            'action' => [
+                'key' => 'action',
+                'title' => __('avored::catalog.category.action')
+            ]
+        ];
     }
 }
