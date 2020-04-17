@@ -19,12 +19,26 @@
                 </div>
                 <nav class="mt-5 px-2">
                     @foreach($menus as $menu)
-                        <a href="#" class="group flex items-center px-2 py-2 text-base leading-6 font-medium text-gray-900 rounded-md bg-gray-100 focus:outline-none focus:bg-gray-200 transition ease-in-out duration-150">
-                            <svg class="mr-4 h-6 w-6 text-gray-500 group-hover:text-gray-500 group-focus:text-gray-600 transition ease-in-out duration-150" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1V10M9 21h6"/>
-                            </svg>
-                            {{ $menu->label() }}
-                        </a>
+                        @if($menu->hasSubMenu())
+                            <h3 class="flex items-center px-2 py-2 text-center leading-6 font-medium text-gray-500 rounded-md focus:outline-none focus:bg-gray-200">
+                                <img
+                                    class="mr-4 h-6 w-6 text-gray-100"
+                                    src="{{ $menu->icon() }}"
+                                />
+
+                                {{ $menu->label() }}
+                            </h3>
+
+                            <?php
+                            //dd($menu);
+                            ?>
+                            @foreach($menu->subMenu($menu->key()) as $subMenu)
+                                <a href="{{ route($subMenu->route(), $subMenu->params()) }}" class="mt-3 group flex items-center px-12 py-2 text-sm text-base leading-6 font-light text-gray-900 rounded-md bg-gray-100 focus:outline-none focus:bg-gray-200">
+                                    {{ $subMenu->label() }}
+                                </a>
+                            @endforeach
+                        @endif
+
                     @endforeach
                 </nav>
             </div>

@@ -12,4 +12,8 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
+    'category' => [
+        'title' => 'Category'
+    ]
 ];
+
