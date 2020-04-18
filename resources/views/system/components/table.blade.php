@@ -3,47 +3,38 @@
         <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
             <table class="min-w-full">
                 <thead>
-                <tr>
+                    <tr>
+                        @foreach($columns as $key => $column)
 
-                    <?php
-                    //dd($data);
-                    ?>
-                @foreach($columns as $key => $column)
-
-                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
-                            {{ $column['title'] }}
-                        </td>
-{{--                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">--}}
-{{--                            Director, Human Resources--}}
-{{--                        </td>--}}
-{{--                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">--}}
-{{--                            bernardlane@example.com--}}
-{{--                        </td>--}}
-{{--                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">--}}
-{{--                            Owner--}}
-{{--                        </td>--}}
-{{--                        <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">--}}
-{{--                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>--}}
-{{--                        </td>--}}
-
-                @endforeach
-                </tr>
-
-
-                </thead>
-                <tbody>
-                @foreach($data as $key => $row)
-                    <tr class="bg-white">
-                        @foreach($columns as $colId => $col)
-                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
-                            {{ $value($row, $col) }}
-                        </td>
+                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+                                    {{ $column['title'] }}
+                                </td>
                         @endforeach
                     </tr>
-                @endforeach
+                </thead>
 
+                <tbody>
+                    @foreach($data as $key => $row)
+                        <tr class="bg-white">
+                            @foreach($columns as $colId => $col)
+                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+                                @if($col['key'] === 'action')
+                                    {!! $action($row, $col) !!}
+                                @else
+                                    {{ $value($row, $col) }}
+                                @endif
+                            </td>
+                            @endforeach
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
+
+        @if ($paginate)
+            {!! $data->render("avored::partials.paginate") !!}
+        @endif
+
+
     </div>
 </div>

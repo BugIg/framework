@@ -86,7 +86,7 @@ class CategoryController extends BaseController
      */
     public function destroy($id)
     {
-        //
+
     }
 
     private function getColumns()
@@ -110,7 +110,26 @@ class CategoryController extends BaseController
             ],
             'action' => [
                 'key' => 'action',
-                'title' => __('avored::catalog.category.action')
+                'title' => __('avored::catalog.category.action'),
+                'callable' => function ($model) {
+                    return '
+                        <a href="' . route('admin.category.edit', $model->id) . '">' .
+                            __('avored::system.action.edit') . '
+                        </a>
+                        <a
+                            href="' . route('admin.category.destroy', $model->id) . '"
+                            onclick="event.preventDefault();document.getElementById(\'admin-category-destroy-' . $model->id . '\').submit();"
+                        >' .
+                            __('avored::system.action.destroy') . '
+                        </a>
+                        <form id="admin-category-destroy-' . $model->id . '"
+                            action="' . route('admin.category.destroy', $model->id) . '" method="POST"  class="hidden">
+                            <input type="hidden" name="_token" value="'. csrf_token() . '" />
+                            <input type="hidden" name="_method" value="delete" />
+                        </form>
+                    ';
+
+                }
             ]
         ];
     }

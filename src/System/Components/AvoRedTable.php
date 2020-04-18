@@ -16,18 +16,23 @@ class AvoRedTable extends Component
      * Collection of Model/Array
      * @var mixed $columns
      */
+
     public $columns;
+    /**
+     * @var bool
+     */
+    public $paginate;
 
 
     /**
      * Create a new component instance.
      * @param mixed $data
      * @param mixed $columns
-     * @return void
+     * @param bool $paginate
      */
-    public function __construct($data, $columns)
+    public function __construct($data, $columns, $paginate = true)
     {
-
+        $this->paginate = $paginate;
         $this->data = $data;
         $this->columns = $columns;
     }
@@ -47,5 +52,11 @@ class AvoRedTable extends Component
     {
         $key = $column['key'];
         return $row->{$key};
+    }
+
+    public function action($row, $column)
+    {
+        $callable = $column['callable'];
+        return $callable($row);
     }
 }

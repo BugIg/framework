@@ -41,6 +41,13 @@ return [
         'tax-rate' => 'Tax Rate',
     ],
 
+    'action' => [
+        'edit' => 'Edit',
+        'destroy' => 'Delete',
+        'previous' => 'Previous',
+        'next' => 'Next'
+    ],
+
 
     'failed' => 'These credentials do not match our records.',
     'password' => 'Passwords must be at least eight characters and match the confirmation.',
