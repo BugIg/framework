@@ -18,8 +18,9 @@ class AvoRedProvider extends ServiceProvider
      * @var array
      */
     protected $providers = [
-        \AvoRed\Framework\Support\Providers\MenuProvider::class,
         \AvoRed\Framework\Support\Providers\ComponentProvider::class,
+        \AvoRed\Framework\Support\Providers\MenuProvider::class,
+        \AvoRed\Framework\Support\Providers\TabProvider::class,
     ];
 
     /**

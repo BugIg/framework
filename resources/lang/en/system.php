@@ -13,6 +13,22 @@ return [
     |
     */
 
+    'comms' => [
+        'basic-info' => 'Basic Information',
+        'id' => 'ID',
+        'name' => 'Name',
+        'slug' => 'Slug',
+        'meta-title' => 'Meta Title',
+        'action' => 'Action',
+        'create' => 'Create',
+        'save' => 'Save',
+        'edit' => 'Edit',
+        'destroy' => 'Delete',
+        'previous' => 'Previous',
+        'next' => 'Next',
+        'paginator-info' => 'Showing <span class="font-medium">1</span> to<span class="font-medium"> :perPage</span> of<span class="font-medium"> :total</span> results'
+    ],
+
     'dashboard' => [
         'title' => 'Dashboard'
     ],
@@ -42,14 +58,6 @@ return [
         'tax-group' => 'Tax Group',
         'tax-rate' => 'Tax Rate',
     ],
-
-    'action' => [
-        'edit' => 'Edit',
-        'destroy' => 'Delete',
-        'previous' => 'Previous',
-        'next' => 'Next'
-    ],
-
 
     'failed' => 'These credentials do not match our records.',
     'password' => 'Passwords must be at least eight characters and match the confirmation.',
