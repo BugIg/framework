@@ -13,7 +13,9 @@ return [
     |
     */
 
-
+    'dashboard' => [
+        'title' => 'Dashboard'
+    ],
     'admin-menus' => [
         'logout' => 'Logout',
         'dashboard' => 'Dashboard',
