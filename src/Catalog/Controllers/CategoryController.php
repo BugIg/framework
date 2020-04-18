@@ -3,6 +3,7 @@
 namespace AvoRed\Framework\Catalog\Controllers;
 
 use AvoRed\Framework\Catalog\Models\Category;
+use AvoRed\Framework\Catalog\Requests\CategoryRequest;
 use AvoRed\Framework\Support\Facades\Tab;
 use Illuminate\Http\Request;
 use AvoRed\Framework\System\Controllers\BaseController;
@@ -41,12 +42,14 @@ class CategoryController extends BaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param CategoryRequest $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        Category::create($request->all());
+
+        return redirect()->route('admin.category.index');
     }
 
 
@@ -56,9 +59,13 @@ class CategoryController extends BaseController
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        $tabs = Tab::get('catalog.category');
+
+        return view('avored::catalog.category.edit')
+            ->with('category', $category)
+            ->with('tabs', $tabs);
     }
 
     /**

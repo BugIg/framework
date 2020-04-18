@@ -1,8 +1,9 @@
 @extends('avored::layouts.admin')
 
 @section('pageTitle')
-    {{ __('avored::catalog.category.create-title') }}
+    {{ __('avored::catalog.category.edit-title') }}
 @endsection
+
 
 @section('actions')
     <div class="flex justify-start">
@@ -23,13 +24,13 @@
     </div>
 @endsection
 
-
 @section('content')
 
     <div class="w-full mx-auto px-4 sm:px-6 md:px-8">
         <div class="py-4">
-            <form id="category-save" method="post" action="{{ route('admin.category.store') }}">
+            <form id="category-save" method="post" action="{{ route('admin.category.update', $category->id) }}">
                 @csrf
+                @method('put')
 
                 @foreach ($tabs as $tab)
                     <div>
@@ -69,14 +70,7 @@
 
                     </div>
                 </div>
-
-
-
-
             </form>
         </div>
-
-
-
     </div>
 @endsection

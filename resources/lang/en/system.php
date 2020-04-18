@@ -19,6 +19,7 @@ return [
         'name' => 'Name',
         'slug' => 'Slug',
         'meta-title' => 'Meta Title',
+        'meta-description' => 'Meta Description',
         'action' => 'Action',
         'create' => 'Create',
         'save' => 'Save',
@@ -26,6 +27,7 @@ return [
         'destroy' => 'Delete',
         'previous' => 'Previous',
         'next' => 'Next',
+        'cancel' => 'Cancel',
         'paginator-info' => 'Showing <span class="font-medium">1</span> to<span class="font-medium"> :perPage</span> of<span class="font-medium"> :total</span> results'
     ],
 
