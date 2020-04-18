@@ -1,7 +1,7 @@
 <?php
 namespace AvoRed\Framework\Tests;
 
-use AvoRed\Framework\User\Models\Category;
+use AvoRed\Framework\User\Models\AdminUser;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Illuminate\Support\Facades\Notification;
 use AvoRed\Framework\AvoRedProvider;
@@ -109,7 +109,7 @@ abstract class BaseTestCase extends OrchestraTestCase
     protected function createAdminUser($data = []): self
     {
         if (null === $this->user) {
-            $this->user = factory(Category::class)->create($data);
+            $this->user = factory(AdminUser::class)->create($data);
         }
         return $this;
     }

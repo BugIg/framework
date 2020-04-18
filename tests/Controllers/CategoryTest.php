@@ -3,12 +3,12 @@ namespace AvoRed\Framework\Tests\Controllers;
 
 use AvoRed\Framework\Tests\BaseTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use AvoRed\Framework\Database\Models\Category;
+use AvoRed\Framework\Catalog\Models\Category;
 
 class CategoryTest extends BaseTestCase
 {
     use RefreshDatabase;
-    
+
     /* @runInSeparateProcess */
     public function testCategoryIndexRouteTest()
     {
@@ -16,7 +16,8 @@ class CategoryTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.category.index'))
             ->assertStatus(200)
-            ->assertSee(__('avored::catalog.category.index.title'));
+            ->assertViewIs('avored::catalog.category.index')
+            ->assertSee(__('avored::catalog.category.title'));
     }
 
     /* @runInSeparateProcess */
@@ -71,7 +72,7 @@ class CategoryTest extends BaseTestCase
     public function testCategoryDestroyRouteTest()
     {
         $category = factory(Category::class)->create();
-        
+
         $this->createAdminUser()
             ->actingAs($this->user, 'admin')
             ->delete(route('admin.category.destroy', $category->id))
