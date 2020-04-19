@@ -6,6 +6,7 @@
  */
 return [
     'admin_url' => 'admin',
+    'table_prefix' => 'avored_',
     'auth' => [
         'guards' => [
             'admin' => [

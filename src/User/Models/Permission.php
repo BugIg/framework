@@ -2,10 +2,10 @@
 
 namespace AvoRed\Framework\User\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use AvoRed\Framework\Support\BaseModel;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Permission extends Model
+class Permission extends BaseModel
 {
     /**
      * The attributes that are mass assignable.

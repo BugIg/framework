@@ -10,6 +10,15 @@ class AdminUser extends Authenticatable
 {
     use Notifiable;
 
+    public function __construct(array $attributes = [])
+    {
+        $tablePrefix  = config('avored.table_prefix');
+
+        $tableName = $tablePrefix . $this->getTable();
+        $this->table = $tableName;
+        parent::__construct($attributes);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

@@ -2,9 +2,9 @@
 
 namespace AvoRed\Framework\Catalog\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use AvoRed\Framework\Support\BaseModel;
 
-class Category extends Model
+class Category extends BaseModel
 {
 
     /**

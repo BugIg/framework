@@ -2,10 +2,10 @@
 
 namespace AvoRed\Framework\User\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use AvoRed\Framework\Support\BaseModel;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Role extends Model
+class Role extends BaseModel
 {
     /**
      * Admin Role name Constant.

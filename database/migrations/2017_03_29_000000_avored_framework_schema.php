@@ -13,14 +13,16 @@ class AvoredFrameworkSchema extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        $tablePrefix = config('avored.table_prefix');
+
+        Schema::create($tablePrefix . 'roles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable()->default(null);
             $table->text('description')->nullable()->default(null);
             $table->timestamps();
         });
 
-        Schema::create('admin_users', function (Blueprint $table) {
+        Schema::create($tablePrefix . 'admin_users', function (Blueprint $table) use ($tablePrefix) {
             $table->bigIncrements('id');
             $table->tinyInteger('is_super_admin')->nullable()->default(null);
             $table->bigInteger('role_id')->unsigned()->default(null);
@@ -36,17 +38,17 @@ class AvoredFrameworkSchema extends Migration
 
             $table->foreign('role_id')
                 ->references('id')
-                ->on('roles')
+                ->on($tablePrefix . 'roles')
                 ->onDelete('cascade');
         });
 
-        Schema::create('permissions', function (Blueprint $table) {
+        Schema::create($tablePrefix . 'permissions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->timestamps();
         });
 
-        Schema::create('permission_role', function (Blueprint $table) {
+        Schema::create($tablePrefix . 'permission_role', function (Blueprint $table) use ($tablePrefix) {
             $table->bigIncrements('id');
             $table->bigInteger('permission_id')->unsigned();
             $table->bigInteger('role_id')->unsigned();
@@ -54,21 +56,21 @@ class AvoredFrameworkSchema extends Migration
 
             $table->foreign('permission_id')
                 ->references('id')
-                ->on('permissions')
+                ->on($tablePrefix . 'permissions')
                 ->onDelete('cascade');
             $table->foreign('role_id')
                 ->references('id')
-                ->on('roles')
+                ->on($tablePrefix . 'roles')
                 ->onDelete('cascade');
         });
 
-        Schema::create('admin_password_resets', function (Blueprint $table) {
+        Schema::create($tablePrefix . 'admin_password_resets', function (Blueprint $table) {
             $table->string('email')->index();
             $table->string('token')->index();
             $table->timestamp('created_at');
         });
 
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create($tablePrefix . 'categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable()->default(null);
             $table->string('slug')->nullable()->default(null);
@@ -86,11 +88,13 @@ class AvoredFrameworkSchema extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permission_role');
-        Schema::dropIfExists('permissions');
-        Schema::dropIfExists('admin_users');
-        Schema::dropIfExists('roles');
-        Schema::dropIfExists('admin_password_resets');
-        Schema::dropIfExists('categories');
+        $tablePrefix = config('avored.table_prefix');
+
+        Schema::dropIfExists($tablePrefix . 'permission_role');
+        Schema::dropIfExists($tablePrefix . 'permissions');
+        Schema::dropIfExists($tablePrefix . 'admin_users');
+        Schema::dropIfExists($tablePrefix . 'roles');
+        Schema::dropIfExists($tablePrefix . 'admin_password_resets');
+        Schema::dropIfExists($tablePrefix . 'categories');
     }
 }
