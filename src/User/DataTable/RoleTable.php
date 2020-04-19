@@ -11,11 +11,13 @@ class RoleTable extends CoreTable
         return [
             'id' => [
                 'key' => 'id',
-                'title' => __('avored::system.comms.id')
+                'title' => __('avored::system.comms.id'),
+                'sortable' => true
             ],
             'name' => [
                 'key' => 'name',
-                'title' => __('avored::system.comms.name')
+                'title' => __('avored::system.comms.name'),
+                'sortable' => true
             ],
             'description' => [
                 'key' => 'slug',

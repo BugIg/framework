@@ -6,7 +6,28 @@
                     <tr>
                         @foreach($columns as $key => $column)
                             <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
-                                {{ $column['title'] }}
+                                    @if ($isSortable($column) && $sortOrder($column) === 'asc')
+
+                                        <a href="{{ url()->current().'?'. http_build_query(array_merge(request()->all(), ['sort' => [$column['key'] => 'desc']])) }}"
+                                           class="flex">
+                                            <span>{{ $column['title'] }}</span>
+                                            <img class="h-3 w-3 ml-1 text-xs text-gray-100"
+                                                 src="{{ asset('vendor/avored/images/icons/arrow-up.svg') }}"
+                                            />
+                                         </a>
+                                    @elseif($isSortable($column) && $sortOrder($column) === 'desc')
+
+                                    <a href="{{ url()->current().'?'. http_build_query(array_merge(request()->all(), ['sort' => [$column['key'] => 'asc']])) }}"
+                                       class="flex">
+                                        <span>{{ $column['title'] }}</span>
+                                        <img class="h-3 w-3 ml-1 text-xs text-gray-100"
+                                             src="{{ asset('vendor/avored/images/icons/arrow-down.svg') }}"
+                                        />
+                                    </a>
+                                    @else
+                                        {{ $column['title'] }}
+                                    @endif
+
                             </td>
                         @endforeach
                     </tr>

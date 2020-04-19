@@ -11,15 +11,18 @@ class CategoryTable extends CoreTable
         return [
             'id' => [
                 'key' => 'id',
-                'title' => __('avored::system.comms.id')
+                'title' => __('avored::system.comms.id'),
+                'sortable' => true
             ],
             'name' => [
                 'key' => 'name',
-                'title' => __('avored::system.comms.name')
+                'title' => __('avored::system.comms.name'),
+                'sortable' => true
             ],
             'slug' => [
                 'key' => 'slug',
-                'title' => __('avored::system.comms.slug')
+                'title' => __('avored::system.comms.slug'),
+                'sortable' => true
             ],
             'meta_title' => [
                 'key' => 'meta_title',
