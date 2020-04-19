@@ -37,8 +37,9 @@ class Role extends Model
         $permissions = explode(',', $routes);
         $hasPermission = true;
 
-        foreach ($permissions as $permissions) {
-            if (! $modelPermissions->contains($permissions)) {
+        foreach ($permissions as $permission) {
+
+            if (! $modelPermissions->contains($permission)) {
                 $hasPermission = false;
             }
         }

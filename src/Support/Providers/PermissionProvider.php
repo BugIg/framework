@@ -111,7 +111,6 @@ class PermissionProvider extends ServiceProvider
             }
         );
 
-
         Blade::if(
             'hasPermission',
             function ($routeName) {

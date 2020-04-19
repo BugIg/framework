@@ -32,24 +32,17 @@
                 @csrf
 
                 @foreach ($tabs as $tab)
-                    <div class="pb-8 border-b border-gray-200 pt-8">
-                        <div>
-                            <h3 class="text-lg leading-6 font-medium text-gray-900">
-                                {{ $tab->label() }}
-                            </h3>
-                            <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
-                                {{ $tab->description() }}
-                            </p>
-                        </div>
-                        <div class="mt-6 sm:mt-5 border-t border-gray-200 pt-5">
-                            @php
-                                $path = $tab->view();
-                            @endphp
-                            @include($path)
-                        </div>
-                    </div>
+                    <x-avored-tab
+                        :tab="$tab"
+                    >
+                        @php
+                            $path = $tab->view();
+                        @endphp
+                        @include($path)
 
+                    </x-avored-tab>
                 @endforeach
+
 
                 <div class="mt-5">
                     <div class="flex justify-start">

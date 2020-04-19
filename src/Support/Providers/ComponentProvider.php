@@ -4,6 +4,7 @@ namespace AvoRed\Framework\Support\Providers;
 
 use AvoRed\Framework\System\Components\AvoRedInput;
 use AvoRed\Framework\System\Components\AvoRedField;
+use AvoRed\Framework\System\Components\AvoRedTab;
 use AvoRed\Framework\System\Components\AvoRedTable;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
@@ -11,9 +12,10 @@ use Illuminate\Support\Facades\Blade;
 class ComponentProvider extends ServiceProvider
 {
     protected $components = [
-        'avored-table' => AvoRedTable::class,
         'avored-field' => AvoRedField::class,
         'avored-input' => AvoRedInput::class,
+        'avored-table' => AvoRedTable::class,
+        'avored-tab' => AvoRedTab::class,
     ];
 
     /**

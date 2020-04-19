@@ -109,7 +109,8 @@ class RoleController extends BaseController
 
         if ($request->get('permissions') !== null && count($request->get('permissions')) > 0) {
             foreach ($request->get('permissions') as $key => $value) {
-                if ($value != 1) {
+
+                if ((bool)$value !== true) {
                     continue;
                 }
                 $permissions = explode(',', $key);
