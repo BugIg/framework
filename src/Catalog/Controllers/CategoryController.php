@@ -2,6 +2,7 @@
 
 namespace AvoRed\Framework\Catalog\Controllers;
 
+use AvoRed\Framework\Catalog\DataTable\CategoryTable;
 use AvoRed\Framework\Catalog\Models\Category;
 use AvoRed\Framework\Catalog\Requests\CategoryRequest;
 use AvoRed\Framework\Support\Facades\Tab;
@@ -18,12 +19,10 @@ class CategoryController extends BaseController
      */
     public function index()
     {
-        $categories = Category::paginate(10);
-        $columns = $this->getColumns();
+        $categoryTable = new CategoryTable(Category::class);
 
         return view('avored::catalog.category.index')
-            ->with('categories', $categories)
-            ->with('columns', $columns);
+            ->with('categoryTable', $categoryTable);
     }
 
     /**
@@ -95,35 +94,5 @@ class CategoryController extends BaseController
 
         return redirect()->route('admin.category.index');
 
-    }
-
-    private function getColumns()
-    {
-        return [
-            'id' => [
-                'key' => 'id',
-                'title' => __('avored::system.comms.id')
-            ],
-           'name' => [
-               'key' => 'name',
-                'title' => __('avored::system.comms.name')
-           ],
-            'slug' => [
-                'key' => 'slug',
-                'title' => __('avored::system.comms.slug')
-            ],
-            'meta_title' => [
-                'key' => 'meta_title',
-                'title' => __('avored::system.comms.meta-title')
-            ],
-            'action' => [
-                'key' => 'action',
-                'title' => __('avored::system.comms.action'),
-                'callable' => function ($model) {
-                    return view('avored::catalog.category._action')
-                            ->with('model', $model);
-                }
-            ]
-        ];
     }
 }

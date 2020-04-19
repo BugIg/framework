@@ -2,6 +2,7 @@
 
 namespace AvoRed\Framework\User\Controllers;
 
+use AvoRed\Framework\User\DataTable\RoleTable;
 use AvoRed\Framework\System\Controllers\BaseController;
 use AvoRed\Framework\User\Models\Permission;
 use Illuminate\Http\JsonResponse;
@@ -21,12 +22,10 @@ class RoleController extends BaseController
      */
     public function index()
     {
-        $roles = Role::paginate(10);
-        $columns = $this->getColumns();
+        $roleTable = new RoleTable(Role::class);
 
         return view('avored::user.role.index')
-            ->with(compact('roles'))
-            ->with('columns', $columns);
+            ->with('roleTable', $roleTable);
     }
 
     /**
@@ -125,31 +124,5 @@ class RoleController extends BaseController
             $ids = $permissionIds->unique();
             $role->permissions()->sync($ids);
         }
-    }
-
-    private function getColumns()
-    {
-        return [
-            'id' => [
-                'key' => 'id',
-                'title' => __('avored::system.comms.id')
-            ],
-            'name' => [
-                'key' => 'name',
-                'title' => __('avored::system.comms.name')
-            ],
-            'description' => [
-                'key' => 'slug',
-                'title' => __('avored::system.comms.description')
-            ],
-            'action' => [
-                'key' => 'action',
-                'title' => __('avored::system.comms.action'),
-                'callable' => function ($model) {
-                    return view('avored::user.role._action')
-                        ->with('model', $model);
-                }
-            ]
-        ];
     }
 }

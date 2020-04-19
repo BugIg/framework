@@ -2,39 +2,20 @@
 
 namespace AvoRed\Framework\System\Components;
 
+use AvoRed\Framework\Support\CoreTable;
 use Illuminate\View\Component;
 
 class AvoRedTable extends Component
 {
-    /**
-     * Collection of Model/Array
-     * @var mixed $data
-     */
-    public $data;
-
-    /**
-     * Collection of Model/Array
-     * @var mixed $columns
-     */
-
-    public $columns;
-    /**
-     * @var bool
-     */
-    public $paginate;
-
+    public $table;
 
     /**
      * Create a new component instance.
-     * @param mixed $data
-     * @param mixed $columns
-     * @param bool $paginate
+     * @param $table
      */
-    public function __construct($data, $columns, $paginate = true)
+    public function __construct(CoreTable $table)
     {
-        $this->paginate = $paginate;
-        $this->data = $data;
-        $this->columns = $columns;
+        $this->table = $table;
     }
 
     /**
@@ -44,8 +25,22 @@ class AvoRedTable extends Component
      */
     public function render()
     {
-        return view('avored::system.components.table')
-            ->with('data', $this->data);
+        return view('avored::system.components.table');
+    }
+
+    public function columns()
+    {
+        return $this->table->getColumns();
+    }
+
+    public function isPaginate()
+    {
+        return $this->table->paginate;
+    }
+
+    public function items()
+    {
+        return $this->table->model->paginate(10);
     }
 
     public function value($row, $column)
