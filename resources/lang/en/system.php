@@ -18,6 +18,7 @@ return [
         'id' => 'ID',
         'name' => 'Name',
         'slug' => 'Slug',
+        'description' => 'Description',
         'meta-title' => 'Meta Title',
         'meta-description' => 'Meta Description',
         'action' => 'Action',

@@ -2,11 +2,13 @@
 
 namespace AvoRed\Framework;
 
+use AvoRed\Framework\Support\Providers\PermissionProvider;
 use AvoRed\Framework\System\Composers\LayoutComposer;
 use AvoRed\Framework\System\Console\AdminMakeCommand;
 use AvoRed\Framework\System\Console\InstallCommand;
 use AvoRed\Framework\System\Middleware\AdminAuth;
 use AvoRed\Framework\System\Middleware\RedirectIfAdminAuth;
+use AvoRed\Framework\User\Middleware\Permission;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\App;
@@ -20,6 +22,7 @@ class AvoRedProvider extends ServiceProvider
     protected $providers = [
         \AvoRed\Framework\Support\Providers\ComponentProvider::class,
         \AvoRed\Framework\Support\Providers\MenuProvider::class,
+        \AvoRed\Framework\Support\Providers\PermissionProvider::class,
         \AvoRed\Framework\Support\Providers\TabProvider::class,
     ];
 
@@ -115,6 +118,7 @@ class AvoRedProvider extends ServiceProvider
         $router = $this->app['router'];
         $router->aliasMiddleware('admin.auth', AdminAuth::class);
         $router->aliasMiddleware('admin.guest', RedirectIfAdminAuth::class);
+        $router->aliasMiddleware('permission', Permission::class);
     }
 
     /**

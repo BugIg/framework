@@ -65,5 +65,18 @@ class TabProvider extends ServiceProvider
                 ->description('avored::catalog.category.form-info')
                 ->view('avored::catalog.category._fields');
         });
+
+        Tab::put('user.role', function (TabItem $tab) {
+            $tab->key('user.role.info')
+                ->label('avored::system.comms.basic-info')
+                ->description('avored::user.role.form-info')
+                ->view('avored::user.role._fields');
+        });
+        Tab::put('user.role', function (TabItem $tab) {
+            $tab->key('user.role.permission')
+                ->label('avored::user.role.permission')
+                ->description('avored::user.role.permission-info')
+                ->view('avored::user.role._permissions');
+        });
     }
 }

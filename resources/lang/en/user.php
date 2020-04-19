@@ -12,6 +12,14 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
+    'role' => [
+        'title' => 'Role',
+        'create-title' => 'Create Role',
+        'edit-title' => 'Update Role',
+        'form-info' => 'Please provide information about the role.',
+        'permission-info' => 'Please select all the permissions attached with this role.',
+        'permission' => 'User Permissions'
+    ],
 
     'auth' => [
         'login' => [

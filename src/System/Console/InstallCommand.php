@@ -2,6 +2,7 @@
 
 namespace AvoRed\Framework\System\Console;
 
+use AvoRed\Framework\User\Models\Role;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
 
@@ -42,8 +43,8 @@ class InstallCommand extends Command
 //        if ($this->confirm('Would you like to install Dummy Data?')) {
 //            $this->call('avored:module:install', ['identifier' => 'avored-demodata']);
 //        }
-//        $roleData = ['name' => Role::ADMIN];
-//        $this->roleRepository->create($roleData);
+        $roleData = ['name' => Role::ADMIN];
+        Role::create($roleData);
 //        $this->createCurrency();
 //        $this->createLanguage();
 //        $this->createDefaultUserGroup();

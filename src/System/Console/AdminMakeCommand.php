@@ -2,6 +2,7 @@
 
 namespace AvoRed\Framework\System\Console;
 
+use AvoRed\Framework\User\Models\Role;
 use Illuminate\Console\Command;
 use AvoRed\Framework\User\Models\AdminUser;
 
@@ -34,9 +35,9 @@ class AdminMakeCommand extends Command
         $data['password'] = $this->secret('What is your Password?');
         $data['confirm_password'] = $this->secret('Confirm your password again?');
 
-//        $role = $this->roleRepository->findAdminRole();
-//        $data['role_id'] = $role->id;
-//        $data['is_super_admin'] = 1;
+        $role = Role::findAdminRole();
+        $data['role_id'] = $role->id;
+        $data['is_super_admin'] = 1;
         $data['password'] = bcrypt($data['password']);
         AdminUser::create($data);
 

@@ -36,7 +36,7 @@ Route::middleware(['web'])
 
     });
 
-Route::middleware(['web', 'admin.auth'])
+Route::middleware(['web', 'admin.auth', 'permission'])
     ->prefix($baseAdminUrl)
     ->name('admin.')
     ->group(function () {
@@ -45,4 +45,6 @@ Route::middleware(['web', 'admin.auth'])
 
         Route::resource('category', CategoryController::class)
             ->except('show');
+        Route::resource('role', \AvoRed\Framework\User\Controllers\RoleController::class)
+            ->except('shpw');
     });

@@ -88,14 +88,14 @@ abstract class BaseTestCase extends OrchestraTestCase
             //'DataGrid' => 'AvoRed\\Framework\\DataGrid\\Facade',
             //'Image' => 'AvoRed\\Framework\\Image\\Facade',
 //            'Breadcrumb' => \AvoRed\Framework\Support\Facades\Breadcrumb::class,
-//            'Menu' => \AvoRed\Framework\Support\Facades\Menu::class,
+            'Menu' => \AvoRed\Framework\Support\Facades\Menu::class,
 //            'Module' => \AvoRed\Framework\Support\Facades\Module::class,
 //            'Permission' => \AvoRed\Framework\Support\Facades\Permission::class,
 //            'GraphQL' => \Rebing\GraphQL\Support\Facades\GraphQL::class,
             //'Payment' => 'AvoRed\\Framework\\Payment\\Facade',
             //'Permission' => 'AvoRed\\Framework\\Permission\\Facade',
             //'Shipping' => 'AvoRed\\Framework\\Shipping\\Facade',
-            //'Tabs' => 'AvoRed\\Framework\\Tabs\\Facade',
+            'Tabs' => 'AvoRed\\Framework\\Tabs\\Facade',
             //'Theme' => 'AvoRed\\Framework\\Theme\\Facade',
             //'Widget' => 'AvoRed\\Framework\\Widget\\Facade'
         ];

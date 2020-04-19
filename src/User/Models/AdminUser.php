@@ -16,7 +16,7 @@ class AdminUser extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'image_path',
+        'first_name', 'last_name', 'email', 'password', 'image_path', 'role_id', 'is_super_admin',
     ];
 
     /**
@@ -45,6 +45,24 @@ class AdminUser extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPassword($token));
+    }
+
+    /**
+     * To check if user has permission to access the given route name.
+     * @param $routeName
+     * @return bool
+     */
+    public function hasPermission($routeName)
+    {
+        if ($this->is_super_admin) {
+            return true;
+        }
+        $role = $this->role;
+        if ($role->permissions->pluck('name')->contains($routeName) == false) {
+            return false;
+        }
+
+        return true;
     }
 
 }
