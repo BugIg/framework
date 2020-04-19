@@ -27,7 +27,7 @@ class CategoryTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.category.create'))
             ->assertStatus(200)
-            ->assertSee(__('avored::catalog.category.create.title'));
+            ->assertViewIs('avored::catalog.category.create');
     }
 
     /* @runInSeparateProcess */
@@ -50,7 +50,7 @@ class CategoryTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.category.edit', $category->id))
             ->assertStatus(200)
-            ->assertSee(__('avored::catalog.category.edit.title'));
+            ->assertViewIs('avored::catalog.category.edit');
     }
 
     /* @runInSeparateProcess */
@@ -76,7 +76,7 @@ class CategoryTest extends BaseTestCase
         $this->createAdminUser()
             ->actingAs($this->user, 'admin')
             ->delete(route('admin.category.destroy', $category->id))
-            ->assertStatus(200);
+            ->assertRedirect(route('admin.category.index'));
 
         $this->assertDatabaseMissing('categories', ['id' => $category->id]);
     }

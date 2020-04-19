@@ -2,6 +2,7 @@
 namespace AvoRed\Framework\Tests;
 
 use AvoRed\Framework\User\Models\AdminUser;
+use Illuminate\Foundation\Application;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Illuminate\Support\Facades\Notification;
 use AvoRed\Framework\AvoRedProvider;
@@ -10,7 +11,7 @@ abstract class BaseTestCase extends OrchestraTestCase
 {
     /**
      * Admin User
-     * @var \AvoRed\Framework\Database\Models\AdminUser $user
+     * @var AdminUser $user
      */
     protected $user;
 
@@ -41,6 +42,7 @@ abstract class BaseTestCase extends OrchestraTestCase
 
     /**
      * Returns the array with unittest required package
+     * @param $app
      * @return array
      */
     protected function getPackageProviders($app): array
@@ -52,7 +54,7 @@ abstract class BaseTestCase extends OrchestraTestCase
 
     /**
      * Set up the environment.
-     * @param \Illuminate\Foundation\Application $app
+     * @param Application $app
      * @return void
      */
     protected function getEnvironmentSetUp($app): void
@@ -76,7 +78,7 @@ abstract class BaseTestCase extends OrchestraTestCase
 
     /**
      * Setup sqlite database for the unit test
-     * @param \Illuminate\Foundation\Application $app
+     * @param Application $app
      * @return array
      */
     protected function getPackageAliases($app): array
@@ -89,13 +91,14 @@ abstract class BaseTestCase extends OrchestraTestCase
             //'Image' => 'AvoRed\\Framework\\Image\\Facade',
 //            'Breadcrumb' => \AvoRed\Framework\Support\Facades\Breadcrumb::class,
             'Menu' => \AvoRed\Framework\Support\Facades\Menu::class,
+            'Tab' => \AvoRed\Framework\Support\Facades\Tab::class,
 //            'Module' => \AvoRed\Framework\Support\Facades\Module::class,
 //            'Permission' => \AvoRed\Framework\Support\Facades\Permission::class,
 //            'GraphQL' => \Rebing\GraphQL\Support\Facades\GraphQL::class,
             //'Payment' => 'AvoRed\\Framework\\Payment\\Facade',
             //'Permission' => 'AvoRed\\Framework\\Permission\\Facade',
             //'Shipping' => 'AvoRed\\Framework\\Shipping\\Facade',
-            'Tabs' => 'AvoRed\\Framework\\Tabs\\Facade',
+
             //'Theme' => 'AvoRed\\Framework\\Theme\\Facade',
             //'Widget' => 'AvoRed\\Framework\\Widget\\Facade'
         ];
@@ -106,7 +109,7 @@ abstract class BaseTestCase extends OrchestraTestCase
      * @param array $data
      * @return self
      */
-    protected function createAdminUser($data = []): self
+    protected function createAdminUser($data = ['is_super_admin' => 1]): self
     {
         if (null === $this->user) {
             $this->user = factory(AdminUser::class)->create($data);
