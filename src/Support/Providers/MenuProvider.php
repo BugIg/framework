@@ -90,6 +90,15 @@ class MenuProvider extends ServiceProvider
                 ->label('avored::system.admin-menus.role')
                 ->route('admin.role.index');
         });
+
+        $systemMenu->subMenu('language', function (MenuItem $menu) {
+            $menu->key('language')
+                ->type(MenuItem::ADMIN)
+                ->label('avored::system.admin-menus.language')
+                ->route('admin.language.index');
+        });
+
+
 //        $catalogMenu->subMenu('product', function (MenuItem $menu) {
 //            $menu->key('product')
 //                ->type(MenuItem::ADMIN)

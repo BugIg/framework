@@ -78,5 +78,11 @@ class TabProvider extends ServiceProvider
                 ->description('avored::user.role.permission-info')
                 ->view('avored::user.role._permissions');
         });
+        Tab::put('system.language', function (TabItem $tab) {
+            $tab->key('system.language.permission')
+                ->label('avored::system.language.basic-info')
+                ->description('avored::system.language.form-info')
+                ->view('avored::system.language._fields');
+        });
     }
 }

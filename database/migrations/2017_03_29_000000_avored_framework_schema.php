@@ -15,6 +15,14 @@ class AvoredFrameworkSchema extends Migration
     {
         $tablePrefix = config('avored.table_prefix');
 
+        Schema::create($tablePrefix . 'languages', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name')->nullable()->default(null);
+            $table->string('code')->nullable()->default(null);
+            $table->boolean('is_default')->default(false);
+            $table->timestamps();
+        });
+
         Schema::create($tablePrefix . 'roles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable()->default(null);
@@ -72,8 +80,8 @@ class AvoredFrameworkSchema extends Migration
 
         Schema::create($tablePrefix . 'categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable()->default(null);
-            $table->string('slug')->nullable()->default(null);
+            $table->json('name')->nullable()->default(null);
+            $table->json('slug')->nullable()->default(null);
             $table->string('meta_title')->nullable()->default(null);
             $table->string('meta_description')->nullable()->default(null);
             $table->timestamps();
@@ -96,5 +104,7 @@ class AvoredFrameworkSchema extends Migration
         Schema::dropIfExists($tablePrefix . 'roles');
         Schema::dropIfExists($tablePrefix . 'admin_password_resets');
         Schema::dropIfExists($tablePrefix . 'categories');
+        Schema::dropIfExists($tablePrefix . 'languages');
+
     }
 }

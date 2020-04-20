@@ -111,6 +111,41 @@ class PermissionProvider extends ServiceProvider
             }
         );
 
+        $group = PermissionFacade::add(
+            'language',
+            function (PermissionGroup $group) {
+                $group->label('avored::system.language.title');
+            }
+        );
+        $group->addPermission(
+            'admin-language-list',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.language.list')
+                    ->routes('admin.language.index');
+            }
+        );
+        $group->addPermission(
+            'admin-language-create',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.language.create')
+                    ->routes('admin.language.create,admin.language.store');
+            }
+        );
+        $group->addPermission(
+            'admin-language-update',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.language.edit')
+                    ->routes('admin.language.edit,admin.language.update');
+            }
+        );
+        $group->addPermission(
+            'admin-language-destroy',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.language.destroy')
+                    ->routes('admin.language.destroy');
+            }
+        );
+
         Blade::if(
             'hasPermission',
             function ($routeName) {

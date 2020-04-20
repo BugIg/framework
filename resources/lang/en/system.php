@@ -13,10 +13,20 @@ return [
     |
     */
 
+    'language' => [
+        'title' => 'Language',
+        'create-title' => 'Create Language',
+        'edit-title' => 'Update Language',
+        'form-info' => 'Please provide information about the language.',
+        'basic-info' => 'Basic Information',
+    ],
+
     'comms' => [
         'basic-info' => 'Basic Information',
         'id' => 'ID',
         'name' => 'Name',
+        'code' => 'Code',
+        'is_default' => 'Is Default',
         'slug' => 'Slug',
         'description' => 'Description',
         'meta-title' => 'Meta Title',
@@ -107,33 +117,7 @@ return [
             'title' => 'Admin User Edit'
         ],
     ],
-    'language' => [
-        'name' => 'Name',
-        'code' => 'Code',
-        'is_default' => 'Is Default',
-        'index' => [
-            'title' => 'Language List'
-        ],
-        'create' => [
-            'title' => 'Language Create'
-        ],
-        'edit' => [
-            'title' => 'Language Edit'
-        ],
-    ],
-    'role' => [
-        'name' => 'Name',
-        'description' => 'Description',
-        'index' => [
-            'title' => 'Role List'
-        ],
-        'create' => [
-            'title' => 'Role Create'
-        ],
-        'edit' => [
-            'title' => 'Role Edit'
-        ],
-    ],
+
 
     'currency' => [
         'name' => 'Name',
