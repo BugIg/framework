@@ -4,9 +4,11 @@
   | AvoRed Cart Products Session Identifier
   |--------------------------------------------------------------------------
  */
+$tablePrefix = 'avored_';
+
 return [
     'admin_url' => 'admin',
-    'table_prefix' => 'avored_',
+    'table_prefix' => $tablePrefix,
     'auth' => [
         'guards' => [
             'admin' => [
@@ -30,7 +32,7 @@ return [
         'passwords' => [
             'adminusers' => [
                 'provider' => 'admin-users',
-                'table' => 'admin_password_resets',
+                'table' => $tablePrefix . 'admin_password_resets',
                 'expire' => 60,
             ],
         ],

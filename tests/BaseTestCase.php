@@ -16,6 +16,11 @@ abstract class BaseTestCase extends OrchestraTestCase
     protected $user;
 
     /**
+     * @var string $tablePrefix
+     */
+    protected $tablePrefix;
+
+    /**
      * Setup Config and other data for unit test
      * @return void
      */
@@ -23,6 +28,8 @@ abstract class BaseTestCase extends OrchestraTestCase
     {
         parent::setUp();
         $this->app['config']->set('app.key', 'base64:UTyp33UhGolgzCK5CJmT+hNHcA+dJyp3+oINtX+VoPI=');
+
+        $this->tablePrefix = $this->app['config']->get('avored.table_prefix');
 
         $this->withFactories(__DIR__.('/../database/factories'));
         $this->setUpDatabase();

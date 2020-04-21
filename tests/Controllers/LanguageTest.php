@@ -9,7 +9,7 @@ use AvoRed\Framework\Database\Models\Language;
 class LanguageTest extends BaseTestCase
 {
     use RefreshDatabase;
-    
+
     /* @runInSeparateProcess */
     public function testLanguageIndexRouteTest()
     {
@@ -39,7 +39,7 @@ class LanguageTest extends BaseTestCase
             ->post(route('admin.language.store', $data))
             ->assertRedirect(route('admin.language.index'));
 
-        $this->assertDatabaseHas('languages', ['name' => 'test language name']);
+        $this->assertDatabaseHas($this->tablePrefix . 'languages', ['name' => 'test language name']);
     }
 
     /* @runInSeparateProcess */
@@ -65,19 +65,19 @@ class LanguageTest extends BaseTestCase
             ->put(route('admin.language.update', $language->id), $data)
             ->assertRedirect(route('admin.language.index'));
 
-        $this->assertDatabaseHas('languages', ['name' => 'updated language name']);
+        $this->assertDatabaseHas($this->tablePrefix . 'languages', ['name' => 'updated language name']);
     }
 
     /* @runInSeparateProcess */
     public function testLanguageDestroyRouteTest()
     {
         $language = factory(Language::class)->create();
-        
+
         $this->createAdminUser()
             ->actingAs($this->user, 'admin')
             ->delete(route('admin.language.destroy', $language->id))
             ->assertStatus(200);
 
-        $this->assertDatabaseMissing('languages', ['id' => $language->id]);
+        $this->assertDatabaseMissing($this->tablePrefix . 'languages', ['id' => $language->id]);
     }
 }

@@ -13,10 +13,10 @@
             ></span>
         </span>
         <input
-            :id="getId()"
+            :id="identifier"
             type="hidden"
             :value="checked"
-            :name="getName()"  />
+            :name="checkboxName"  />
         {{ label }}
 
     </div>
@@ -28,6 +28,7 @@
         name: 'AvoRedToggle',
         props: {
             identifier: null,
+            checkboxName: '',
             label: null,
             defaultValue: false,
             routeName: ''
@@ -42,9 +43,6 @@
         computed: {
         },
         methods: {
-            getId() {
-                return 'permission-' + this.identifier
-            },
             getName() {
                 return 'permissions['+ this.routeName +']'
             },

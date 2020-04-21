@@ -39,7 +39,7 @@ class CategoryTest extends BaseTestCase
             ->post(route('admin.category.store', $data))
             ->assertRedirect(route('admin.category.index'));
 
-        $this->assertDatabaseHas('categories', ['name' => 'test category name']);
+        $this->assertDatabaseHas($this->tablePrefix . 'categories', ['name' => 'test category name']);
     }
 
     /* @runInSeparateProcess */
@@ -65,7 +65,7 @@ class CategoryTest extends BaseTestCase
             ->put(route('admin.category.update', $category->id), $data)
             ->assertRedirect(route('admin.category.index'));
 
-        $this->assertDatabaseHas('categories', ['name' => 'updated category name']);
+        $this->assertDatabaseHas( $this->tablePrefix . 'categories', ['name' => 'updated category name']);
     }
 
     /* @runInSeparateProcess */
@@ -78,6 +78,6 @@ class CategoryTest extends BaseTestCase
             ->delete(route('admin.category.destroy', $category->id))
             ->assertRedirect(route('admin.category.index'));
 
-        $this->assertDatabaseMissing('categories', ['id' => $category->id]);
+        $this->assertDatabaseMissing($this->tablePrefix . 'categories', ['id' => $category->id]);
     }
 }

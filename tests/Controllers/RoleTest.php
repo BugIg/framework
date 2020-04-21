@@ -39,7 +39,7 @@ class RoleTest extends BaseTestCase
             ->post(route('admin.role.store', $data))
             ->assertRedirect(route('admin.role.index'));
 
-        $this->assertDatabaseHas('roles', ['name' => 'test role name']);
+        $this->assertDatabaseHas($this->tablePrefix . 'roles', ['name' => 'test role name']);
     }
 
     /* @runInSeparateProcess */
@@ -65,7 +65,7 @@ class RoleTest extends BaseTestCase
             ->put(route('admin.role.update', $role->id), $data)
             ->assertRedirect(route('admin.role.index'));
 
-        $this->assertDatabaseHas('roles', ['name' => 'updated role name']);
+        $this->assertDatabaseHas($this->tablePrefix . 'roles', ['name' => 'updated role name']);
     }
 
     /* @runInSeparateProcess */
@@ -78,6 +78,6 @@ class RoleTest extends BaseTestCase
             ->delete(route('admin.role.destroy', $role->id))
             ->assertRedirect(route('admin.role.index'));
 
-        $this->assertDatabaseMissing('roles', ['id' => $role->id]);
+        $this->assertDatabaseMissing($this->tablePrefix . 'roles', ['id' => $role->id]);
     }
 }
