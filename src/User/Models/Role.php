@@ -53,6 +53,6 @@ class Role extends BaseModel
      */
     public function permissions()
     {
-        return $this->belongsToMany(Permission::class);
+        return $this->belongsToMany(Permission::class, $this->tablePrefix . 'permission_role');
     }
 }

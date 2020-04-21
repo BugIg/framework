@@ -4,7 +4,7 @@ namespace AvoRed\Framework\Tests\Controllers;
 
 use AvoRed\Framework\Tests\BaseTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use AvoRed\Framework\Database\Models\Language;
+use AvoRed\Framework\System\Models\Language;
 
 class LanguageTest extends BaseTestCase
 {
@@ -17,7 +17,7 @@ class LanguageTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.language.index'))
             ->assertStatus(200)
-            ->assertSee(__('avored::system.language.index.title'));
+            ->assertViewIs(__('avored::system.language.index'));
     }
 
     /* @runInSeparateProcess */
@@ -27,7 +27,7 @@ class LanguageTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.language.create'))
             ->assertStatus(200)
-            ->assertSee(__('avored::system.language.create.title'));
+            ->assertViewIs(__('avored::system.language.create'));
     }
 
     /* @runInSeparateProcess */
@@ -50,7 +50,7 @@ class LanguageTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.language.edit', $language->id))
             ->assertStatus(200)
-            ->assertSee(__('avored::system.language.edit.title'));
+            ->assertViewIs(__('avored::system.language.edit'));
     }
 
     /* @runInSeparateProcess */
@@ -76,7 +76,7 @@ class LanguageTest extends BaseTestCase
         $this->createAdminUser()
             ->actingAs($this->user, 'admin')
             ->delete(route('admin.language.destroy', $language->id))
-            ->assertStatus(200);
+            ->assertRedirect(route('admin.language.index'));
 
         $this->assertDatabaseMissing($this->tablePrefix . 'languages', ['id' => $language->id]);
     }

@@ -8,11 +8,16 @@ class BaseModel extends Model
 {
     use BaseModelTrait;
 
+    /**
+     * @var string $tablePrefix
+     */
+    public $tablePrefix;
+
     public function __construct(array $attributes = [])
     {
-        $tablePrefix  = config('avored.table_prefix');
+        $this->tablePrefix  = config('avored.table_prefix');
 
-        $tableName = $tablePrefix . $this->getTable();
+        $tableName = $this->tablePrefix . $this->getTable();
         $this->table = $tableName;
         parent::__construct($attributes);
     }

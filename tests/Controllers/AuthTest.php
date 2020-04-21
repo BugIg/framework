@@ -286,17 +286,15 @@ class AuthTest extends BaseTestCase
         $password = Str::random();
 
         $this
-            ->followingRedirects()
-            ->from(route(self::ROUTE_PASSWORD_RESET, [
-                'token' => $token,
-            ]))
             ->post(route(self::ROUTE_PASSWORD_RESET_SUBMIT), [
                 'token' => $token,
                 'email' => $user->email,
                 'password' => $password,
                 'password_confirmation' => $password,
             ])
-            ->assertSuccessful();
+            ->assertRedirect(route('admin.dashboard'));
+            //->assertSuccessful()
+            ;
 
         $user->refresh();
 
