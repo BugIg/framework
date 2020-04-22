@@ -13,7 +13,7 @@
             ></span>
         </span>
         <input
-            :id="identifier"
+            :id="checkboxName"
             type="hidden"
             :value="checked"
             :name="checkboxName"  />
@@ -31,7 +31,6 @@
             checkboxName: '',
             label: null,
             defaultValue: false,
-            routeName: ''
         },
         data() {
             return {
@@ -43,9 +42,6 @@
         computed: {
         },
         methods: {
-            getName() {
-                return 'permissions['+ this.routeName +']'
-            },
             onToggleClick() {
                 if (this.checked) {
                     this.checked = 0

@@ -9,8 +9,6 @@
                 @foreach ($group->permissionList as $permission)
                     <avored-toggle
                         label="{{ $permission->label() }}"
-                        route-name="{{ $permission->routes() }}"
-                        identifier="{{ $permission->key() }}"
                         checkbox-name="permissions[{{ $permission->routes() }}]"
                         default-value="{{ (isset($role)) ? $role->hasPermission($permission->routes()) : false }}"
                     >
