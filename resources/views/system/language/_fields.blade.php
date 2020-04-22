@@ -24,7 +24,7 @@
 </x-avored-field>
 
 <avored-toggle
-    label="{{ __('system.comms.is_default') }}"
+    label="{{ __('avored::system.comms.is_default') }}"
     checkbox-name="is_default"
     default-value="{{ $language->is_default ?? false }}"
 >

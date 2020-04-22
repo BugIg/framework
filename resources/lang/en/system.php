@@ -23,6 +23,7 @@ return [
 
     'comms' => [
         'basic-info' => 'Basic Information',
+        'is_default' => 'Is Default',
         'id' => 'ID',
         'name' => 'Name',
         'code' => 'Code',

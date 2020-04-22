@@ -3,6 +3,7 @@
 namespace AvoRed\Framework\Catalog\Models;
 
 use AvoRed\Framework\Support\BaseModel;
+use AvoRed\Framework\Support\Casts\TranslatableCast;
 
 class Category extends BaseModel
 {
@@ -14,5 +15,12 @@ class Category extends BaseModel
      */
     protected $fillable = [
         'name', 'slug', 'meta_title', 'meta_description'
+    ];
+
+    protected $casts = [
+        'name' => TranslatableCast::class,
+        'slug' => TranslatableCast::class,
+        'meta_title' => TranslatableCast::class,
+        'meta_description' => TranslatableCast::class,
     ];
 }
