@@ -3,20 +3,40 @@
 namespace AvoRed\Framework\Support\Casts;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
-use Illuminate\Support\Facades\App;
 
 class TranslatableCast implements CastsAttributes
 {
+    /**
+     * @var string
+     */
+    protected $fallbackLocal;
+
+    /**
+     * @var string
+     */
+    protected $local;
+
+    public function __construct()
+    {
+        $this->local = app()->getLocale();
+        $this->fallbackLocal = config('app.fallback_locale');
+    }
 
     public function get($model, string $key, $value, array $attributes)
     {
         if ($value === null) {
             return null;
         }
-        $locale = App::getLocale();
+
         $values = json_decode($value, true);
 
-        return $values[$locale];
+        if (isset($values[$this->local])) {
+            return $values[$this->local];
+        }
+        if (isset($values[$this->fallbackLocal])) {
+            return $values[$this->fallbackLocal];
+        }
+        return null;
 
     }
 
@@ -25,7 +45,7 @@ class TranslatableCast implements CastsAttributes
         if ($value === null) {
             return null;
         }
-        $jsonValue['en'] = $value;
+        $jsonValue[$this->local] = $value;
 
         return json_encode($jsonValue);
     }
