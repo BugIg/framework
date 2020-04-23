@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use AvoRed\Framework\Database\Models\Country;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 
 class AvoredFrameworkSchema extends Migration
 {
@@ -87,6 +88,45 @@ class AvoredFrameworkSchema extends Migration
             $table->timestamps();
         });
 
+        Schema::create($tablePrefix . 'countries', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name')->nullable()->default(null);
+            $table->string('code')->nullable()->default(null);
+            $table->string('phone_code')->nullable()->default(null);
+            $table->string('currency_code')->nullable()->default(null);
+            $table->string('currency_symbol')->nullable()->default(null);
+            $table->string('lang_code')->nullable()->default(null);
+            $table->timestamps();
+        });
+
+        Schema::create($tablePrefix .'currencies', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name')->nullable()->default(null);
+            $table->string('code')->nullable()->default(null);
+            $table->string('symbol')->nullable()->default(null);
+            $table->float('conversation_rate');
+            $table->enum('status', ['ENABLED', 'DISABLED'])->nullable()->default(null);
+            $table->timestamps();
+        });
+
+
+        $path = __DIR__.'/../../assets/countries.json';
+        $json = json_decode(file_get_contents($path), true);
+        $counties = collect();
+
+        foreach ($json as $country) {
+            $counties->push([
+                'code' => strtolower(Arr::get($country, 'alpha2Code')),
+                'name' => Arr::get($country, 'name'),
+                'phone_code' => Arr::get($country, 'callingCodes.0'),
+                'currency_code' => Arr::get($country, 'currencies.0.code'),
+                'currency_symbol' => Arr::get($country, 'currencies.0.symbol'),
+                'lang_code' => Arr::get($country, 'languages.0.name'),
+            ]);
+        }
+        DB::table($tablePrefix . 'countries')
+            ->insert($counties->toArray());
+
     }
 
     /**
@@ -105,6 +145,8 @@ class AvoredFrameworkSchema extends Migration
         Schema::dropIfExists($tablePrefix . 'admin_password_resets');
         Schema::dropIfExists($tablePrefix . 'categories');
         Schema::dropIfExists($tablePrefix . 'languages');
+        Schema::dropIfExists($tablePrefix . 'countries');
+        Schema::dropIfExists($tablePrefix . 'currencies');
 
     }
 }

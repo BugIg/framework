@@ -3,6 +3,7 @@ namespace AvoRed\Framework\Support;
 
 use Illuminate\Database\Eloquent\Model;
 use AvoRed\Framework\Support\Traits\BaseModelTrait;
+use Illuminate\Support\Collection;
 
 class BaseModel extends Model
 {
@@ -20,5 +21,16 @@ class BaseModel extends Model
         $tableName = $this->tablePrefix . $this->getTable();
         $this->table = $tableName;
         parent::__construct($attributes);
+    }
+
+    /**
+     * @param string $optionValue
+     * @param $optionLabel
+     * @return Collection
+     */
+    public static function options($optionValue = 'id', string $optionLabel): Collection
+    {
+        $query = self::query();
+        return $query->pluck($optionLabel, $optionValue);
     }
 }

@@ -3,6 +3,7 @@
 use AvoRed\Framework\User\Controllers\LoginController;
 use AvoRed\Framework\System\Controllers\DashboardController;
 use AvoRed\Framework\System\Controllers\LanguageController;
+use AvoRed\Framework\System\Controllers\CurrencyController;
 use AvoRed\Framework\User\Controllers\ForgotPasswordController;
 use AvoRed\Framework\User\Controllers\ResetPasswordController;
 use AvoRed\Framework\Catalog\Controllers\CategoryController;
@@ -46,6 +47,8 @@ Route::middleware(['web', 'admin.auth', 'permission'])
             ->name('dashboard');
 
         Route::resource('category', CategoryController::class)
+            ->except('show');
+        Route::resource('currency', CurrencyController::class)
             ->except('show');
         Route::resource('role', RoleController::class)
             ->except('shpw');

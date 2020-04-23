@@ -20,10 +20,20 @@ return [
         'form-info' => 'Please provide information about the language.',
         'basic-info' => 'Basic Information',
     ],
+    'currency' => [
+        'title' => 'Currency',
+        'create-title' => 'Create Currency',
+        'edit-title' => 'Update Currency',
+        'form-info' => 'Please provide information about the currency.',
+        'basic-info' => 'Basic Information',
+    ],
 
     'comms' => [
         'basic-info' => 'Basic Information',
         'is_default' => 'Is Default',
+        'symbol' => 'Symbol',
+        'conversation_rate' => 'Conversation Rate',
+        'status' => 'Status',
         'id' => 'ID',
         'name' => 'Name',
         'code' => 'Code',
@@ -117,86 +127,6 @@ return [
         'edit' => [
             'title' => 'Admin User Edit'
         ],
-    ],
-
-
-    'currency' => [
-        'name' => 'Name',
-        'code' => 'Code',
-        'status' => 'Status',
-        'conversation_rate' => 'Conversation Rate',
-        'symbol' => 'Symbol',
-        'title' => 'Currency',
-        'index' => [
-            'title' => 'Currency List'
-        ],
-        'create' => [
-            'title' => 'Currency Create'
-        ],
-        'edit' => [
-            'title' => 'Currency Edit'
-        ],
-    ],
-
-    'state' => [
-        'name' => 'Name',
-        'code' => 'Code',
-        'country_id' => 'Country',
-        'title' => 'State',
-        'index' => [
-            'title' => 'State List'
-        ],
-        'create' => [
-            'title' => 'State Create'
-        ],
-        'edit' => [
-            'title' => 'State Edit'
-        ],
-    ],
-    'tax-group' => [
-        'name' => 'Name',
-        'description' => 'Description',
-        'title' => 'Tax Group',
-        'index' => [
-            'title' => 'Tax Group List'
-        ],
-        'create' => [
-            'title' => 'Tax Group Create'
-        ],
-        'edit' => [
-            'title' => 'Tax Group Edit'
-        ],
-    ],
-    'tax-rate' => [
-        'name' => 'Name',
-        'description' => 'Description',
-        'rate' => 'Tax Rate',
-        'country_id' => 'Country',
-        'postcode' => 'Postcode',
-        'rate_type' => 'Tax rate type',
-        'title' => 'Tax Rate',
-        'index' => [
-            'title' => 'Tax Rate List'
-        ],
-        'create' => [
-            'title' => 'Tax Rate Create'
-        ],
-        'edit' => [
-            'title' => 'Tax Rate Edit'
-        ],
-    ],
-
-    'configuration' => [
-        'title' => 'Configuration',
-        'nav' => [
-            'basic_setting' => 'Basic Settings'
-        ],
-        'basic' => [
-            'site_name' => 'Site Name'
-        ]
-    ],
-    'header' => [
-        'logout' => 'Logout'
     ],
 
     'permissions' => [

@@ -97,6 +97,12 @@ class MenuProvider extends ServiceProvider
                 ->label('avored::system.admin-menus.language')
                 ->route('admin.language.index');
         });
+        $systemMenu->subMenu('currency', function (MenuItem $menu) {
+            $menu->key('currency')
+                ->type(MenuItem::ADMIN)
+                ->label('avored::system.admin-menus.currency')
+                ->route('admin.currency.index');
+        });
 
 
 //        $catalogMenu->subMenu('product', function (MenuItem $menu) {
