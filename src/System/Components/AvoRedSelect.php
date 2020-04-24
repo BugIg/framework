@@ -23,16 +23,23 @@ class AvoRedSelect extends Component
     public $value;
 
     /**
+     * @var string $optionSlot
+     */
+    public $optionSlot;
+
+    /**
      * Create a new component instance.
      * @param $name
      * @param Collection $options
      * @param $value
+     * @param $optionSlot
      */
-    public function __construct($name, $options, $value)
+    public function __construct($name, $options, $value, $optionSlot = null)
     {
         $this->name = $name;
         $this->options = $options;
         $this->value = $value;
+        $this->optionSlot = $optionSlot;
     }
 
     /**

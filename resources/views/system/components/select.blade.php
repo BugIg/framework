@@ -6,14 +6,18 @@
                 class="flex-1 form-select block w-full rounded-r-md sm:text-sm sm:leading-5"
             {{ $attributes }}
         >
-            @foreach($options as $optionValue => $optionLabel)
-                <option
-                    {{ $optionValue === $value ? 'selected' : ''  }}
-                    value="{{ $optionValue }}"
-                >
-                    {{ $optionLabel }}
-                </option>
-            @endforeach
+            @if(!$optionSlot)
+                @foreach($options as $optionValue => $optionLabel)
+                    <option
+                        {{ $optionValue === $value ? 'selected' : ''  }}
+                        value="{{ $optionValue }}"
+                    >
+                        {{ $optionLabel }}
+                    </option>
+                @endforeach
+            @else
+                {{ $optionSlot }}
+            @endif
         </select>
 
     </div>

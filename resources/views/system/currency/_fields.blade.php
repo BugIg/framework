@@ -18,10 +18,21 @@
 >
     <x-avored-select
         name="code"
-        :options="$currencyCodeOptions"
+        :options="$options"
         :value="$currency->code ?? ''"
     >
+        <x-slot name="optionSlot">
+            @foreach($options as $option)
+                <option
+                    {{ (isset($currency) && $optionValue === $currency->code) ? 'selected' : ''  }}
+                    value="{{ $option->currency_code }}"
+                >
+                    {{ $option->name . ': ' . $option->currency_code  }}
+                </option>
+            @endforeach
+        </x-slot>
     </x-avored-select>
+
 </x-avored-field>
 
 
@@ -31,9 +42,19 @@
 >
     <x-avored-select
         name="symbol"
-        :options="$currencySymbolOptions"
+        :options="$options"
         :value="$currency->symbol ?? ''"
     >
+        <x-slot name="optionSlot">
+            @foreach($options as $option)
+                <option
+                    {{ (isset($currency) && $optionValue === $currency->symbol) ? 'selected' : ''  }}
+                    value="{{ $option->currency_symbol }}"
+                >
+                    {{ $option->name . ': ' . $option->currency_symbol  }}
+                </option>
+            @endforeach
+        </x-slot>
     </x-avored-select>
 </x-avored-field>
 

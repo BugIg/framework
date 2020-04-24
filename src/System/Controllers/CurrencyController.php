@@ -31,17 +31,13 @@ class CurrencyController extends BaseController
      */
     public function create()
     {
-        $currencyCodeOptions = Country::options('currency_code', 'currency_code')
-            ->unique();
-        $currencySymbolOptions = Country::options('currency_symbol', 'currency_symbol')
-            ->unique();
+        $options = Country::all();
 
         $tabs = Tab::get('system.currency');
 
         return view('avored::system.currency.create')
             ->with('tabs', $tabs)
-            ->with('currencyCodeOptions', $currencyCodeOptions)
-            ->with('currencySymbolOptions', $currencySymbolOptions);
+            ->with('options', $options);
     }
 
     /**
