@@ -46,6 +46,7 @@ class CurrencyTest extends BaseTestCase
     public function testCurrencyEditRouteTest()
     {
         $currency = factory(Currency::class)->create();
+
         $this->createAdminUser()
             ->actingAs($this->user, 'admin')
             ->get(route('admin.currency.edit', $currency->id))

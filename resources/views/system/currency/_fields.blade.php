@@ -24,8 +24,8 @@
         <x-slot name="optionSlot">
             @foreach($options as $option)
                 <option
-                    {{ (isset($currency) && $optionValue === $currency->code) ? 'selected' : ''  }}
-                    value="{{ $option->currency_code }}"
+                    {{ (isset($currency) && $option->id . '_' . $option->currency_code === $currency->code) ? 'selected' : ''  }}
+                    value="{{ $option->id . '_' . $option->currency_code }}"
                 >
                     {{ $option->name . ': ' . $option->currency_code  }}
                 </option>
@@ -48,8 +48,8 @@
         <x-slot name="optionSlot">
             @foreach($options as $option)
                 <option
-                    {{ (isset($currency) && $optionValue === $currency->symbol) ? 'selected' : ''  }}
-                    value="{{ $option->currency_symbol }}"
+                    {{ (isset($currency) && $option->id . '_' . $option->currency_symbol === $currency->symbol) ? 'selected' : ''  }}
+                    value="{{  $option->id . '_' . $option->currency_symbol }}"
                 >
                     {{ $option->name . ': ' . $option->currency_symbol  }}
                 </option>

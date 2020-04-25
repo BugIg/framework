@@ -111,6 +111,9 @@ abstract class BaseTestCase extends OrchestraTestCase
         ];
     }
 
+    public function getDefaultLocale() {
+        return $this->app->getLocale();
+    }
     /**
      * Get Admin User Object for unit test
      * @param array $data

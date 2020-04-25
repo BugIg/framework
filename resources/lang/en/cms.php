@@ -12,4 +12,10 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
+    'page' => [
+        'title' => 'Page',
+        'create-title' => 'Create Page',
+        'edit-title' => 'Update Page',
+        'form-info' => 'Please provide information about the page.',
+    ]
 ];

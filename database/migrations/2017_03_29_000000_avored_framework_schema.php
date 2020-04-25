@@ -88,14 +88,13 @@ class AvoredFrameworkSchema extends Migration
             $table->timestamps();
         });
 
-        Schema::create($tablePrefix . 'countries', function (Blueprint $table) {
+        Schema::create($tablePrefix . 'pages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable()->default(null);
-            $table->string('code')->nullable()->default(null);
-            $table->string('phone_code')->nullable()->default(null);
-            $table->string('currency_code')->nullable()->default(null);
-            $table->string('currency_symbol')->nullable()->default(null);
-            $table->string('lang_code')->nullable()->default(null);
+            $table->json('name')->nullable()->default(null);
+            $table->json('slug')->nullable()->default(null);
+            $table->json('content')->nullable()->default(null);
+            $table->json('meta_title')->nullable()->default(null);
+            $table->json('meta_description')->nullable()->default(null);
             $table->timestamps();
         });
 
@@ -109,23 +108,32 @@ class AvoredFrameworkSchema extends Migration
             $table->timestamps();
         });
 
+        Schema::create($tablePrefix . 'countries', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name')->nullable()->default(null);
+            $table->string('code')->nullable()->default(null);
+            $table->string('phone_code')->nullable()->default(null);
+            $table->string('currency_code')->nullable()->default(null);
+            $table->string('currency_symbol')->nullable()->default(null);
+            $table->string('lang_code')->nullable()->default(null);
+            $table->timestamps();
+        });
 
         $path = __DIR__.'/../../assets/countries.json';
         $json = json_decode(file_get_contents($path), true);
-        $counties = collect();
 
         foreach ($json as $country) {
-            $counties->push([
-                'code' => strtolower(Arr::get($country, 'alpha2Code')),
-                'name' => Arr::get($country, 'name'),
-                'phone_code' => Arr::get($country, 'callingCodes.0'),
-                'currency_code' => Arr::get($country, 'currencies.0.code'),
-                'currency_symbol' => Arr::get($country, 'currencies.0.symbol'),
-                'lang_code' => Arr::get($country, 'languages.0.name'),
-            ]);
+            DB::table($tablePrefix . 'countries')
+                ->insert([
+                    'name' => Arr::get($country, 'name'),
+                    'code' => strtolower(Arr::get($country, 'alpha2Code')),
+                    'phone_code' => Arr::get($country, 'callingCodes.0'),
+                    'currency_code' => Arr::get($country, 'currencies.0.code'),
+                    'currency_symbol' => Arr::get($country, 'currencies.0.symbol'),
+                    'lang_code' => Arr::get($country, 'languages.0.name'),
+                ]);
         }
-        DB::table($tablePrefix . 'countries')
-            ->insert($counties->toArray());
+
 
     }
 
@@ -147,6 +155,7 @@ class AvoredFrameworkSchema extends Migration
         Schema::dropIfExists($tablePrefix . 'languages');
         Schema::dropIfExists($tablePrefix . 'countries');
         Schema::dropIfExists($tablePrefix . 'currencies');
+        Schema::dropIfExists($tablePrefix . 'pages');
 
     }
 }

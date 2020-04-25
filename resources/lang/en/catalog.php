@@ -13,11 +13,10 @@ return [
     |
     */
     'category' => [
-
         'title' => 'Category',
         'create-title' => 'Create Category',
         'edit-title' => 'Update Category',
         'form-info' => 'Please provide information about the category.',
-    ]
+    ],
 ];
 

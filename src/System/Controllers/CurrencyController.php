@@ -59,17 +59,13 @@ class CurrencyController extends BaseController
      */
     public function edit(Currency $currency)
     {
-        $currencyCodeOptions = Country::options('currency_code', 'currency_code')
-            ->unique();
-        $currencySymbolOptions = Country::options('currency_symbol', 'currency_symbol')
-            ->unique();
+        $options = Country::all();
         $tabs = Tab::get('system.currency');
 
         return view('avored::system.currency.edit')
             ->with('tabs', $tabs)
             ->with('currency', $currency)
-            ->with('currencyCodeOptions', $currencyCodeOptions)
-            ->with('currencySymbolOptions', $currencySymbolOptions);
+            ->with('options', $options);
     }
 
     /**

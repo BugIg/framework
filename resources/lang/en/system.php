@@ -38,6 +38,7 @@ return [
         'name' => 'Name',
         'code' => 'Code',
         'is_default' => 'Is Default',
+        'content' => 'Content',
         'slug' => 'Slug',
         'description' => 'Description',
         'meta-title' => 'Meta Title',
