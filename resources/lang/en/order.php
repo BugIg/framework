@@ -12,21 +12,13 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
-
     'order-status' => [
-        'name' => 'Name',
-        'title' => 'Order Status',
-        'is_default' => 'Is Default',
-        'index' => [
-            'title' => 'Order Status List'
-        ],
-        'create' => [
-            'title' => 'Order Status Create'
-        ],
-        'edit' => [
-            'title' => 'Order Status Edit'
-        ],
+        'title' => 'OrderStatus',
+        'create-title' => 'Create OrderStatus',
+        'edit-title' => 'Update OrderStatus',
+        'form-info' => 'Please provide information about the order status.',
+        'permission' => 'OrderStatus Permissions'
     ],
-    
+
 
 ];

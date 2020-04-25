@@ -93,6 +93,15 @@ class TabProvider extends ServiceProvider
 
 
 
+        Tab::put('order.order-status', function (TabItem $tab) {
+            $tab->key('order.order-status.info')
+                ->label('avored::system.comms.basic-info')
+                ->description('avored::order.order-status.form-info')
+                ->view('avored::order.order-status._fields');
+        });
+
+
+
         Tab::put('user.user-group', function (TabItem $tab) {
             $tab->key('user.user-group.info')
                 ->label('avored::system.comms.basic-info')

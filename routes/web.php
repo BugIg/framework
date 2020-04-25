@@ -4,6 +4,8 @@ use AvoRed\Framework\Catalog\Controllers\AttributeController;
 use AvoRed\Framework\Catalog\Controllers\CategoryController;
 use AvoRed\Framework\Catalog\Controllers\PropertyController;
 
+use AvoRed\Framework\Order\Controllers\OrderStatusController;
+
 use AvoRed\Framework\User\Controllers\LoginController;
 use AvoRed\Framework\User\Controllers\UserGroupController;
 use AvoRed\Framework\User\Controllers\ResetPasswordController;
@@ -73,6 +75,11 @@ Route::middleware(['web', 'admin.auth', 'permission'])
 
         /******** CMS ROUTES  *********/
         Route::resource('user-group', UserGroupController::class)
+            ->except('show');
+
+
+        /******** ORDER ROUTES  *********/
+        Route::resource('order-status', OrderStatusController::class)
             ->except('show');
 
 

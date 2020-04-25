@@ -141,6 +141,13 @@ class AvoredFrameworkSchema extends Migration
             $table->timestamps();
         });
 
+        Schema::create($tablePrefix . 'order_statuses', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->boolean('is_default')->default(0);
+            $table->timestamps();
+        });
+
 
         Schema::create($tablePrefix . 'countries', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -196,6 +203,7 @@ class AvoredFrameworkSchema extends Migration
         Schema::dropIfExists($tablePrefix . 'attributes');
 
         Schema::dropIfExists($tablePrefix . 'user_groups');
+        Schema::dropIfExists($tablePrefix . 'order_statuses');
 
     }
 }

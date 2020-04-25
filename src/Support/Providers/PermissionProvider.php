@@ -331,6 +331,51 @@ class PermissionProvider extends ServiceProvider
             }
         );
 
+
+
+
+
+        $group = PermissionFacade::add(
+            'order-status',
+            function (PermissionGroup $group) {
+                $group->label('avored::order.order-status.title');
+            }
+        );
+
+
+        $group->addPermission(
+            'admin-order-status-list',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.order-status.list')
+                    ->routes('admin.order-status.index');
+            }
+        );
+        $group->addPermission(
+            'admin-order-status-create',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.order-status.create')
+                    ->routes('admin.order-status.create,admin.order-status.store');
+            }
+        );
+        $group->addPermission(
+            'admin-order-status-update',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.order-status.edit')
+                    ->routes('admin.order-status.edit,admin.order-status.update');
+            }
+        );
+        $group->addPermission(
+            'admin-page-destroy',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.page.destroy')
+                    ->routes('admin.page.destroy');
+            }
+        );
+
+
+
+
+
         Blade::if(
             'hasPermission',
             function ($routeName) {

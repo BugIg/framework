@@ -105,19 +105,36 @@ class MenuProvider extends ServiceProvider
                 ->route('admin.page.index');
         });
 
-        $catalogMenu = Menu::make('user', function (MenuItem $menu) {
+        $userMenu = Menu::make('user', function (MenuItem $menu) {
             $menu->label('avored::system.admin-menus.user')
                 ->type(MenuItem::ADMIN)
                 ->icon('/vendor/avored/images/icons/shopping-cart.svg')
                 ->route('#');
         })->get('user');
 
-        $catalogMenu->subMenu('user-group', function (MenuItem $menu) {
+        $userMenu->subMenu('user-group', function (MenuItem $menu) {
             $menu->key('user-group')
                 ->type(MenuItem::ADMIN)
                 ->label('avored::system.admin-menus.user-group')
                 ->route('admin.user-group.index');
         });
+
+
+        $orderMenu = Menu::make('order', function (MenuItem $menu) {
+            $menu->label('avored::system.admin-menus.order')
+                ->type(MenuItem::ADMIN)
+                ->icon('/vendor/avored/images/icons/shopping-cart.svg')
+                ->route('#');
+        })->get('order');
+
+        $orderMenu->subMenu('order-status', function (MenuItem $menu) {
+            $menu->key('order-status')
+                ->type(MenuItem::ADMIN)
+                ->label('avored::system.admin-menus.order-status')
+                ->route('admin.order-status.index');
+        });
+
+
 
         $systemMenu = Menu::make('system', function (MenuItem $menu) {
             $menu->label('avored::system.admin-menus.system')
