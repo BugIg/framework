@@ -24,5 +24,11 @@ return [
         'edit-title' => 'Update Property',
         'form-info' => 'Please provide information about the property.',
     ],
+    'attribute' => [
+        'title' => 'Attribute',
+        'create-title' => 'Create Attribute',
+        'edit-title' => 'Update Attribute',
+        'form-info' => 'Please provide information about the attribute.',
+    ],
 ];
 

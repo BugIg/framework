@@ -31,6 +31,7 @@ return [
     'comms' => [
         'basic-info' => 'Basic Information',
         'is_default' => 'Is Default',
+        'display_as' => 'Display as',
         'data_type' => 'Data Type',
         'field_type' => 'Field Type',
         'use_for_all_products' => 'Use for all products',

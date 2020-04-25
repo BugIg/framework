@@ -126,6 +126,14 @@ class AvoredFrameworkSchema extends Migration
             $table->timestamps();
         });
 
+        Schema::create($tablePrefix . 'attributes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->json('name');
+            $table->json('slug');
+            $table->enum('display_as', ['IMAGE', 'TEXT'])->default('TEXT');
+            $table->timestamps();
+        });
+
         Schema::create($tablePrefix . 'countries', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable()->default(null);
@@ -177,6 +185,7 @@ class AvoredFrameworkSchema extends Migration
 
 
         Schema::dropIfExists($tablePrefix . 'properties');
+        Schema::dropIfExists($tablePrefix . 'attributes');
 
     }
 }
