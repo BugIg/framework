@@ -275,7 +275,7 @@ return [
             'sent_invoice_by_mail' => 'Order Sent Invoice By Email',
             'status_change' => 'Change Order Status'
         ],
-        'order_status' => [
+        'order-status' => [
             'title' => 'Order Status Permissions',
             'list' => 'Order Status List',
             'create' => 'Create/Store Order Status',
