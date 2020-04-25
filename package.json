@@ -10,14 +10,14 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^18.0.0",
+        "@ckeditor/ckeditor5-vue": "^1.0.1",
         "cross-env": "^7.0.2",
         "laravel-mix": "^5.0.4",
         "lodash": "^4.17.15",
         "tailwind-forms": "^1.0.6",
         "tailwindcss": "^1.2.0",
-        "vue": "^2.6.11"
-    },
-    "devDependencies": {
+        "vue": "^2.6.11",
         "@tailwindcss/custom-forms": "^0.2.1",
         "browser-sync": "^2.26.7",
         "browser-sync-webpack-plugin": "^2.0.1",

@@ -7,6 +7,7 @@ use AvoRed\Framework\System\Components\AvoRedField;
 use AvoRed\Framework\System\Components\AvoRedSelect;
 use AvoRed\Framework\System\Components\AvoRedTab;
 use AvoRed\Framework\System\Components\AvoRedTable;
+use AvoRed\Framework\System\Components\AvoRedEditor;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 
@@ -17,6 +18,7 @@ class ComponentProvider extends ServiceProvider
         'avored-input' => AvoRedInput::class,
         'avored-table' => AvoRedTable::class,
         'avored-select' => AvoRedSelect::class,
+        'avored-editor' => AvoRedEditor::class,
         'avored-tab' => AvoRedTab::class,
     ];
 

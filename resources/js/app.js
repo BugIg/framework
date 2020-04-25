@@ -12,10 +12,13 @@
 
 window.Vue = require('vue');
 
+import CKEditor from '@ckeditor/ckeditor5-vue'
+Vue.use(CKEditor)
+
 Vue.component('a-layout', require('../components/core/layout/AvoRedLayout').default)
 
 Vue.component('avored-toggle', require('../components/core/form/AvoRedToggle').default)
-
+Vue.component('avored-editor', require('../components/core/form/AvoRedEditor').default)
 
 Vue.component('a-input', require('../components/core/form/AvoRedInput').default)
 Vue.component('login-fields', require('../components/user/auth/LoginFields.vue').default)

@@ -39,7 +39,7 @@
                                     :required="true"
                                     :errors="{{ $errors }}"
                                     class="placeholder-gray-500"
-                                    type="email"
+                                    typ e="email"
                                     placeholder="{{ __('avored::user.auth.login.email') }}"
                                 ></a-input>
                             </div>

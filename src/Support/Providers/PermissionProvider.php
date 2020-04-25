@@ -181,6 +181,41 @@ class PermissionProvider extends ServiceProvider
             }
         );
 
+        $group = PermissionFacade::add(
+            'currency',
+            function (PermissionGroup $group) {
+                $group->label('avored::system.currency.title');
+            }
+        );
+        $group->addPermission(
+            'admin-page-list',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.page.list')
+                    ->routes('admin.page.index');
+            }
+        );
+        $group->addPermission(
+            'admin-page-create',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.page.create')
+                    ->routes('admin.page.create,admin.page.store');
+            }
+        );
+        $group->addPermission(
+            'admin-page-update',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.page.edit')
+                    ->routes('admin.page.edit,admin.page.update');
+            }
+        );
+        $group->addPermission(
+            'admin-page-destroy',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.page.destroy')
+                    ->routes('admin.page.destroy');
+            }
+        );
+
         Blade::if(
             'hasPermission',
             function ($routeName) {

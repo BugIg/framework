@@ -28,11 +28,11 @@
     label="avored::system.comms.content"
     for="content"
 >
-    <x-avored-input
+    <x-avored-editor
         name="content"
         :value="$page->content ?? ''"
     >
-    </x-avored-input>
+    </x-avored-editor>
 </x-avored-field>
 
 
