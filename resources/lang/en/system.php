@@ -31,6 +31,12 @@ return [
     'comms' => [
         'basic-info' => 'Basic Information',
         'is_default' => 'Is Default',
+        'data_type' => 'Data Type',
+        'field_type' => 'Field Type',
+        'use_for_all_products' => 'Use for all products',
+        'use_for_category_filter' => 'Use for category filter',
+        'is_visible_frontend' => 'Is Visible Frontend',
+        'sort_order' => 'Sort Order',
         'symbol' => 'Symbol',
         'conversation_rate' => 'Conversation Rate',
         'status' => 'Status',

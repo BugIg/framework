@@ -1,13 +1,17 @@
 <?php
 
+use AvoRed\Framework\Catalog\Controllers\CategoryController;
+use AvoRed\Framework\Catalog\Controllers\PropertyController;
+
 use AvoRed\Framework\User\Controllers\LoginController;
+use AvoRed\Framework\User\Controllers\ResetPasswordController;
+use AvoRed\Framework\User\Controllers\RoleController;
+use AvoRed\Framework\User\Controllers\ForgotPasswordController;
+
 use AvoRed\Framework\System\Controllers\DashboardController;
 use AvoRed\Framework\System\Controllers\LanguageController;
 use AvoRed\Framework\System\Controllers\CurrencyController;
-use AvoRed\Framework\User\Controllers\ForgotPasswordController;
-use AvoRed\Framework\User\Controllers\ResetPasswordController;
-use AvoRed\Framework\Catalog\Controllers\CategoryController;
-use AvoRed\Framework\User\Controllers\RoleController;
+
 use AvoRed\Framework\Cms\Controllers\PageController;
 
 $baseAdminUrl = config('avored.admin_url');
@@ -52,6 +56,8 @@ Route::middleware(['web', 'admin.auth', 'permission'])
 
         /******** CATALOG ROUTES  *********/
         Route::resource('category', CategoryController::class)
+            ->except('show');
+        Route::resource('property', PropertyController::class)
             ->except('show');
 
 

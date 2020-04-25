@@ -18,5 +18,11 @@ return [
         'edit-title' => 'Update Category',
         'form-info' => 'Please provide information about the category.',
     ],
+    'property' => [
+        'title' => 'Property',
+        'create-title' => 'Create Property',
+        'edit-title' => 'Update Property',
+        'form-info' => 'Please provide information about the property.',
+    ],
 ];
 

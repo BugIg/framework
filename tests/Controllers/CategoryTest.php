@@ -66,9 +66,9 @@ class CategoryTest extends BaseTestCase
             ->put(route('admin.category.update', $category->id), $data)
             ->assertRedirect(route('admin.category.index'));
 
-        $this->assertDatabaseHas( $this->tablePrefix . 'categories',
-            ['name' => json_encode([$this->getDefaultLocale() => 'updated category name'])]
-        );
+        $this->assertDatabaseHas( $this->tablePrefix . 'categories', [
+            'name' => json_encode([$this->getDefaultLocale() => 'updated category name'])
+        ]);
     }
 
     /* @runInSeparateProcess */

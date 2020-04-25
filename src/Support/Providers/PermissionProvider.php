@@ -182,11 +182,13 @@ class PermissionProvider extends ServiceProvider
         );
 
         $group = PermissionFacade::add(
-            'currency',
+            'page',
             function (PermissionGroup $group) {
-                $group->label('avored::system.currency.title');
+                $group->label('avored::system.page.title');
             }
         );
+
+
         $group->addPermission(
             'admin-page-list',
             function (Permission $permission) {
@@ -213,6 +215,44 @@ class PermissionProvider extends ServiceProvider
             function (Permission $permission) {
                 $permission->label('avored::system.permissions.page.destroy')
                     ->routes('admin.page.destroy');
+            }
+        );
+
+
+        $group = PermissionFacade::add(
+            'property',
+            function (PermissionGroup $group) {
+                $group->label('avored::system.property.title');
+            }
+        );
+
+
+        $group->addPermission(
+            'admin-property-list',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.property.list')
+                    ->routes('admin.property.index');
+            }
+        );
+        $group->addPermission(
+            'admin-property-create',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.property.create')
+                    ->routes('admin.property.create,admin.property.store');
+            }
+        );
+        $group->addPermission(
+            'admin-property-update',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.property.edit')
+                    ->routes('admin.property.edit,admin.property.update');
+            }
+        );
+        $group->addPermission(
+            'admin-property-destroy',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.property.destroy')
+                    ->routes('admin.property.destroy');
             }
         );
 

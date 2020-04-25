@@ -66,6 +66,17 @@ class TabProvider extends ServiceProvider
                 ->view('avored::catalog.category._fields');
         });
 
+
+        Tab::put('catalog.property', function (TabItem $tab) {
+            $tab->key('catalog.property.info')
+                ->label('avored::system.comms.basic-info')
+                ->description('avored::catalog.property.form-info')
+                ->view('avored::catalog.property._fields');
+        });
+
+
+
+
         Tab::put('cms.page', function (TabItem $tab) {
             $tab->key('cms.page.info')
                 ->label('avored::system.comms.basic-info')
