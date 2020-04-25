@@ -203,7 +203,7 @@ return [
             'destroy' => 'Destroy User',
             'show' => 'Show User'
         ],
-        'user_group' => [
+        'user-group' => [
             'title' => 'User Group Permissions',
             'list' => 'User Group List',
             'create' => 'Create/Store User Group',

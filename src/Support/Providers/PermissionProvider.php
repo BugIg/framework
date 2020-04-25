@@ -184,7 +184,7 @@ class PermissionProvider extends ServiceProvider
         $group = PermissionFacade::add(
             'page',
             function (PermissionGroup $group) {
-                $group->label('avored::system.page.title');
+                $group->label('avored::cms.page.title');
             }
         );
 
@@ -222,7 +222,7 @@ class PermissionProvider extends ServiceProvider
         $group = PermissionFacade::add(
             'property',
             function (PermissionGroup $group) {
-                $group->label('avored::system.property.title');
+                $group->label('avored::catalog.property.title');
             }
         );
 
@@ -255,8 +255,6 @@ class PermissionProvider extends ServiceProvider
                     ->routes('admin.property.destroy');
             }
         );
-
-
 
         $group = PermissionFacade::add(
             'attribute',
@@ -292,6 +290,44 @@ class PermissionProvider extends ServiceProvider
             function (Permission $permission) {
                 $permission->label('avored::system.permissions.attribute.destroy')
                     ->routes('admin.attribute.destroy');
+            }
+        );
+
+
+        $group = PermissionFacade::add(
+            'attribute',
+            function (PermissionGroup $group) {
+                $group->label('avored::catalog.attribute.title');
+            }
+        );
+
+
+        $group->addPermission(
+            'admin-user-group-list',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.user-group.list')
+                    ->routes('admin.user-group.index');
+            }
+        );
+        $group->addPermission(
+            'admin-user-group-create',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.user-group.create')
+                    ->routes('admin.user-group.create,admin.user-group.store');
+            }
+        );
+        $group->addPermission(
+            'admin-user-group-update',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.user-group.edit')
+                    ->routes('admin.user-group.edit,admin.user-group.update');
+            }
+        );
+        $group->addPermission(
+            'admin-user-group-destroy',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.user-group.destroy')
+                    ->routes('admin.user-group.destroy');
             }
         );
 

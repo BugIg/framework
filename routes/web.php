@@ -5,6 +5,7 @@ use AvoRed\Framework\Catalog\Controllers\CategoryController;
 use AvoRed\Framework\Catalog\Controllers\PropertyController;
 
 use AvoRed\Framework\User\Controllers\LoginController;
+use AvoRed\Framework\User\Controllers\UserGroupController;
 use AvoRed\Framework\User\Controllers\ResetPasswordController;
 use AvoRed\Framework\User\Controllers\RoleController;
 use AvoRed\Framework\User\Controllers\ForgotPasswordController;
@@ -67,6 +68,11 @@ Route::middleware(['web', 'admin.auth', 'permission'])
 
         /******** CMS ROUTES  *********/
         Route::resource('page', PageController::class)
+            ->except('show');
+
+
+        /******** CMS ROUTES  *********/
+        Route::resource('user-group', UserGroupController::class)
             ->except('show');
 
 

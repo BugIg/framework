@@ -20,6 +20,13 @@ return [
         'permission-info' => 'Please select all the permissions attached with this role.',
         'permission' => 'User Permissions'
     ],
+    'user-group' => [
+        'title' => 'UserGroup',
+        'create-title' => 'Create UserGroup',
+        'edit-title' => 'Update UserGroup',
+        'form-info' => 'Please provide information about the user group.',
+        'permission' => 'UserGroup Permissions'
+    ],
 
     'auth' => [
         'login' => [

@@ -93,6 +93,12 @@ class TabProvider extends ServiceProvider
 
 
 
+        Tab::put('user.user-group', function (TabItem $tab) {
+            $tab->key('user.user-group.info')
+                ->label('avored::system.comms.basic-info')
+                ->description('avored::user.user-group.form-info')
+                ->view('avored::user.user-group._fields');
+        });
 
         Tab::put('user.role', function (TabItem $tab) {
             $tab->key('user.role.info')
