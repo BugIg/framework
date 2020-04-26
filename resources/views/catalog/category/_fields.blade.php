@@ -5,7 +5,7 @@
 >
     <x-avored-input
         name="name"
-        autofocus="autofocus"
+        :autofocus="true"
         :value="$category->name ?? ''"
     >
     </x-avored-input>

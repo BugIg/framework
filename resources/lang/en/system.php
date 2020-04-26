@@ -30,6 +30,7 @@ return [
 
     'comms' => [
         'basic-info' => 'Basic Information',
+        'identifier' => 'Identifier',
         'is_default' => 'Is Default',
         'display_as' => 'Display as',
         'data_type' => 'Data Type',
@@ -58,9 +59,16 @@ return [
         'previous' => 'Previous',
         'next' => 'Next',
         'cancel' => 'Cancel',
-        'paginator-info' => 'Showing <span class="font-medium">1</span> to<span class="font-medium"> :perPage</span> of<span class="font-medium"> :total</span> results'
+        'paginator-info' => 'Showing <span class="font-medium">1</span> to<span class="font-medium"> :perPage</span> of<span class="font-medium"> :total</span> results',
+        'create-title' => 'Create :attribute',
+        'edit-title' => 'Edit :attribute',
+        'title' => ':attribute',
+
     ],
 
+    'terms' => [
+        'menu' => 'Menu'
+    ],
     'dashboard' => [
         'title' => 'Dashboard'
     ],

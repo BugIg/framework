@@ -1,7 +1,7 @@
 @extends('avored::layouts.admin')
 
-@section('menuTitle')
-    {{ __('avored::cms.menu.title') }}
+@section('pageTitle')
+    {{ __('avored::system.comms.title', ['attribute' => __('avored::system.terms.menu')]) }}
 @endsection
 
 

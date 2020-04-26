@@ -1,8 +1,10 @@
 <?php
 namespace AvoRed\Framework\Cms\Controllers;
 
+use AvoRed\Framework\Catalog\Models\Category;
 use AvoRed\Framework\Cms\DataTable\MenuTable;
 use AvoRed\Framework\Cms\Models\Menu;
+use AvoRed\Framework\Cms\Requests\MenuRequest;
 use AvoRed\Framework\Support\Facades\Tab;
 use AvoRed\Framework\System\Controllers\BaseController;
 
@@ -26,52 +28,56 @@ class MenuController extends BaseController
      */
     public function create()
     {
+        $categories = Category::all();
         $tabs = Tab::get('cms.menu');
 
         return view('avored::cms.menu.create')
-            ->with('tabs', $tabs);
+            ->with('tabs', $tabs)
+            ->with('categories', $categories);
     }
-//
-//    /**
-//     * Store a newly created resource in storage.
-//     * @param MenuRequest $request
-//     * @return RedirectResponse
-//     */
-//    public function store(MenuRequest $request)
-//    {
-//        $menu = Menu::create($request->all());
-//
-//        return redirect()->route('admin.menu.index')
-//            ->with('successNotification', __('avored::system.notification.store', ['attribute' => 'Menu']));
-//    }
-//
-//    /**
-//     * Show the form for editing the specified resource.
-//     * @param Menu $menu
-//     * @return View
-//     */
-//    public function edit(Menu $menu)
-//    {
-//        $tabs = Tab::get('cms.menu');
-//
-//        return view('avored::cms.menu.edit')
-//            ->with('userGroup', $menu)
-//            ->with('tabs', $tabs);
-//    }
-//
-//    /**
-//     * Update the specified resource in storage.
-//     * @param MenuRequest $request
-//     * @param Menu $menu
-//     * @return RedirectResponse
-//     */
-//    public function update(MenuRequest $request, Menu $menu)
-//    {
-//        $menu->update($request->all());
-//
-//        return redirect()->route('admin.menu.index')
-//            ->with('successNotification', __('avored::system.notification.updated', ['attribute' => 'Menu']));
-//    }
+
+   /**
+    * Store a newly created resource in storage.
+    * @param MenuRequest $request
+    * @return RedirectResponse
+    */
+   public function store(MenuRequest $request)
+   {
+       Menu::create($request->all());
+
+       return redirect()->route('admin.menu.index')
+           ->with('successNotification', __('avored::system.notification.store', ['attribute' => 'Menu']));
+   }
+
+   /**
+    * Show the form for editing the specified resource.
+    * @param Menu $menu
+    * @return View
+    */
+   public function edit(Menu $menu)
+   {
+       $tabs = Tab::get('cms.menu');
+       $categories = Category::all();
+
+       return view('avored::cms.menu.edit')
+           ->with('menu', $menu)
+           ->with('tabs', $tabs)
+           ->with('categories', $categories);
+   }
+
+   /**
+    * Update the specified resource in storage.
+    * @param MenuRequest $request
+    * @param Menu $menu
+    * @return RedirectResponse
+    */
+   public function update(MenuRequest $request, Menu $menu)
+   {
+       $menu->update($request->all());
+
+       return redirect()->route('admin.menu.index')
+           ->with('successNotification', __('avored::system.notification.updated', ['attribute' => 'Menu']));
+   }
 //
     /**
      * Remove the specified resource from storage.

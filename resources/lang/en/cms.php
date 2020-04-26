@@ -23,5 +23,9 @@ return [
         'create-title' => 'Create Menu',
         'edit-title' => 'Update Menu',
         'form-info' => 'Please provide information about the menu.',
+        'builder-title' => 'Menu Builder',
+        'builder-description' => 'Please click on an right arrow to move across your categories and pages into a menu builder.
+
+                                Then Drag over the menu to arrange in an order you like.',
     ]
 ];

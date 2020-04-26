@@ -4,7 +4,7 @@
             {{ $tab->label() }}
         </h3>
         <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
-            {{ $tab->description() }}
+            {!! $tab->description() !!}
         </p>
     </div>
     <div class="mt-6 sm:mt-5 border-t border-gray-200 pt-5">

@@ -15,8 +15,14 @@ class AvoRedTable extends Component
     protected $request;
 
     /**
+     * @var int $perPage
+     */
+    public $perPage = 10;
+
+    /**
      * Create a new component instance.
-     * @param $table
+     * @param CoreTable $table
+     * @param Request $request
      */
     public function __construct(CoreTable $table, Request $request)
     {
@@ -56,7 +62,7 @@ class AvoRedTable extends Component
            }
         }
 
-        return $query->paginate(10);
+        return $query->paginate($this->perPage);
     }
 
     public function value($row, $column)

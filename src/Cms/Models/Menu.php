@@ -14,7 +14,8 @@ class Menu extends BaseModel
     protected $fillable = [
         'name',
         'identifier',
-        'is_default'
+        'is_default',
+        'menu_tree'
     ];
 
     /**

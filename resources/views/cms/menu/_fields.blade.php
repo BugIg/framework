@@ -13,12 +13,12 @@
 
 
 <x-avored-field
-    label="avored::system.comms.slug"
-    for="slug"
+    label="avored::system.comms.identifier"
+    for="identifier"
 >
     <x-avored-input
-        name="slug"
-        :value="$menu->slug ?? ''"
+        name="identifier"
+        :value="$menu->identifier ?? ''"
     >
     </x-avored-input>
 </x-avored-field>

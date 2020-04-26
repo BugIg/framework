@@ -152,6 +152,7 @@ class AvoredFrameworkSchema extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable()->default(null);
             $table->string('identifier')->nullable()->default(null);
+            $table->json('menu_tree')->nullable()->default(null);
             $table->tinyInteger('is_default')->nullable()->default(0);
             $table->timestamps();
         });
