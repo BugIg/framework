@@ -15,6 +15,20 @@
     background-position: 0px 12px;
 }
 
+.he-tree--hidden{
+display: none;
+}
+   
+.he-tree .tree-placeholder{
+}
+.he-tree .tree-placeholder-node{
+    @apply h-8 border border-gray-600;
+}
+.he-tree .dragging .tree-node-back:hover{
+    @apply bg-white;
+}
+  
+
 svg {
     fill: currentColor !important;
 }
