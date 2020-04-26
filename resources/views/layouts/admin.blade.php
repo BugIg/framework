@@ -24,7 +24,11 @@
                     @include('avored::partials.header')
                     <main class="flex-1 relative z-0 overflow-y-auto pt-2 pb-6 focus:outline-none md:py-6" tabindex="0">
                         @yield('content')
+
+
+                        @include('avored::partials.footer')
                     </main>
+                    
                 </div>
             </div>
         </a-layout>

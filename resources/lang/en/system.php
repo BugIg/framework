@@ -32,6 +32,7 @@ return [
         'basic-info' => 'Basic Information',
         'identifier' => 'Identifier',
         'is_default' => 'Is Default',
+        'options' => 'Options',
         'display_as' => 'Display as',
         'data_type' => 'Data Type',
         'field_type' => 'Field Type',

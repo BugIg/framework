@@ -1,4 +1,4 @@
-<div class="bg-gray-200 flex w-full pl-1 h-16 shadow-sm">
+<div class="bg-gray-200 flex w-full pl-1 h-16 shadow-md">
     <button @click="sidebarClick"
             class="md:hidden -ml-0.5 -mt-0.5 h-16 w-12
                 inline-flex items-center justify-center rounded-md text-gray-500

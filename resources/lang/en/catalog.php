@@ -23,6 +23,8 @@ return [
         'create-title' => 'Create Property',
         'edit-title' => 'Update Property',
         'form-info' => 'Please provide information about the property.',
+        'options-label' => 'Please add the optionsfor the given property.',
+        'options-desc' => 'These options is used as a select option in backend and frontend',
     ],
     'attribute' => [
         'title' => 'Attribute',
