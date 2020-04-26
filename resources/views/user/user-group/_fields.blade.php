@@ -10,9 +10,13 @@
     </x-avored-input>
 </x-avored-field>
 
-<avored-toggle
-    label="{{ __('avored::system.comms.is_default') }}"
-    checkbox-name="is_default"
-    default-value="{{ $userGroup->is_default ?? false }}"
+
+<x-avored-field
+    label="avored::system.comms.is_default"
 >
-</avored-toggle>
+    <avored-toggle
+        checkbox-name="is_default"
+        default-value="{{ $userGroup->is_default ?? false }}"
+    >
+    </avored-toggle>
+</x-avored-field>

@@ -7,12 +7,15 @@
                     {{ $group->label() }}
                 </h3>
                 @foreach ($group->permissionList as $permission)
-                    <avored-toggle
-                        label="{{ $permission->label() }}"
-                        checkbox-name="permissions[{{ $permission->routes() }}]"
-                        default-value="{{ (isset($role)) ? $role->hasPermission($permission->routes()) : false }}"
+                    <x-avored-field
+                        :label="$permission->label()"
                     >
-                    </avored-toggle>
+                        <avored-toggle
+                            checkbox-name="permissions[{{ $permission->routes() }}]"
+                            default-value="{{ (isset($role)) ? $role->hasPermission($permission->routes()) : false }}"
+                        >
+                        </avored-toggle>
+                    </x-avored-field>
                 @endforeach
             </div>
         </div>

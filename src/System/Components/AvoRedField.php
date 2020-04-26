@@ -21,10 +21,10 @@ class AvoRedField extends Component
 
     /**
      * Create a new component instance.
-     * @param $for
      * @param $label
+     * @param $for
      */
-    public function __construct($for, $label)
+    public function __construct($label, $for = '')
     {
         $this->for = $for;
         $this->label = $label;

@@ -47,29 +47,38 @@
     </x-avored-select>
 </x-avored-field>
 
-
-<avored-toggle
-    label="{{ __('avored::system.comms.use_for_all_products') }}"
-    checkbox-name="use_for_all_products"
-    default-value="{{ $property->use_for_all_products ?? false }}"
+<x-avored-field
+    :label="__('avored::system.comms.use_for_all_products')"
+    for="is_default"
 >
-</avored-toggle>
+    <avored-toggle
+        checkbox-name="use_for_all_products"
+        default-value="{{ $property->use_for_all_products ?? false }}"
+    >
+    </avored-toggle>
+</x-avored-field>
 
 
-<avored-toggle
-    label="{{ __('avored::system.comms.use_for_category_filter') }}"
-    checkbox-name="use_for_category_filter"
-    default-value="{{ $property->use_for_category_filter ?? false }}"
+<x-avored-field
+    :label="__('avored::system.comms.use_for_all_products')"
 >
-</avored-toggle>
+    <avored-toggle
+        checkbox-name="use_for_category_filter"
+        default-value="{{ $property->use_for_category_filter ?? false }}"
+    >
+    </avored-toggle>
 
-<avored-toggle
-    label="{{ __('avored::system.comms.is_visible_frontend') }}"
-    checkbox-name="is_visible_frontend"
-    default-value="{{ $property->is_visible_frontend ?? false }}"
+</x-avored-field>
+
+<x-avored-field
+    label="avored::system.comms.is_visible_frontend"
 >
-</avored-toggle>
-
+    <avored-toggle
+        checkbox-name="is_visible_frontend"
+        default-value="{{ $property->is_visible_frontend ?? false }}"
+    >
+    </avored-toggle>
+</x-avored-field>
 
 <x-avored-field
     label="avored::system.comms.sort_order"

@@ -16,18 +16,16 @@
 }
 
 .he-tree--hidden{
-display: none;
-}
-   
-.he-tree .tree-placeholder{
+    display: none;
 }
 .he-tree .tree-placeholder-node{
-    @apply h-8 border border-gray-600;
+    @apply h-8;
+    @apply border;
+    @apply border-gray-600;
 }
 .he-tree .dragging .tree-node-back:hover{
     @apply bg-white;
-}
-  
+} 
 
 svg {
     fill: currentColor !important;

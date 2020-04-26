@@ -70,9 +70,13 @@
     </x-avored-input>
 </x-avored-field>
 
-<avored-toggle
-    label="{{ __('avored::system.comms.status') }}"
-    checkbox-name="status"
-    default-value="{{ isset($currency->status) ? $currency->status : '' }}"
+<x-avored-field
+    label="avored::system.comms.status"
+    for="conversation_rate"
 >
-</avored-toggle>
+    <avored-toggle
+        checkbox-name="status"
+        default-value="{{ isset($currency->status) ? $currency->status : '' }}"
+    >
+    </avored-toggle>
+</x-avored-field>
