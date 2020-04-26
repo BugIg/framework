@@ -4,6 +4,9 @@ use AvoRed\Framework\Catalog\Controllers\AttributeController;
 use AvoRed\Framework\Catalog\Controllers\CategoryController;
 use AvoRed\Framework\Catalog\Controllers\PropertyController;
 
+use AvoRed\Framework\Cms\Controllers\PageController;
+use AvoRed\Framework\Cms\Controllers\MenuController;
+
 use AvoRed\Framework\Order\Controllers\OrderStatusController;
 
 use AvoRed\Framework\User\Controllers\LoginController;
@@ -15,8 +18,6 @@ use AvoRed\Framework\User\Controllers\ForgotPasswordController;
 use AvoRed\Framework\System\Controllers\DashboardController;
 use AvoRed\Framework\System\Controllers\LanguageController;
 use AvoRed\Framework\System\Controllers\CurrencyController;
-
-use AvoRed\Framework\Cms\Controllers\PageController;
 
 $baseAdminUrl = config('avored.admin_url');
 
@@ -75,6 +76,8 @@ Route::middleware(['web', 'admin.auth', 'permission'])
 
         /******** CMS ROUTES  *********/
         Route::resource('user-group', UserGroupController::class)
+            ->except('show');
+        Route::resource('menu', MenuController::class)
             ->except('show');
 
 

@@ -17,5 +17,11 @@ return [
         'create-title' => 'Create Page',
         'edit-title' => 'Update Page',
         'form-info' => 'Please provide information about the page.',
+    ],
+    'menu' => [
+        'title' => 'Menu',
+        'create-title' => 'Create Menu',
+        'edit-title' => 'Update Menu',
+        'form-info' => 'Please provide information about the menu.',
     ]
 ];

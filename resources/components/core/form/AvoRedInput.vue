@@ -12,6 +12,7 @@
     </div>
 </template>
 
+
 <script>
     import isNil from 'lodash/isNil'
     import get from 'lodash/get'

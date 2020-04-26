@@ -63,6 +63,8 @@ class MenuProvider extends ServiceProvider
      */
     public function registerAdminMenu()
     {
+
+        /****** CATALOG MENU *******/
         $catalogMenu = Menu::make('catalog', function (MenuItem $menu) {
             $menu->label('avored::system.admin-menus.catalog')
                 ->type(MenuItem::ADMIN)
@@ -91,24 +93,36 @@ class MenuProvider extends ServiceProvider
                 ->route('admin.attribute.index');
         });
 
-        $catalogMenu = Menu::make('cms', function (MenuItem $menu) {
+
+
+        /****** CMS MENU *******/
+        $cmsMenu = Menu::make('cms', function (MenuItem $menu) {
             $menu->label('avored::system.admin-menus.cms')
                 ->type(MenuItem::ADMIN)
-                ->icon('/vendor/avored/images/icons/shopping-cart.svg')
+                ->icon('/vendor/avored/images/icons/icon-browser.svg')
                 ->route('#');
         })->get('cms');
 
-        $catalogMenu->subMenu('page', function (MenuItem $menu) {
+        $cmsMenu->subMenu('page', function (MenuItem $menu) {
             $menu->key('page')
                 ->type(MenuItem::ADMIN)
                 ->label('avored::system.admin-menus.page')
                 ->route('admin.page.index');
         });
+        $cmsMenu->subMenu('menu', function (MenuItem $menu) {
+            $menu->key('menu')
+                ->type(MenuItem::ADMIN)
+                ->label('avored::system.admin-menus.menu')
+                ->route('admin.menu.index');
+        });
 
+
+
+        /****** USERS MENU *******/
         $userMenu = Menu::make('user', function (MenuItem $menu) {
             $menu->label('avored::system.admin-menus.user')
                 ->type(MenuItem::ADMIN)
-                ->icon('/vendor/avored/images/icons/shopping-cart.svg')
+                ->icon('/vendor/avored/images/icons/icon-users.svg')
                 ->route('#');
         })->get('user');
 
@@ -120,10 +134,12 @@ class MenuProvider extends ServiceProvider
         });
 
 
+
+        /****** ORDER MENUS *******/
         $orderMenu = Menu::make('order', function (MenuItem $menu) {
             $menu->label('avored::system.admin-menus.order')
                 ->type(MenuItem::ADMIN)
-                ->icon('/vendor/avored/images/icons/shopping-cart.svg')
+                ->icon('/vendor/avored/images/icons/icon-currency-dollar.svg')
                 ->route('#');
         })->get('order');
 
@@ -136,10 +152,11 @@ class MenuProvider extends ServiceProvider
 
 
 
+        /****** SYSTEM MENUs *******/
         $systemMenu = Menu::make('system', function (MenuItem $menu) {
             $menu->label('avored::system.admin-menus.system')
                 ->type(MenuItem::ADMIN)
-                ->icon('/vendor/avored/images/icons/shopping-cart.svg')
+                ->icon('/vendor/avored/images/icons/icon-cog.svg')
                 ->route('#');
         })->get('system');
 

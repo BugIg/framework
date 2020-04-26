@@ -4,7 +4,7 @@
         <div class="absolute inset-0 bg-gray-600 opacity-75"></div>
     </div>
     <div class="fixed inset-0 flex z-40">
-        <div  v-if="sidebar" class="flex-1 flex flex-col max-w-xs w-full bg-white transform ease-in-out duration-300 ">
+        <div  v-if="sidebar" class="flex-1 flex flex-col max-w-xs w-full bg-white">
             <div class="absolute top-0 right-0 -mr-12 p-1">
                 <button @click="sidebarClick" class="flex items-center justify-center h-12 w-12 rounded-full focus:outline-none focus:bg-gray-600" aria-label="Close sidebar">
                     <svg class="h-6 w-6 text-white" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -78,7 +78,7 @@
             <nav class="mt-5 flex-1 px-2 bg-white">
                 @foreach($menus as $menu)
                     @if($menu->hasSubMenu())
-                        <h3 class="flex items-center px-2 py-2 text-center leading-6 font-medium text-gray-500 rounded-md focus:outline-none focus:bg-gray-200">
+                        <h3 class="flex items-center px-2 py-2 text-center leading-6 font-medium text-gray-900 rounded-md focus:outline-none focus:bg-gray-200">
                             <img
                                 class="mr-4 h-6 w-6 text-gray-100"
                                 src="{{ $menu->icon() }}"
@@ -86,12 +86,9 @@
 
                             {{ $menu->label() }}
                         </h3>
-
-                        <?php
-                        //dd($menu);
-                        ?>
                         @foreach($menu->subMenu($menu->key()) as $subMenu)
-                            <a href="{{ route($subMenu->route(), $subMenu->params()) }}" class="mt-3 group flex items-center px-12 py-2 text-sm text-base leading-6 font-light text-gray-900 rounded-md bg-gray-100 focus:outline-none focus:bg-gray-200">
+                            <a href="{{ route($subMenu->route(), $subMenu->params()) }}"
+                               class="mt-3 group flex items-center px-12 py-2 text-sm text-base leading-6 font-light text-gray-900 rounded-md focus:outline-none focus:bg-gray-200">
                                 {{ $subMenu->label() }}
                             </a>
                         @endforeach

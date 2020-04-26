@@ -91,6 +91,13 @@ class TabProvider extends ServiceProvider
                 ->view('avored::cms.page._fields');
         });
 
+        Tab::put('cms.menu', function (TabItem $tab) {
+            $tab->key('cms.menu.info')
+                ->label('avored::system.comms.basic-info')
+                ->description('avored::cms.menu.form-info')
+                ->view('avored::cms.menu._fields');
+        });
+
 
 
         Tab::put('order.order-status', function (TabItem $tab) {
