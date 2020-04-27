@@ -16,7 +16,6 @@ file and assets(JS/CSS and Images).
 
     php artisan vendor:publish --provider=AvoRed\Framework\AvoRedServiceProvider
 
-
 Once the all the file is publish then we run below command to install the required database tables.
 
     php artisan avored:install
