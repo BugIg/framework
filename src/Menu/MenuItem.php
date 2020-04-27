@@ -2,7 +2,9 @@
 
 namespace AvoRed\Framework\Menu;
 
+use AvoRed\Framework\AdminMenu\AdminMenu;
 use AvoRed\Framework\Support\Contracts\MenuInterface;
+use Illuminate\Support\Collection;
 
 class MenuItem implements MenuInterface
 {
@@ -54,7 +56,17 @@ class MenuItem implements MenuInterface
     public $routeName;
 
     /**
+     * @var callable $callable
+     */
+    protected $callback;
+    /**
+     * @var Collection $subMenu
+     */
+    public $subMenu;
+
+    /**
      *  AvoRed Front Menu Construct method.
+     * @param $callable
      */
     public function __construct($callable)
     {
@@ -64,7 +76,8 @@ class MenuItem implements MenuInterface
 
     /**
      * Get/Set Admin Menu Label.
-     * @return \AvoRed\Framework\Menu\Menu|string
+     * @param null $label
+     * @return Menu|string
      */
     public function label($label = null)
     {
@@ -79,6 +92,7 @@ class MenuItem implements MenuInterface
 
     /**
      * Get/Set Admin Menu Type.
+     * @param null $type
      * @return mixed
      */
     public function type($type = null)
@@ -94,7 +108,8 @@ class MenuItem implements MenuInterface
 
     /**
      * Get/Set Admin Menu Identifier.
-     * @return \AvoRed\Framework\Menu\Menu|string
+     * @param null $key
+     * @return Menu|string
      */
     public function key($key = null)
     {
@@ -109,7 +124,8 @@ class MenuItem implements MenuInterface
 
     /**
      * Get/Set Admin Menu Route Name.
-     * @return \AvoRed\Framework\Menu\Menu|string
+     * @param null $routeName
+     * @return Menu|string
      */
     public function route($routeName = null)
     {
@@ -124,7 +140,8 @@ class MenuItem implements MenuInterface
 
     /**
      * Get/Set Admin Menu Route Params Name.
-     * @return \AvoRed\Framework\Menu\Menu|string
+     * @param null $params
+     * @return Menu|string
      */
     public function params($params = null)
     {
@@ -139,7 +156,8 @@ class MenuItem implements MenuInterface
 
     /**
      * Get/Set Admin Menu Icon.
-     * @return \AvoRed\Framework\Menu\Menu|string
+     * @param null $icon
+     * @return Menu|string
      */
     public function icon($icon = null)
     {
@@ -154,7 +172,8 @@ class MenuItem implements MenuInterface
 
     /**
      * Get/Set Admin Menu Icon.
-     * @return \AvoRed\Framework\Menu\Menu|string
+     * @param null $attributes
+     * @return Menu|string
      */
     public function attributes($attributes = null)
     {
@@ -171,7 +190,7 @@ class MenuItem implements MenuInterface
      * Get/Set Admin Menu Sub Menu.
      * @param null|string $key
      * @param mixed $menuItem
-     * @return \AvoRed\Framework\AdminMenu\AdminMenu
+     * @return AdminMenu
      */
     public function subMenu($key = null, $menuItem = null)
     {
@@ -179,7 +198,10 @@ class MenuItem implements MenuInterface
             return $this->subMenu;
         }
         $menu = new self($menuItem);
-        $this->subMenu[$key] = $menu;
+        if (!$this->hasSubMenu()) {
+            $this->subMenu = collect();
+        }
+        $this->subMenu->put($key, $menu);
 
         return $this;
     }

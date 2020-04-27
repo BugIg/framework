@@ -64,6 +64,10 @@ class MenuBuilder
         }
     }
 
+    /**
+     * @param $name
+     * @return array
+     */
     public function getMenuItemFromRouteName($name)
     {
         $currentOpenKey = '';
