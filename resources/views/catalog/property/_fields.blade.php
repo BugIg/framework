@@ -30,7 +30,7 @@
     <x-avored-select
         name="data_type"
         :options="$dataTypeOptions"
-        :value="$currency->data_type ?? ''"
+        :value="$property->data_type ?? ''"
     >
     </x-avored-select>
 </x-avored-field>
@@ -42,7 +42,7 @@
     <x-avored-select
         name="field_type"
         :options="$fieldTypeOptions"
-        :value="$currency->field_type ?? ''"
+        :value="$property->field_type ?? ''"
     >
     </x-avored-select>
 </x-avored-field>
@@ -60,7 +60,7 @@
 
 
 <x-avored-field
-    :label="__('avored::system.comms.use_for_all_products')"
+    :label="__('avored::system.comms.use_for_category_filter')"
 >
     <avored-toggle
         checkbox-name="use_for_category_filter"

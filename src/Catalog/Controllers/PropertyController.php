@@ -50,7 +50,8 @@ class PropertyController extends BaseController
      */
     public function store(PropertyRequest $request)
     {
-        Property::create($request->all());
+        $property = Property::create($request->all());
+        $this->savePropertyDropdownOptions($property, $request);
 
         return redirect()->route('admin.property.index');
     }
@@ -59,7 +60,7 @@ class PropertyController extends BaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Property $property
      * @return Response
      */
     public function edit(Property $property)
@@ -78,13 +79,14 @@ class PropertyController extends BaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param PropertyRequest $request
      * @param Property $property
      * @return Response
      */
-    public function update(Request $request, Property $property)
+    public function update(PropertyRequest $request, Property $property)
     {
         $property->update($request->all());
+        $this->savePropertyDropdownOptions($property, $request);
 
         return redirect()->route('admin.property.index');
     }
@@ -101,6 +103,36 @@ class PropertyController extends BaseController
         $property->delete();
 
         return redirect()->route('admin.property.index');
+    }
 
+
+    /**
+     * Save Property Dropdown options.
+     * @param Property $property
+     * @param PropertyRequest $request
+     * @return void
+     */
+    private function savePropertyDropdownOptions(Property $property, PropertyRequest $request)
+    {
+        if (! ($request->get('field_type') === 'RADIO' || $request->get('field_type') === 'SELECT')) {
+            $property->dropdownOptions()->delete();
+        }
+        if (($request->get('field_type') === 'RADIO' ||
+                $request->get('field_type') === 'SELECT') &&
+            count($request->get('dropdown_option', [])) > 0
+        ) {
+            foreach ($request->get('dropdown_option', []) as $key => $option) {
+                if (empty($option)) {
+                    continue;
+                }
+
+                if (is_string($key)) {
+                    $property->dropdownOptions()->create(['display_text' => $option]);
+                } else {
+                    $optionModel = $property->dropdownOptions()->find($key);
+                    $optionModel->update(['display_text' => $option]);
+                }
+            }
+        }
     }
 }

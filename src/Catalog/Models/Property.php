@@ -4,6 +4,7 @@ namespace AvoRed\Framework\Catalog\Models;
 
 use AvoRed\Framework\Support\BaseModel;
 use AvoRed\Framework\Support\Casts\TranslatableCast;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Property extends BaseModel
 {
@@ -55,4 +56,13 @@ class Property extends BaseModel
         'slug' => TranslatableCast::class,
         'use_for_all_products' => 'bool'
     ];
+
+    /**
+     * Property has many dropdown options.
+     * @return HasMany
+     */
+    public function dropdownOptions()
+    {
+        return $this->hasMany(PropertyDropdownOption::class);
+    }
 }

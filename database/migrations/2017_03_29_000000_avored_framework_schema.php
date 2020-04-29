@@ -126,6 +126,15 @@ class AvoredFrameworkSchema extends Migration
             $table->timestamps();
         });
 
+        Schema::create($tablePrefix . 'property_dropdown_options', function (Blueprint $table) use ($tablePrefix) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('property_id');
+            $table->json('display_text')->nullable();
+            $table->timestamps();
+            $table->foreign('property_id')
+                ->references('id')->on($tablePrefix . 'properties')->onDelete('cascade');
+        });
+
         Schema::create($tablePrefix . 'attributes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->json('name');
@@ -208,6 +217,7 @@ class AvoredFrameworkSchema extends Migration
         Schema::dropIfExists($tablePrefix . 'pages');
 
 
+        Schema::dropIfExists($tablePrefix . 'property_dropdown_options');
         Schema::dropIfExists($tablePrefix . 'properties');
         Schema::dropIfExists($tablePrefix . 'attributes');
 
