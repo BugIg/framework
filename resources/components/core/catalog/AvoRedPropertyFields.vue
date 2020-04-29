@@ -43,14 +43,18 @@ export default {
         }
     },
     mounted() {
-        this.fieldType = this.propProperty.field_type ?? ''
-        if(isNil(this.propProperty) && this.propProperty.dropdown_options.length <= 0) {
+        if (!isNil(this.propProperty)) {
+            this.fieldType = this.propProperty.field_type
+        }
+        
+        if(isNil(this.propProperty) || this.propProperty.dropdown_options.length <= 0) {
             let optionKey = this.randomString()
             this.options.push({
                 key : optionKey,
                 value: ''
             })
         } else {
+            console.log(this.propProperty, 'here')
             this.propProperty.dropdown_options.forEach((ele) => {
                 this.options.push({
                     key: ele.id,

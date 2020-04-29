@@ -31,7 +31,7 @@
             <form id="property-save" method="post" action="{{ route('admin.property.store') }}">
                 @csrf
 
-                <avored-property-fields prop-property="" inline-template>
+                <avored-property-fields inline-template>
                     <div>
                         @foreach ($tabs as $tab)
                             @if ($tab->key() === 'catalog.property.options')
