@@ -32,18 +32,29 @@
                 @csrf
                 @method('put')
 
-                @foreach ($tabs as $tab)
-                    <x-avored-tab
-                        :tab="$tab"
-                    >
-                        @php
-                            $path = $tab->view();
-                        @endphp
-                        @include($path)
+                <avored-property-fields :prop-property="{{ $property }}" inline-template>
+                    <div>
+                        @foreach ($tabs as $tab)
+                            @if ($tab->key() === 'catalog.property.options')
+                                <div v-if="fieldType === 'SELECT' || fieldType === 'RADIO'">
+                            @endif
+                            <x-avored-tab
+                                :tab="$tab"
+                            >
+                                
+                                    @php
+                                        $path = $tab->view();
+                                    @endphp
+                                    @include($path)
+                            
 
-                    </x-avored-tab>
-                @endforeach
-
+                            </x-avored-tab>
+                            @if ($tab->key() === 'catalog.property.options')
+                                </div v-if="fieldType === 'SELECT' || fieldType === 'RADIO'">
+                            @endif
+                        @endforeach
+                    </div>
+                </avored-property-fields>
 
                 <div class="pt-5">
                     <div class="flex justify-start">

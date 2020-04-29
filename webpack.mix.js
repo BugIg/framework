@@ -4,10 +4,20 @@ const tailwindcss = require('tailwindcss')
 
 const publicPath = '../../public/vendor/avored'
 
-// mix.browserSync('avored.test');
+mix
+.babelConfig({
+    plugins: ['@babel/plugin-syntax-dynamic-import'],
+})
+.webpackConfig({
+    output: {
+        filename: '[name].js',
+        chunkFilename: 'js/[name].app.js',
+        publicPath: '/vendor/avored/'
+    }
+})
+
 
 mix.copy('resources/images', publicPath + '/images');
-
 
 mix.setPublicPath(publicPath)
     .js('resources/js/app.js', 'js/app.js')

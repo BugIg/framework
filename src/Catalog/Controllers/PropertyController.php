@@ -65,6 +65,7 @@ class PropertyController extends BaseController
      */
     public function edit(Property $property)
     {
+        $property->load('dropdownOptions');
         $tabs = Tab::get('catalog.property');
         $dataTypeOptions = Property::PROPERTY_DATATYPES;
         $fieldTypeOptions = Property::PROPERTY_FIELDTYPES;

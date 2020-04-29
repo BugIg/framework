@@ -17,10 +17,10 @@ Vue.use(CKEditor)
 
 Vue.component('a-layout', require('../components/core/layout/AvoRedLayout').default)
 
-Vue.component('avored-toggle', require('../components/core/form/AvoRedToggle').default)
-Vue.component('avored-editor', require('../components/core/form/AvoRedEditor').default)
-Vue.component('avored-menu-builder', require('../components/core/cms/AvoRedMenuBuilder').default)
-Vue.component('avored-property-options', require('../components/core/catalog/AvoRedPropertyOption').default)
+Vue.component('avored-toggle', () => import('../components/core/form/AvoRedToggle'))
+Vue.component('avored-editor', () => import('../components/core/form/AvoRedEditor'))
+Vue.component('avored-menu-builder', () => import('../components/core/cms/AvoRedMenuBuilder'))
+Vue.component('avored-property-fields', () => import('../components/core/catalog/AvoRedPropertyFields'))
 
 Vue.component('a-input', require('../components/core/form/AvoRedInput').default)
 Vue.component('login-fields', require('../components/user/auth/LoginFields.vue').default)

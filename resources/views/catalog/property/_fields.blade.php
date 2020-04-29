@@ -40,6 +40,7 @@
     for="field_type"
 >
     <x-avored-select
+        v-model="fieldType"
         name="field_type"
         :options="$fieldTypeOptions"
         :value="$property->field_type ?? ''"
@@ -90,4 +91,3 @@
     >
     </x-avored-input>
 </x-avored-field>
-
