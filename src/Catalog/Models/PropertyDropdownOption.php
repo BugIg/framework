@@ -15,4 +15,8 @@ class PropertyDropdownOption extends BaseModel
     protected $casts = [
         'display_text' => TranslatableCast::class,
     ];
+
+    public function property() {
+        return $this->belongsTo(Property::class);
+    }
 }
