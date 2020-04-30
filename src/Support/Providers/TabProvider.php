@@ -88,6 +88,12 @@ class TabProvider extends ServiceProvider
                 ->view('avored::catalog.attribute._fields');
         });
 
+        Tab::put('catalog.attribute', function (TabItem $tab) {
+            $tab->key('catalog.attribute.options')
+                ->label('avored::catalog.attribute.options-label')
+                ->description('avored::catalog.attribute.options-desc')
+                ->view('avored::catalog.attribute._options');
+        });
 
 
 

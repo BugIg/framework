@@ -4,6 +4,7 @@ namespace AvoRed\Framework\Catalog\Models;
 
 use AvoRed\Framework\Support\BaseModel;
 use AvoRed\Framework\Support\Casts\TranslatableCast;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Attribute extends BaseModel
 {
@@ -30,5 +31,15 @@ class Attribute extends BaseModel
         'name' => TranslatableCast::class,
         'slug' => TranslatableCast::class
     ];
+
+
+    /**
+     * Property has many dropdown options.
+     * @return HasMany
+     */
+    public function dropdownOptions()
+    {
+        return $this->hasMany(AttributeDropdownOption::class);
+    }
 
 }

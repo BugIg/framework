@@ -31,17 +31,21 @@
             <form id="attribute-save" method="post" action="{{ route('admin.attribute.store') }}">
                 @csrf
 
-                @foreach ($tabs as $tab)
-                    <x-avored-tab
-                        :tab="$tab"
-                    >
-                        @php
-                            $path = $tab->view();
-                        @endphp
-                        @include($path)
+                <avored-attribute-fields inline-template>
+                    <div>
+                        @foreach ($tabs as $tab)
+                            <x-avored-tab
+                                :tab="$tab"
+                            >
+                                @php
+                                    $path = $tab->view();
+                                @endphp
+                                @include($path)
 
-                    </x-avored-tab>
-                @endforeach
+                            </x-avored-tab>
+                        @endforeach
+                    </div>
+                </avored-attribute-fields>
 
                 <div class="pt-5">
                     <div class="flex justify-start">

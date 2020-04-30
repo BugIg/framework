@@ -21,6 +21,7 @@ Vue.component('avored-toggle', () => import('../components/core/form/AvoRedToggl
 Vue.component('avored-editor', () => import('../components/core/form/AvoRedEditor'))
 Vue.component('avored-menu-builder', () => import('../components/core/cms/AvoRedMenuBuilder'))
 Vue.component('avored-property-fields', () => import('../components/core/catalog/AvoRedPropertyFields'))
+Vue.component('avored-attribute-fields', () => import('../components/core/catalog/AvoRedAttributeFields'))
 
 Vue.component('a-input', require('../components/core/form/AvoRedInput').default)
 Vue.component('login-fields', require('../components/user/auth/LoginFields.vue').default)

@@ -126,13 +126,7 @@ class PropertyController extends BaseController
                 if (empty($option)) {
                     continue;
                 }
-
-                if (is_string($key)) {
-                    $property->dropdownOptions()->create(['display_text' => $option]);
-                } else {
-                    $optionModel = $property->dropdownOptions()->find($key);
-                    $optionModel->update(['display_text' => $option]);
-                }
+                $property->dropdownOptions()->create(['display_text' => $option]);
             }
         }
     }

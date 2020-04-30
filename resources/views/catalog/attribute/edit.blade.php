@@ -32,17 +32,22 @@
                 @csrf
                 @method('put')
 
-                @foreach ($tabs as $tab)
-                    <x-avored-tab
-                        :tab="$tab"
-                    >
-                        @php
-                            $path = $tab->view();
-                        @endphp
-                        @include($path)
+                <avored-attribute-fields :prop-attribute="{{ $attribute }}" inline-template>
+                    <div>
+                        @foreach ($tabs as $tab)
+                            <x-avored-tab
+                                :tab="$tab"
+                            >
+                                @php
+                                    $path = $tab->view();
+                                @endphp
+                                @include($path)
 
-                    </x-avored-tab>
-                @endforeach
+                            </x-avored-tab>
+                        @endforeach
+                    </div>
+                </avored-attribute-fields>
+
 
 
                 <div class="pt-5">
