@@ -141,6 +141,12 @@ class TabProvider extends ServiceProvider
                 ->description('avored::user.role.form-info')
                 ->view('avored::user.role._fields');
         });
+        Tab::put('user.admin-user', function (TabItem $tab) {
+            $tab->key('user.admin-user.info')
+                ->label('avored::system.comms.basic-info')
+                ->description('avored::user.admin-user.form-info')
+                ->view('avored::user.admin-user._fields');
+        });
         Tab::put('user.role', function (TabItem $tab) {
             $tab->key('user.role.permission')
                 ->label('avored::user.role.permission')

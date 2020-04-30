@@ -17,14 +17,21 @@ class AvoRedInput extends Component
     public $type;
 
     /**
+     * @var string $class
+     */
+    public $class;
+
+    /**
      * Create a new component instance.
      * @param $name
      * @param string $type
+     * @param string $class
      */
-    public function __construct($name, $type = 'text')
+    public function __construct($name, $type = 'text', $class = '')
     {
         $this->name = $name;
         $this->type = $type;
+        $this->class = $class;
     }
 
     /**

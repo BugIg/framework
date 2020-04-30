@@ -13,6 +13,7 @@ use AvoRed\Framework\User\Controllers\LoginController;
 use AvoRed\Framework\User\Controllers\UserGroupController;
 use AvoRed\Framework\User\Controllers\ResetPasswordController;
 use AvoRed\Framework\User\Controllers\RoleController;
+use AvoRed\Framework\User\Controllers\AdminUserController;
 use AvoRed\Framework\User\Controllers\ForgotPasswordController;
 
 use AvoRed\Framework\System\Controllers\DashboardController;
@@ -85,14 +86,19 @@ Route::middleware(['web', 'admin.auth', 'permission'])
         Route::resource('order-status', OrderStatusController::class)
             ->except('show');
 
+        /******** USERS ROUTES  *********/
+        Route::resource('role', RoleController::class)
+            ->except('show');
+        Route::resource('admin-user', AdminUserController::class)
+            ->except('show');
+
 
 
 
         /******** SYSTEM ROUTES  *********/
         Route::resource('currency', CurrencyController::class)
             ->except('show');
-        Route::resource('role', RoleController::class)
-            ->except('shpw');
+
         Route::resource('language', LanguageController::class)
             ->except('show');
     });

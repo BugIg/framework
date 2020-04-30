@@ -126,6 +126,13 @@ class MenuProvider extends ServiceProvider
                 ->route('#');
         })->get('user');
 
+        $userMenu->subMenu('admin-user', function (MenuItem $menu) {
+            $menu->key('admin-user')
+                ->type(MenuItem::ADMIN)
+                ->label('avored::system.admin-menus.admin-user')
+                ->route('admin.admin-user.index');
+        });
+
         $userMenu->subMenu('user-group', function (MenuItem $menu) {
             $menu->key('user-group')
                 ->type(MenuItem::ADMIN)

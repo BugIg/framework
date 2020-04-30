@@ -331,10 +331,6 @@ class PermissionProvider extends ServiceProvider
             }
         );
 
-
-
-
-
         $group = PermissionFacade::add(
             'order-status',
             function (PermissionGroup $group) {
@@ -365,16 +361,53 @@ class PermissionProvider extends ServiceProvider
             }
         );
         $group->addPermission(
-            'admin-page-destroy',
+            'admin-order-status-destroy',
             function (Permission $permission) {
-                $permission->label('avored::system.permissions.page.destroy')
-                    ->routes('admin.page.destroy');
+                $permission->label('avored::system.permissions.order-status.destroy')
+                    ->routes('admin.order-status.destroy');
             }
         );
 
 
 
 
+
+        $group = PermissionFacade::add(
+            'order-status',
+            function (PermissionGroup $group) {
+                $group->label('avored::order.order-status.title');
+            }
+        );
+
+
+        $group->addPermission(
+            'admin-admin-user-list',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.admin-user.list')
+                    ->routes('admin.admin-user.index');
+            }
+        );
+        $group->addPermission(
+            'admin-admin-user-create',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.admin-user.create')
+                    ->routes('admin.admin-user.create,admin.admin-user.store');
+            }
+        );
+        $group->addPermission(
+            'admin-admin-user-update',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.admin-user.edit')
+                    ->routes('admin.admin-user.edit,admin.admin-user.update');
+            }
+        );
+        $group->addPermission(
+            'admin-admin-user-destroy',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.admin-user.destroy')
+                    ->routes('admin.admin-user.destroy');
+            }
+        );
 
         Blade::if(
             'hasPermission',

@@ -4,7 +4,7 @@
         <input  id="{{ $name }}"
                 type="{{ $type }}"
                 name="{{ $name }}"
-                class="flex-1 form-input block w-full rounded-r-md sm:text-sm sm:leading-5"
+                class="flex-1 form-input block w-full rounded-r-md sm:text-sm sm:leading-5 {{ $class }}"
                 {{ $attributes }}
         />
 
