@@ -1,6 +1,7 @@
 <?php
 namespace AvoRed\Framework\Tests\Controllers;
 
+use AvoRed\Framework\Catalog\Models\AttributeDropdownOption;
 use AvoRed\Framework\Tests\BaseTestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use AvoRed\Framework\Catalog\Models\Attribute;
@@ -36,10 +37,10 @@ class AttributeTest extends BaseTestCase
         $data = [
             'name' => 'test attribute name',
             'slug' => 'test-attribute-name',
-//            'dropdown_option' => [
-//                'abc' => ['display_text' => 'option 1'],
-//                'xyz' => ['display_text' => 'option 2']
-//            ]
+            'dropdown_option' => [
+                'abc' => 'option 1',
+                'xyz' => 'option 2'
+            ]
         ];
         $this->createAdminUser()
             ->actingAs($this->user, 'admin')
@@ -48,6 +49,9 @@ class AttributeTest extends BaseTestCase
 
         $this->assertDatabaseHas($this->tablePrefix . 'attributes', [
             'name' => json_encode([$this->getDefaultLocale() => 'test attribute name'])
+        ]);
+        $this->assertDatabaseHas($this->tablePrefix . 'attribute_dropdown_options', [
+            'display_text' => json_encode([$this->getDefaultLocale() => 'option 1'])
         ]);
     }
 
@@ -66,8 +70,16 @@ class AttributeTest extends BaseTestCase
     public function testAttributeUpdateRouteTest()
     {
         $attribute = factory(Attribute::class)->create();
+        $attributeDropdownOption = factory(AttributeDropdownOption::class)
+            ->create(['attribute_id' => $attribute->id]);
+
+
         $attribute->name = "updated attribute name";
+        $attributeDropdownOption->display_text = 'updated option 1';
+
         $data = $attribute->toArray();
+        $data['dropdown_option'][$attributeDropdownOption->id] = $attributeDropdownOption->display_text;
+
 
         $this->createAdminUser()
             ->actingAs($this->user, 'admin')
@@ -77,6 +89,9 @@ class AttributeTest extends BaseTestCase
         $this->assertDatabaseHas( $this->tablePrefix . 'attributes',
             ['name' => json_encode([$this->getDefaultLocale() => 'updated attribute name'])]
         );
+        $this->assertDatabaseHas($this->tablePrefix . 'attribute_dropdown_options', [
+            'display_text' => json_encode([$this->getDefaultLocale() => 'updated option 1'])
+        ]);
     }
 
     /* @runInSeparateProcess */
