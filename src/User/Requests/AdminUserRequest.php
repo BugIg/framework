@@ -2,6 +2,7 @@
 
 namespace AvoRed\Framework\User\Requests;
 
+use AvoRed\Framework\Catalog\Models\Property;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AdminUserRequest extends FormRequest
@@ -26,7 +27,10 @@ class AdminUserRequest extends FormRequest
         $rules['first_name'] = 'required';
         $rules['last_name'] = 'required';
         $rules['role_id'] = 'required';
-        $rules['password'] = ['required', 'string', 'min:8', 'confirmed'];
+        if (strtoupper($this->method()) === 'POST') {
+            $rules['password'] = ['required', 'string', 'min:8', 'confirmed'];
+        }
+
 
         return $rules;
     }
