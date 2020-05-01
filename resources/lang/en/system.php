@@ -113,7 +113,7 @@ return [
     'sent' => 'We have e-mailed your password reset link!',
     'token' => 'This password reset token is invalid.',
     'user' => "We can't find a user with that e-mail address.",
-
+    'empty_table' => 'Sorry there is no data to display. Please Click create to add more',
 
     'password' => 'Password',
     'email' => 'Email Address',

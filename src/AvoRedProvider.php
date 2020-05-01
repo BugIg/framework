@@ -22,8 +22,11 @@ class AvoRedProvider extends ServiceProvider
     protected $providers = [
         \AvoRed\Framework\Support\Providers\ComponentProvider::class,
         \AvoRed\Framework\Support\Providers\MenuProvider::class,
+        \AvoRed\Framework\Support\Providers\PaymentProvider::class,
         \AvoRed\Framework\Support\Providers\PermissionProvider::class,
+        \AvoRed\Framework\Support\Providers\ShippingProvider::class,
         \AvoRed\Framework\Support\Providers\TabProvider::class,
+        \AvoRed\Framework\Support\Providers\WidgetProvider::class,
     ];
 
     /**

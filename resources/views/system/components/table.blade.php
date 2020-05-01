@@ -34,19 +34,32 @@
                 </thead>
 
                 <tbody>
-                    @foreach($items as $key => $row)
-                        <tr class="{{ ($loop->index % 2) ? 'bg-gray-100' : 'bg-white' }}">
-                            @foreach($columns as $colId => $col)
-                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
-                                    @if($col['key'] === 'action')
-                                        {!! $action($row, $col) !!}
-                                    @else
-                                        {{ $value($row, $col) }}
-                                    @endif
-                                </td>
-                            @endforeach
+                    @if ($items->count() <= 0)
+                        <tr class="bg-white">
+                            <td colspan="{{ count($columns) }}"
+                                class="py-24  text-center"
+                            >
+                                <svg class="h-6 w-6 text-gray-600 inline-block" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
+                                </svg>
+                                {{ __('avored::system.empty_table')}}
+                            </td>
                         </tr>
-                    @endforeach
+                    @else
+                        @foreach($items as $key => $row)
+                            <tr class="{{ ($loop->index % 2) ? 'bg-gray-100' : 'bg-white' }}">
+                                @foreach($columns as $colId => $col)
+                                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+                                        @if($col['key'] === 'action')
+                                            {!! $action($row, $col) !!}
+                                        @else
+                                            {{ $value($row, $col) }}
+                                        @endif
+                                    </td>
+                                @endforeach
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>
