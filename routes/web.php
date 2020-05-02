@@ -19,6 +19,7 @@ use AvoRed\Framework\User\Controllers\ForgotPasswordController;
 use AvoRed\Framework\System\Controllers\DashboardController;
 use AvoRed\Framework\System\Controllers\LanguageController;
 use AvoRed\Framework\System\Controllers\CurrencyController;
+use AvoRed\Framework\System\Controllers\ConfigurationController;
 
 $baseAdminUrl = config('avored.admin_url');
 
@@ -101,4 +102,8 @@ Route::middleware(['web', 'admin.auth', 'permission'])
 
         Route::resource('language', LanguageController::class)
             ->except('show');
+        Route::get('configuration', [ConfigurationController::class, 'index'])
+        ->name('configuration.index');
+        Route::post('configuration', [ConfigurationController::class, 'store'])
+        ->name('configuration.store');
     });

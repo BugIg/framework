@@ -28,6 +28,13 @@ return [
         'basic-info' => 'Basic Information',
     ],
 
+    'configuration' => [
+        'general' => [
+            'form-info' => 'Please provide information about the general site information.',
+            'basic-info' => 'Basic Information',
+        ],
+    ],
+
     'comms' => [
         'basic-info' => 'Basic Information',
         'identifier' => 'Identifier',
@@ -71,11 +78,12 @@ return [
         'create-title' => 'Create :attribute',
         'edit-title' => 'Edit :attribute',
         'title' => ':attribute',
-
+        'general_site_name' => 'Site Name'
     ],
 
     'terms' => [
-        'menu' => 'Menu'
+        'menu' => 'Menu',
+        'configuration' => 'Configuration'
     ],
     'dashboard' => [
         'title' => 'Dashboard'

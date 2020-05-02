@@ -176,6 +176,14 @@ class AvoredFrameworkSchema extends Migration
             $table->timestamps();
         });
 
+        Schema::create($tablePrefix . 'configurations', function(Blueprint $table) {
+            $table->increments('id');
+            $table->string('key')->nullable()->default(null);
+            $table->json('value')->nullable()->default(null);
+            $table->timestamps();
+        });
+
+
 
         Schema::create($tablePrefix . 'countries', function (Blueprint $table) {
             $table->bigIncrements('id');

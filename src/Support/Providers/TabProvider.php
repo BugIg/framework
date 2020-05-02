@@ -166,5 +166,12 @@ class TabProvider extends ServiceProvider
                 ->description('avored::system.currency.form-info')
                 ->view('avored::system.currency._fields');
         });
+
+        Tab::put('system.configuration', function (TabItem $tab) {
+            $tab->key('system.configuration.general')
+                ->label('avored::system.configuration.general.basic-info')
+                ->description('avored::system.configuration.general.form-info')
+                ->view('avored::system.configuration.tabs.general');
+        });
     }
 }
