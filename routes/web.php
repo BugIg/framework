@@ -20,6 +20,7 @@ use AvoRed\Framework\System\Controllers\DashboardController;
 use AvoRed\Framework\System\Controllers\LanguageController;
 use AvoRed\Framework\System\Controllers\CurrencyController;
 use AvoRed\Framework\System\Controllers\ConfigurationController;
+use AvoRed\Framework\System\Controllers\MediaController;
 
 $baseAdminUrl = config('avored.admin_url');
 
@@ -97,6 +98,12 @@ Route::middleware(['web', 'admin.auth', 'permission'])
 
 
         /******** SYSTEM ROUTES  *********/
+        Route::post('media/upload', [MediaController::class, 'upload'])
+            ->name('upload.post');
+        Route::delete('media/{media}', [MediaController::class, 'destroy'])
+        ->name('upload.destroy');
+
+
         Route::resource('currency', CurrencyController::class)
             ->except('show');
 

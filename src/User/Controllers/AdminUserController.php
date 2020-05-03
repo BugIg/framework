@@ -14,7 +14,9 @@ use Illuminate\Support\Collection;
 use AvoRed\Framework\Support\Facades\Tab;
 use AvoRed\Framework\User\Models\AdminUser;
 use AvoRed\Framework\Support\Facades\Permission as PermissionFacade;
+use AvoRed\Framework\System\Models\Media;
 use AvoRed\Framework\User\Requests\AdminUserRequest;
+use Illuminate\Support\Arr;
 use Illuminate\View\View;
 
 class AdminUserController extends BaseController
@@ -69,7 +71,8 @@ class AdminUserController extends BaseController
     {
         $tabs = Tab::get('user.admin-user');
         $roleOptions = Role::options('id', 'name');
-        $countries = Country::all();;
+        $countries = Country::all();
+        $adminUser->load('media');
 
         return view('avored::user.admin-user.edit')
             ->with('adminUser', $adminUser)
@@ -87,6 +90,13 @@ class AdminUserController extends BaseController
     public function update(AdminUserRequest $request, AdminUser $adminUser)
     {
         $adminUser->update($request->all());
+        $mediaId = Arr::get($request->get('media'), '0', null);
+        
+        if ($mediaId !== null && $adminUser->media->id !== $mediaId) {
+            $media = Media::find($mediaId);
+            $media->owner()->associate($adminUser)->save();
+        }
+        
 
         return redirect()->route('admin.admin-user.index')
             ->with('successNotification', __('avored::system.notification.updated', ['attribute' => 'AdminUser']));

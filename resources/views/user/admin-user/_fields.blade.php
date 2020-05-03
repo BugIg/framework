@@ -74,6 +74,19 @@
 
 @endif
 
+
+
+<x-avored-field
+    label="avored::system.comms.image"
+    for="upload"
+>
+    <x-avored-upload
+        name="image_path"
+        :value="$adminUser->media ?? ''"
+    >
+    </x-avored-upload>
+</x-avored-field>
+
 <x-avored-field
     label="avored::system.comms.role_id"
     for="role_id"

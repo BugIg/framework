@@ -183,6 +183,14 @@ class AvoredFrameworkSchema extends Migration
             $table->timestamps();
         });
 
+        Schema::create($tablePrefix . 'media', function(Blueprint $table) {
+            $table->increments('id');
+            $table->string('path')->nullable()->default(null);
+            $table->string('owner_type')->nullable();
+            $table->integer('owner_id')->unsigned()->nullable();
+            $table->timestamps();
+        });
+
 
 
         Schema::create($tablePrefix . 'countries', function (Blueprint $table) {
@@ -223,6 +231,8 @@ class AvoredFrameworkSchema extends Migration
     {
         $tablePrefix = config('avored.table_prefix');
 
+        Schema::dropIfExists($tablePrefix . 'media');
+        Schema::dropIfExists($tablePrefix . 'configurations');
         Schema::dropIfExists($tablePrefix . 'permission_role');
         Schema::dropIfExists($tablePrefix . 'permissions');
         Schema::dropIfExists($tablePrefix . 'admin_users');

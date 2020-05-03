@@ -2,6 +2,7 @@
 
 namespace AvoRed\Framework\User\Models;
 
+use AvoRed\Framework\System\Models\Media;
 use AvoRed\Framework\User\Notifications\ResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -72,6 +73,14 @@ class AdminUser extends Authenticatable
         }
 
         return true;
+    }
+
+    /**
+     * Get the user's image.
+     */
+    public function media()
+    {
+        return $this->morphOne('AvoRed\Framework\System\Models\Media', 'owner');
     }
 
 }
