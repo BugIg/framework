@@ -92,7 +92,7 @@ class AdminUserController extends BaseController
         $adminUser->update($request->all());
         $mediaId = Arr::get($request->get('media'), '0', null);
         
-        if ($mediaId !== null && $adminUser->media->id !== $mediaId) {
+        if ((!isset($adminUser->media) && $mediaId !== null) || ($mediaId !== null && $adminUser->media->id !== $mediaId)) {
             $media = Media::find($mediaId);
             $media->owner()->associate($adminUser)->save();
         }

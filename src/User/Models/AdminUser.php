@@ -80,7 +80,12 @@ class AdminUser extends Authenticatable
      */
     public function media()
     {
-        return $this->morphOne('AvoRed\Framework\System\Models\Media', 'owner');
+        return $this->morphOne(Media::class, 'owner');
+    }
+
+    public function getDefaultImage()
+    {
+        return $this->media->path->url ?? 'https://placehold.it/250x250';
     }
 
 }
