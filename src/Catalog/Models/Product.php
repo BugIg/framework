@@ -40,4 +40,13 @@ class Product extends BaseModel
         'meta_title' => TranslatableCast::class,
         'meta_description' => TranslatableCast::class,
     ];
+
+    /**
+     * Belongs to Many Categories.
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }

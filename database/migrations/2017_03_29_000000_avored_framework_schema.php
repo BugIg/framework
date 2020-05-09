@@ -214,6 +214,15 @@ class AvoredFrameworkSchema extends Migration
             $table->timestamps();
         });
 
+        Schema::create('category_product', function (Blueprint $table) use ($tablePrefix) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('product_id');
+            $table->timestamps();
+            $table->foreign('product_id')->references('id')->on($tablePrefix .  'products')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on($tablePrefix .  'categories')->onDelete('cascade');
+        });
+
 
         Schema::create($tablePrefix . 'countries', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -276,6 +285,7 @@ class AvoredFrameworkSchema extends Migration
         Schema::dropIfExists($tablePrefix . 'order_statuses');
         Schema::dropIfExists($tablePrefix . 'menus');
 
+        Schema::dropIfExists($tablePrefix . 'category_product');
         Schema::dropIfExists($tablePrefix . 'products');
     }
 }

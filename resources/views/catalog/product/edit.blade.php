@@ -1,7 +1,7 @@
 @extends('avored::layouts.admin')
 
 @section('pageTitle')
-    {{ __('avored::catalog.product.edit-title') }}
+    {{ __('avored::system.comms.edit') . ' ' .  __('avored::system.terms.product') }}
 @endsection
 
 

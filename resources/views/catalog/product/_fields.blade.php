@@ -11,6 +11,19 @@
     </x-avored-input>
 </x-avored-field>
 
+<x-avored-field
+    label="avored::system.comms.category_id"
+    for="categories[]"
+>
+    <x-avored-select
+        name="categories[]"
+        :options="$categoryOptions"
+        multiple
+        :value="$product->categories ?? ''"
+    >
+    </x-avored-select>
+</x-avored-field>
+
 
 <x-avored-field
     label="avored::system.comms.slug"
@@ -49,11 +62,13 @@
     label="avored::system.comms.description"
     for="description"
 >
-    <x-avored-input
+    
+    <x-avored-editor
         name="description"
         :value="$product->description ?? ''"
     >
-    </x-avored-input>
+    </x-avored-editor>
+    
 </x-avored-field>
 
 <x-avored-field
@@ -96,6 +111,8 @@
 >
     <x-avored-input
         name="qty"
+        type="number"
+        step="0.01"
         :value="$product->qty ?? ''"
     >
     </x-avored-input>
@@ -122,6 +139,7 @@
     <x-avored-input
         name="cost_price"
         type="number"
+        step="0.01"
         :value="$product->cost_price ?? ''"
     >
     </x-avored-input>
@@ -196,7 +214,7 @@
     for="meta_description"
 >
     <x-avored-input
-        name="meta_description"
+        name=""
         :value="$product->meta_description ?? ''"
     >
     </x-avored-input>

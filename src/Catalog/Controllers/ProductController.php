@@ -3,6 +3,7 @@
 namespace AvoRed\Framework\Catalog\Controllers;
 
 use AvoRed\Framework\Catalog\DataTable\ProductTable;
+use AvoRed\Framework\Catalog\Models\Category;
 use AvoRed\Framework\Catalog\Models\Product;
 use AvoRed\Framework\Catalog\Requests\ProductRequest;
 use AvoRed\Framework\Support\Facades\Tab;
@@ -31,10 +32,12 @@ class ProductController extends BaseController
      * @return Response
      */
     public function create()
-    {
+    {        
+        $categoryOptions = Category::options('id', 'name');
         $tabs = Tab::get('catalog.product');
 
         return view('avored::catalog.product.create')
+            ->with('categoryOptions', $categoryOptions)
             ->with('tabs', $tabs);
     }
 
@@ -46,7 +49,8 @@ class ProductController extends BaseController
      */
     public function store(ProductRequest $request)
     {
-        Product::create($request->all());
+        $product = Product::create($request->all());
+        $this->saveProductCategory($product, $request);
 
         return redirect()->route('admin.product.index');
     }
@@ -61,9 +65,11 @@ class ProductController extends BaseController
     public function edit(Product $product)
     {
         $tabs = Tab::get('catalog.product');
+        $categoryOptions = Category::options('id', 'name');
 
         return view('avored::catalog.product.edit')
             ->with('product', $product)
+            ->with('categoryOptions', $categoryOptions)
             ->with('tabs', $tabs);
     }
 
@@ -77,6 +83,7 @@ class ProductController extends BaseController
     public function update(Request $request, Product $product)
     {
         $product->update($request->all());
+        $this->saveProductCategory($product, $request);
 
         return redirect()->route('admin.product.index');
     }
@@ -94,5 +101,18 @@ class ProductController extends BaseController
 
         return redirect()->route('admin.product.index');
 
+    }
+
+    /**
+     * Save Product Category.
+     * @param \AvoRed\Framework\Database\Models\Product $product
+     * @param \AvoRed\Framework\Catalog\Requests\ProductRequest $request
+     * @return void
+     */
+    private function saveProductCategory(Product $product, $request)
+    {
+        if ($request->get('categories') !== null && count($request->get('categories')) > 0) {
+            $product->categories()->sync($request->get('categories'));
+        }
     }
 }
