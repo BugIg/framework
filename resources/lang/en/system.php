@@ -61,6 +61,17 @@ return [
         'first_name' => 'First Name',
         'last_name' => 'Last Name',
         'email' => 'Email',
+        'sku' => 'SKU',
+        'barcode' => 'Barcode',
+        'in_stock' => 'In Stock',
+        'track_stock' => 'Track Stock',
+        'qty' => 'Qty',
+        'cost_price' => 'Cost Price',
+        'price' => 'Price',
+        'weight' => 'Weight',
+        'length' => 'Length',
+        'width' => 'Width',
+        'height' => 'Height',
         'content' => 'Content',
         'slug' => 'Slug',
         'description' => 'Description',
@@ -83,7 +94,8 @@ return [
 
     'terms' => [
         'menu' => 'Menu',
-        'configuration' => 'Configuration'
+        'configuration' => 'Configuration',
+        'product' => 'Product'
     ],
     'dashboard' => [
         'title' => 'Dashboard'

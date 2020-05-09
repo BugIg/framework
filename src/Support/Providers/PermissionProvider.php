@@ -77,6 +77,43 @@ class PermissionProvider extends ServiceProvider
         );
 
         $group = PermissionFacade::add(
+            'product',
+            function (PermissionGroup $group) {
+                $group->label('avored::system.permissions.product.title');
+            }
+        );
+        $group->addPermission(
+            'admin-product-list',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.product.list')
+                    ->routes('admin.product.index');
+            }
+        );
+        $group->addPermission(
+            'admin-product-create',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.product.create')
+                    ->routes('admin.product.create,admin.product.store');
+            }
+        );
+        $group->addPermission(
+            'admin-product-update',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.product.edit')
+                    ->routes('admin.product.edit,admin.product.update');
+            }
+        );
+        $group->addPermission(
+            'admin-product-destroy',
+            function (Permission $permission) {
+                $permission->label('avored::system.permissions.product.destroy')
+                    ->routes('admin.product.destroy');
+            }
+        );
+
+
+
+        $group = PermissionFacade::add(
             'category',
             function (PermissionGroup $group) {
                 $group->label('avored::system.permissions.category.title');

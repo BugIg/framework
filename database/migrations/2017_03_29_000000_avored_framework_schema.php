@@ -191,6 +191,28 @@ class AvoredFrameworkSchema extends Migration
             $table->timestamps();
         });
 
+        Schema::create($tablePrefix . 'products', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->enum('type', ['BASIC', 'VARIATION', 'DOWNLOADABLE', 'VARIABLE_PRODUCT'])->default('BASIC');
+            $table->json('name')->nullable()->default(null);
+            $table->json('slug')->nullable()->default(null);
+            $table->string('sku')->nullable()->default(null);
+            $table->string('barcode')->nullable()->default(null);
+            $table->json('description')->nullable()->default(null);
+            $table->tinyInteger('status')->nullable()->default(null);
+            $table->tinyInteger('in_stock')->nullable()->default(null);
+            $table->tinyInteger('track_stock')->nullable()->default(null);
+            $table->decimal('qty', 10, 6)->nullable();
+            $table->decimal('price', 10, 6)->nullable()->default(null);
+            $table->decimal('cost_price', 10, 6)->nullable()->default(null);
+            $table->float('weight')->nullable()->default(null);
+            $table->float('width')->nullable()->default(null);
+            $table->float('height')->nullable()->default(null);
+            $table->float('length')->nullable()->default(null);
+            $table->json('meta_title')->nullable()->default(null);
+            $table->json('meta_description')->nullable()->default(null);
+            $table->timestamps();
+        });
 
 
         Schema::create($tablePrefix . 'countries', function (Blueprint $table) {
@@ -254,5 +276,6 @@ class AvoredFrameworkSchema extends Migration
         Schema::dropIfExists($tablePrefix . 'order_statuses');
         Schema::dropIfExists($tablePrefix . 'menus');
 
+        Schema::dropIfExists($tablePrefix . 'products');
     }
 }

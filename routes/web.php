@@ -3,6 +3,7 @@
 use AvoRed\Framework\Catalog\Controllers\AttributeController;
 use AvoRed\Framework\Catalog\Controllers\CategoryController;
 use AvoRed\Framework\Catalog\Controllers\PropertyController;
+use AvoRed\Framework\Catalog\Controllers\ProductController;
 
 use AvoRed\Framework\Cms\Controllers\PageController;
 use AvoRed\Framework\Cms\Controllers\MenuController;
@@ -21,6 +22,8 @@ use AvoRed\Framework\System\Controllers\LanguageController;
 use AvoRed\Framework\System\Controllers\CurrencyController;
 use AvoRed\Framework\System\Controllers\ConfigurationController;
 use AvoRed\Framework\System\Controllers\MediaController;
+
+use Illuminate\Support\Facades\Route;
 
 $baseAdminUrl = config('avored.admin_url');
 
@@ -63,6 +66,8 @@ Route::middleware(['web', 'admin.auth', 'permission'])
 
 
         /******** CATALOG ROUTES  *********/
+        Route::resource('product', ProductController::class)
+            ->except('show');
         Route::resource('attribute', AttributeController::class)
             ->except('show');
         Route::resource('category', CategoryController::class)

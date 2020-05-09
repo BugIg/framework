@@ -59,6 +59,13 @@ class TabProvider extends ServiceProvider
      */
     public function registerTabs()
     {
+        Tab::put('catalog.product', function (TabItem $tab) {
+            $tab->key('catalog.product.info')
+                ->label('avored::system.comms.basic-info')
+                ->description('avored::catalog.product.form-info')
+                ->view('avored::catalog.product._fields');
+        });
+
         Tab::put('catalog.category', function (TabItem $tab) {
             $tab->key('catalog.category.info')
                 ->label('avored::system.comms.basic-info')

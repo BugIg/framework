@@ -72,6 +72,13 @@ class MenuProvider extends ServiceProvider
                 ->route('#');
         })->get('catalog');
 
+        $catalogMenu->subMenu('product', function (MenuItem $menu) {
+            $menu->key('product')
+                ->type(MenuItem::ADMIN)
+                ->label('avored::system.admin-menus.product')
+                ->route('admin.product.index');
+        });
+        
         $catalogMenu->subMenu('category', function (MenuItem $menu) {
             $menu->key('category')
                 ->type(MenuItem::ADMIN)
@@ -195,12 +202,7 @@ class MenuProvider extends ServiceProvider
         });
 
 
-//        $catalogMenu->subMenu('product', function (MenuItem $menu) {
-//            $menu->key('product')
-//                ->type(MenuItem::ADMIN)
-//                ->label('avored::system.admin-menus.product')
-//                ->route('admin.product.index');
-//        });
+       
 //
 //        $cmsMenu = Menu::make('cms', function (MenuItem $menu) {
 //            $menu->label('avored::system.admin-menus.cms')
