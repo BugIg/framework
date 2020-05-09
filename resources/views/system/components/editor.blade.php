@@ -2,7 +2,7 @@
 <div class="mt-1 sm:mt-0 sm:col-span-2 relative">
     <div class="max-w-lg flex rounded-md shadow-sm">
         <avored-editor
-            name="content"
+            name="{{ $name }}"
             :errors="{{ $errors }}"
             {{ $attributes }}
         />

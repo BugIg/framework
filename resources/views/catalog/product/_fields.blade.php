@@ -57,7 +57,6 @@
     >
     </x-avored-input>
 </x-avored-field>
-
 <x-avored-field
     label="avored::system.comms.description"
     for="description"

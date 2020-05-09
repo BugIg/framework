@@ -56,6 +56,7 @@ return [
         'language' => 'Language',
         'password' => 'Password',
         'password_confirmation' => 'Confirm Password',
+        'category_id' => 'Category',
         'code' => 'Code',
         'is_default' => 'Is Default',
         'first_name' => 'First Name',

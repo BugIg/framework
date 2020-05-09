@@ -9,7 +9,12 @@
             @if(!$optionSlot)
                 @foreach($options as $optionValue => $optionLabel)
                     <option
-                        {{ $optionValue === $value ? 'selected' : ''  }}
+                        @if (is_countable($value))
+                            {{ in_array($optionValue, $value) ? 'selected' : ''  }}
+                        @else
+                            {{ $optionValue === $value ? 'selected' : ''  }}
+                        @endif
+                        
                         value="{{ $optionValue }}"
                     >
                         {{ $optionLabel }}

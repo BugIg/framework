@@ -2,6 +2,7 @@
 
 namespace AvoRed\Framework\System\Components;
 
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Collection;
 use Illuminate\View\Component;
 
@@ -38,7 +39,12 @@ class AvoRedSelect extends Component
     {
         $this->name = $name;
         $this->options = $options;
-        $this->value = $value;
+        if ($value instanceof EloquentCollection || $value instanceof Collection) {
+            $this->value = $value->pluck('id')->toArray();
+        } else {
+            $this->value = $value;
+        }
+
         $this->optionSlot = $optionSlot;
     }
 
