@@ -60,12 +60,4 @@ class Page extends BaseModel
         };
         return preg_replace_callback($pattern, $callback, $content);
     }
-
-    public static function slug($slug)
-    {
-        $local = app()->getLocale();
-        $model = new static;
-
-        return $model->whereJsonContains('slug->' . $local, $slug)->first();
-    }
 }

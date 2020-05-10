@@ -23,6 +23,6 @@ class Menu extends BaseModel
      * @var array
      */
     protected $casts = [
-        'is_default' => 'bool'
+        'is_default' => 'bool',
     ];
 }

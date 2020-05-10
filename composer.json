@@ -69,6 +69,7 @@
 				"AvoRed\\Framework\\AvoRedProvider"
 			],
 			"aliases" : {
+                "Cart" : "AvoRed\\Framework\\Support\\Facades\\Cart",
 				"Menu" : "AvoRed\\Framework\\Support\\Facades\\Menu",
                 "Tab" : "AvoRed\\Framework\\Support\\Facades\\Tab"
 			}

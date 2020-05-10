@@ -2,8 +2,8 @@
 
 namespace AvoRed\Framework;
 
-use AvoRed\Framework\Support\Providers\PermissionProvider;
 use AvoRed\Framework\System\Composers\LayoutComposer;
+use AvoRed\Framework\System\Composers\NavComposer;
 use AvoRed\Framework\System\Console\AdminMakeCommand;
 use AvoRed\Framework\System\Console\InstallCommand;
 use AvoRed\Framework\System\Middleware\AdminAuth;
@@ -21,6 +21,7 @@ class AvoRedProvider extends ServiceProvider
      * @var array
      */
     protected $providers = [
+        \AvoRed\Framework\Support\Providers\CartServiceProvider::class,
         \AvoRed\Framework\Support\Providers\ComponentProvider::class,
         \AvoRed\Framework\Support\Providers\MenuProvider::class,
         \AvoRed\Framework\Support\Providers\PaymentProvider::class,
@@ -155,6 +156,7 @@ class AvoRedProvider extends ServiceProvider
     public function registerViewComposerData()
     {
         View::composer('avored-admin::layouts.admin', LayoutComposer::class);
+        View::composer('avored::layouts.app', NavComposer::class);
     }
 
    /**

@@ -3,6 +3,7 @@ namespace AvoRed\Framework\Cms\Controllers;
 
 use AvoRed\Framework\Catalog\Models\Category;
 use AvoRed\Framework\Cms\DataTable\MenuTable;
+use AvoRed\Framework\Support\Facades\Menu as MenuFacade;
 use AvoRed\Framework\Cms\Models\Menu;
 use AvoRed\Framework\Cms\Requests\MenuRequest;
 use AvoRed\Framework\Support\Facades\Tab;
@@ -29,10 +30,12 @@ class MenuController extends BaseController
     public function create()
     {
         $categories = Category::all();
+        $frontMenus = MenuFacade::frontMenus();
         $tabs = Tab::get('cms.menu');
 
         return view('avored-admin::cms.menu.create')
             ->with('tabs', $tabs)
+            ->with('frontMenus', $frontMenus)
             ->with('categories', $categories);
     }
 
@@ -57,10 +60,12 @@ class MenuController extends BaseController
    public function edit(Menu $menu)
    {
        $tabs = Tab::get('cms.menu');
+       $frontMenus = MenuFacade::frontMenus();
        $categories = Category::all();
 
        return view('avored-admin::cms.menu.edit')
            ->with('menu', $menu)
+           ->with('frontMenus', $frontMenus)
            ->with('tabs', $tabs)
            ->with('categories', $categories);
    }

@@ -200,23 +200,18 @@ class MenuProvider extends ServiceProvider
                 ->label('avored-admin::system.admin-menus.currency')
                 ->route('admin.currency.index');
         });
-
-
        
-//
-//        $cmsMenu = Menu::make('cms', function (MenuItem $menu) {
-//            $menu->label('avored-admin::system.admin-menus.cms')
-//                ->type(MenuItem::ADMIN)
-//                ->icon('/vendor/avored/images/icons/color-palette.svg')
-//                ->route('#');
-//        })->get('cms');
-//
-//        $cmsMenu->subMenu('menu-group', function (MenuItem $menu) {
-//            $menu->key('menu-group')
-//                ->type(MenuItem::ADMIN)
-//                ->label('avored-admin::system.admin-menus.menu')
-//                ->route('admin.menu-group.index');
-//        });
+
+        Menu::make('cart', function (MenuItem $menu) {
+            $menu->label('Cart')
+                ->type(MenuItem::FRONT)
+                ->route('avored.cart.show');
+        });
+        Menu::make('checkout', function (MenuItem $menu) {
+            $menu->label('Checkout')
+                ->type(MenuItem::FRONT)
+                ->route('avored.checkout.show');
+        });
 
     }
 }
