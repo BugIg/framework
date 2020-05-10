@@ -18,8 +18,8 @@ class PropertyTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.property.index'))
             ->assertStatus(200)
-            ->assertViewIs('avored::catalog.property.index')
-            ->assertSee(__('avored::catalog.property.title'));
+            ->assertViewIs('avored-admin::catalog.property.index')
+            ->assertSee(__('avored-admin::catalog.property.title'));
     }
 
     /* @runInSeparateProcess */
@@ -29,7 +29,7 @@ class PropertyTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.property.create'))
             ->assertStatus(200)
-            ->assertViewIs('avored::catalog.property.create');
+            ->assertViewIs('avored-admin::catalog.property.create');
     }
 
     /* @runInSeparateProcess */
@@ -91,7 +91,7 @@ class PropertyTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.property.edit', $property->id))
             ->assertStatus(200)
-            ->assertViewIs('avored::catalog.property.edit');
+            ->assertViewIs('avored-admin::catalog.property.edit');
     }
 
     /* @runInSeparateProcess */

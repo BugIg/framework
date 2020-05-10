@@ -37,7 +37,7 @@ class AvoRedTable extends Component
      */
     public function render()
     {
-        return view('avored::system.components.table');
+        return view('avored-admin::system.components.table');
     }
 
     public function columns()

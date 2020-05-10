@@ -14,23 +14,23 @@ class OrderStatusTable extends CoreTable
         return [
             'id' => [
                 'key' => 'id',
-                'title' => __('avored::system.comms.id'),
+                'title' => __('avored-admin::system.comms.id'),
                 'sortable' => true
             ],
             'name' => [
                 'key' => 'name',
-                'title' => __('avored::system.comms.name'),
+                'title' => __('avored-admin::system.comms.name'),
                 'sortable' => true
             ],
             'is_default' => [
                 'key' => 'slug',
-                'title' => __('avored::system.comms.is_default')
+                'title' => __('avored-admin::system.comms.is_default')
             ],
             'action' => [
                 'key' => 'action',
-                'title' => __('avored::system.comms.action'),
+                'title' => __('avored-admin::system.comms.action'),
                 'callable' => function ($model) {
-                    return view('avored::order.order-status._action')
+                    return view('avored-admin::order.order-status._action')
                         ->with('model', $model);
                 }
             ]

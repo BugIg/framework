@@ -21,7 +21,7 @@ class UserGroupController extends BaseController
     {
         $userGroupTable = new UserGroupTable(UserGroup::class);
 
-        return view('avored::user.user-group.index')
+        return view('avored-admin::user.user-group.index')
             ->with('userGroupTable', $userGroupTable);
     }
 
@@ -33,7 +33,7 @@ class UserGroupController extends BaseController
     {
         $tabs = Tab::get('user.user-group');
 
-        return view('avored::user.user-group.create')
+        return view('avored-admin::user.user-group.create')
             ->with('tabs', $tabs);
     }
 
@@ -47,7 +47,7 @@ class UserGroupController extends BaseController
         $userGroup = UserGroup::create($request->all());
 
         return redirect()->route('admin.user-group.index')
-            ->with('successNotification', __('avored::system.notification.store', ['attribute' => 'UserGroup']));
+            ->with('successNotification', __('avored-admin::system.notification.store', ['attribute' => 'UserGroup']));
     }
 
     /**
@@ -59,7 +59,7 @@ class UserGroupController extends BaseController
     {
         $tabs = Tab::get('user.user-group');
 
-        return view('avored::user.user-group.edit')
+        return view('avored-admin::user.user-group.edit')
             ->with('userGroup', $userGroup)
             ->with('tabs', $tabs);
     }
@@ -75,7 +75,7 @@ class UserGroupController extends BaseController
         $userGroup->update($request->all());
 
         return redirect()->route('admin.user-group.index')
-            ->with('successNotification', __('avored::system.notification.updated', ['attribute' => 'UserGroup']));
+            ->with('successNotification', __('avored-admin::system.notification.updated', ['attribute' => 'UserGroup']));
     }
 
     /**

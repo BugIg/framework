@@ -18,7 +18,7 @@ class AdminUserTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.admin-user.index'))
             ->assertStatus(200)
-            ->assertViewIs('avored::user.admin-user.index');
+            ->assertViewIs('avored-admin::user.admin-user.index');
     }
 
     /* @runInSeparateProcess */
@@ -28,7 +28,7 @@ class AdminUserTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.admin-user.create'))
             ->assertStatus(200)
-            ->assertViewIs('avored::user.admin-user.create');
+            ->assertViewIs('avored-admin::user.admin-user.create');
     }
 
     /* @runInSeparateProcess */
@@ -65,7 +65,7 @@ class AdminUserTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.admin-user.edit', $adminUser->id))
             ->assertStatus(200)
-            ->assertViewIs('avored::user.admin-user.edit');
+            ->assertViewIs('avored-admin::user.admin-user.edit');
     }
 
     /* @runInSeparateProcess */

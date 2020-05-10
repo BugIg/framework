@@ -16,8 +16,8 @@ class PageTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.page.index'))
             ->assertStatus(200)
-            ->assertViewIs('avored::cms.page.index')
-            ->assertSee(__('avored::cms.page.title'));
+            ->assertViewIs('avored-admin::cms.page.index')
+            ->assertSee(__('avored-admin::cms.page.title'));
     }
 
     /* @runInSeparateProcess */
@@ -27,7 +27,7 @@ class PageTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.page.create'))
             ->assertStatus(200)
-            ->assertViewIs('avored::cms.page.create');
+            ->assertViewIs('avored-admin::cms.page.create');
     }
 
     /* @runInSeparateProcess */
@@ -52,7 +52,7 @@ class PageTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.page.edit', $page->id))
             ->assertStatus(200)
-            ->assertViewIs('avored::cms.page.edit');
+            ->assertViewIs('avored-admin::cms.page.edit');
     }
 
     /* @runInSeparateProcess */

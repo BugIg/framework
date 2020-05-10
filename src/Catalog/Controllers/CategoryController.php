@@ -21,7 +21,7 @@ class CategoryController extends BaseController
     {
         $categoryTable = new CategoryTable(Category::class);
 
-        return view('avored::catalog.category.index')
+        return view('avored-admin::catalog.category.index')
             ->with('categoryTable', $categoryTable);
     }
 
@@ -34,7 +34,7 @@ class CategoryController extends BaseController
     {
         $tabs = Tab::get('catalog.category');
 
-        return view('avored::catalog.category.create')
+        return view('avored-admin::catalog.category.create')
             ->with('tabs', $tabs);
     }
 
@@ -62,7 +62,7 @@ class CategoryController extends BaseController
     {
         $tabs = Tab::get('catalog.category');
 
-        return view('avored::catalog.category.edit')
+        return view('avored-admin::catalog.category.edit')
             ->with('category', $category)
             ->with('tabs', $tabs);
     }

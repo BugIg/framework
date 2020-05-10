@@ -11,19 +11,19 @@ class PropertyTable extends CoreTable
         return [
             'id' => [
                 'key' => 'id',
-                'title' => __('avored::system.comms.id'),
+                'title' => __('avored-admin::system.comms.id'),
                 'sortable' => true
             ],
             'name' => [
                 'key' => 'name',
-                'title' => __('avored::system.comms.name'),
+                'title' => __('avored-admin::system.comms.name'),
                 'sortable' => true
             ],
             'action' => [
                 'key' => 'action',
-                'title' => __('avored::system.comms.action'),
+                'title' => __('avored-admin::system.comms.action'),
                 'callable' => function ($model) {
-                    return view('avored::catalog.property._action')
+                    return view('avored-admin::catalog.property._action')
                         ->with('model', $model);
                 }
             ]

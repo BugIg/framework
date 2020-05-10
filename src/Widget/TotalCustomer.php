@@ -1,7 +1,6 @@
 <?php
 namespace AvoRed\Framework\Widget;
 
-use AvoRed\Framework\Database\Contracts\ConfigurationModelInterface;
 use Illuminate\Support\Carbon;
 
 class TotalCustomer
@@ -12,7 +11,7 @@ class TotalCustomer
      * @var string $view
      */
 
-    protected $view = "avored::widget.total-customer";
+    protected $view = "avored-admin::widget.total-customer";
 
     /**
      * Widget Label

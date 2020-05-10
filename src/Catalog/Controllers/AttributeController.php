@@ -25,7 +25,7 @@ class AttributeController extends BaseController
     {
         $attributeTable = new AttributeTable(Attribute::class);
 
-        return view('avored::catalog.attribute.index')
+        return view('avored-admin::catalog.attribute.index')
             ->with('attributeTable', $attributeTable);
     }
 
@@ -39,7 +39,7 @@ class AttributeController extends BaseController
         $tabs = Tab::get('catalog.attribute');
         $displayAsOptions = Attribute::DISPLAY_AS;
 
-        return view('avored::catalog.attribute.create')
+        return view('avored-admin::catalog.attribute.create')
             ->with('tabs', $tabs)
             ->with('displayAsOptions', $displayAsOptions);
     }
@@ -71,7 +71,7 @@ class AttributeController extends BaseController
         $displayAsOptions = Attribute::DISPLAY_AS;
         $attribute->load('dropdownOptions');
 
-        return view('avored::catalog.attribute.edit')
+        return view('avored-admin::catalog.attribute.edit')
             ->with('attribute', $attribute)
             ->with('tabs', $tabs)
             ->with('displayAsOptions', $displayAsOptions);

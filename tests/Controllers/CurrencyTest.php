@@ -16,8 +16,8 @@ class CurrencyTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.currency.index'))
             ->assertStatus(200)
-            ->assertViewIs('avored::system.currency.index')
-            ->assertSee(__('avored::system.currency.title'));
+            ->assertViewIs('avored-admin::system.currency.index')
+            ->assertSee(__('avored-admin::system.currency.title'));
     }
 
     /* @runInSeparateProcess */
@@ -27,7 +27,7 @@ class CurrencyTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.currency.create'))
             ->assertStatus(200)
-            ->assertViewIs(__('avored::system.currency.create'));
+            ->assertViewIs(__('avored-admin::system.currency.create'));
     }
 
     /* @runInSeparateProcess */
@@ -51,7 +51,7 @@ class CurrencyTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.currency.edit', $currency->id))
             ->assertStatus(200)
-            ->assertViewIs(__('avored::system.currency.edit'));
+            ->assertViewIs(__('avored-admin::system.currency.edit'));
     }
 
     /* @runInSeparateProcess */

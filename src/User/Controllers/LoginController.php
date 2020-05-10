@@ -26,7 +26,7 @@ class LoginController extends BaseController
      */
     public function loginForm()
     {
-        return view('avored::user.auth.login');
+        return view('avored-admin::user.auth.login');
     }
 
     /**
@@ -47,7 +47,7 @@ class LoginController extends BaseController
     protected function sendFailedLoginResponse(Request $request)
     {
         throw ValidationException::withMessages(
-            [$this->username() => [trans('avored::system.failed')]]
+            [$this->username() => [trans('avored-admin::system.failed')]]
         );
     }
 

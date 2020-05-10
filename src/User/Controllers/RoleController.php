@@ -24,7 +24,7 @@ class RoleController extends BaseController
     {
         $roleTable = new RoleTable(Role::class);
 
-        return view('avored::user.role.index')
+        return view('avored-admin::user.role.index')
             ->with('roleTable', $roleTable);
     }
 
@@ -37,7 +37,7 @@ class RoleController extends BaseController
         $tabs = Tab::get('user.role');
         $permissions = PermissionFacade::all();
 
-        return view('avored::user.role.create')
+        return view('avored-admin::user.role.create')
             ->with(compact('permissions', 'tabs'));
     }
 
@@ -52,7 +52,7 @@ class RoleController extends BaseController
         $this->saveRolePermissions($request, $role);
 
         return redirect()->route('admin.role.index')
-            ->with('successNotification', __('avored::system.notification.store', ['attribute' => 'Role']));
+            ->with('successNotification', __('avored-admin::system.notification.store', ['attribute' => 'Role']));
     }
 
     /**
@@ -65,7 +65,7 @@ class RoleController extends BaseController
         $tabs = Tab::get('user.role');
         $permissions = PermissionFacade::all();
 
-        return view('avored::user.role.edit')
+        return view('avored-admin::user.role.edit')
             ->with(compact('role', 'permissions', 'tabs'));
     }
 
@@ -81,7 +81,7 @@ class RoleController extends BaseController
         $this->saveRolePermissions($request, $role);
 
         return redirect()->route('admin.role.index')
-            ->with('successNotification', __('avored::system.notification.updated', ['attribute' => 'Role']));
+            ->with('successNotification', __('avored-admin::system.notification.updated', ['attribute' => 'Role']));
     }
 
     /**

@@ -20,7 +20,7 @@ class LanguageController extends BaseController
     {
         $languageTable = new LanguageTable(Language::class);
 
-        return view('avored::system.language.index')
+        return view('avored-admin::system.language.index')
             ->with('languageTable', $languageTable);
     }
 
@@ -32,7 +32,7 @@ class LanguageController extends BaseController
     {
         $tabs = Tab::get('system.language');
 
-        return view('avored::system.language.create')
+        return view('avored-admin::system.language.create')
             ->with('tabs', $tabs);
     }
 
@@ -57,7 +57,7 @@ class LanguageController extends BaseController
     {
         $tabs = Tab::get('system.language');
 
-        return view('avored::system.language.edit')
+        return view('avored-admin::system.language.edit')
             ->with('tabs', $tabs)
             ->with('language', $language);
     }

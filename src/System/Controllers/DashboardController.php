@@ -22,7 +22,7 @@ class DashboardController extends  BaseController
         $revenueWidget = ''; //Widget::get('avored-total-revenue');
 //
         $menus = Menu::all($admin = true);
-        return view('avored::system.dashboard')
+        return view('avored-admin::system.dashboard')
             ->with('user', $user)
             ->with('menus', $menus);
     }

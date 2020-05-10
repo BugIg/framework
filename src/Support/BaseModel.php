@@ -33,4 +33,20 @@ class BaseModel extends Model
         $query = self::query();
         return $query->pluck($optionLabel, $optionValue);
     }
+    
+     /**
+     * Add a basic where clause to the query.
+     *
+     * @param  \Closure|string|array  $column
+     * @param  mixed  $operator
+     * @param  mixed  $value
+     * @param  string  $boolean
+     * @return $this
+     */
+    public static function where($column, $operator = null, $value = null, $boolean = 'and')
+    {
+        $query = self::query();
+        //$data = $model->where($column, $operator, $value, $boolean);
+        dd($query->where('slug', 'test'));
+    }
 }

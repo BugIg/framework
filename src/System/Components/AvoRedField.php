@@ -37,7 +37,7 @@ class AvoRedField extends Component
      */
     public function render()
     {
-        return view('avored::system.components.field');
+        return view('avored-admin::system.components.field');
     }
 
 }

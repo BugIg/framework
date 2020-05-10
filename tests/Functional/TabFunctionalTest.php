@@ -86,8 +86,8 @@ class TabFunctionalTest extends BaseTestCase
         $manager = new Manager();
         $tabItem = $manager->put('test_tab_key', function ($tab) {
             $tab->key('tab_item_key')
-                ->view('avored::test.view.path');
+                ->view('avored-admin::test.view.path');
         })->get('test_tab_key')->first();
-        $this->assertEquals('avored::test.view.path', $tabItem->view());
+        $this->assertEquals('avored-admin::test.view.path', $tabItem->view());
     }
 }

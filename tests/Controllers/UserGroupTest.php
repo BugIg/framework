@@ -16,8 +16,8 @@ class UserGroupTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.user-group.index'))
             ->assertStatus(200)
-            ->assertViewIs('avored::user.user-group.index')
-            ->assertSee(__('avored::user.user-group.title'));
+            ->assertViewIs('avored-admin::user.user-group.index')
+            ->assertSee(__('avored-admin::user.user-group.title'));
     }
 
     /* @runInSeparateProcess */
@@ -27,7 +27,7 @@ class UserGroupTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.user-group.create'))
             ->assertStatus(200)
-            ->assertViewIs('avored::user.user-group.create');
+            ->assertViewIs('avored-admin::user.user-group.create');
     }
 
     /* @runInSeparateProcess */
@@ -55,7 +55,7 @@ class UserGroupTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.user-group.edit', $userGroup->id))
             ->assertStatus(200)
-            ->assertViewIs('avored::user.user-group.edit');
+            ->assertViewIs('avored-admin::user.user-group.edit');
     }
 
     /* @runInSeparateProcess */

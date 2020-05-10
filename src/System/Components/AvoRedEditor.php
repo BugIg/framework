@@ -33,7 +33,7 @@ class AvoRedEditor extends Component
      */
     public function render()
     {
-        return view('avored::system.components.editor');
+        return view('avored-admin::system.components.editor');
     }
 
 }

@@ -22,7 +22,7 @@ class ProductController extends BaseController
     {
         $productTable = new ProductTable(Product::class);
 
-        return view('avored::catalog.product.index')
+        return view('avored-admin::catalog.product.index')
             ->with('productTable', $productTable);
     }
 
@@ -36,7 +36,7 @@ class ProductController extends BaseController
         $categoryOptions = Category::options('id', 'name');
         $tabs = Tab::get('catalog.product');
 
-        return view('avored::catalog.product.create')
+        return view('avored-admin::catalog.product.create')
             ->with('categoryOptions', $categoryOptions)
             ->with('tabs', $tabs);
     }
@@ -67,7 +67,7 @@ class ProductController extends BaseController
         $tabs = Tab::get('catalog.product');
         $categoryOptions = Category::options('id', 'name');
 
-        return view('avored::catalog.product.edit')
+        return view('avored-admin::catalog.product.edit')
             ->with('product', $product)
             ->with('categoryOptions', $categoryOptions)
             ->with('tabs', $tabs);

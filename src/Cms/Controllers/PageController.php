@@ -21,7 +21,7 @@ class PageController extends BaseController
     {
         $pageTable = new PageTable(Page::class);
 
-        return view('avored::cms.page.index')
+        return view('avored-admin::cms.page.index')
             ->with('pageTable', $pageTable);
     }
 
@@ -34,7 +34,7 @@ class PageController extends BaseController
     {
         $tabs = Tab::get('cms.page');
 
-        return view('avored::cms.page.create')
+        return view('avored-admin::cms.page.create')
             ->with('tabs', $tabs);
     }
 
@@ -62,7 +62,7 @@ class PageController extends BaseController
     {
         $tabs = Tab::get('cms.page');
 
-        return view('avored::cms.page.edit')
+        return view('avored-admin::cms.page.edit')
             ->with('page', $page)
             ->with('tabs', $tabs);
     }

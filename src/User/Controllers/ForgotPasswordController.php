@@ -38,7 +38,7 @@ class ForgotPasswordController extends BaseController
      */
     public function linkRequestForm()
     {
-        return view('avored::user.auth.passwords.email');
+        return view('avored-admin::user.auth.passwords.email');
     }
 
     /**

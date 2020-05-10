@@ -1,17 +1,13 @@
 <?php
 namespace AvoRed\Framework\Widget;
 
-use AvoRed\Framework\Database\Contracts\ConfigurationModelInterface;
-use AvoRed\Framework\Database\Contracts\OrderModelInterface;
-use Illuminate\Support\Carbon;
-
 class TotalOrder
 {
     /**
      * Widget View Path
      * @var string $view
      */
-    protected $view = "avored::widget.total-order";
+    protected $view = "avored-admin::widget.total-order";
 
     /**
      * Widget Label
@@ -72,8 +68,7 @@ class TotalOrder
      */
     public function with()
     {
-        $orderRepository = app(OrderModelInterface::class);
-        $value = $orderRepository->getCurrentMonthTotalOrder();
+        $value = rand(1000, 5000);
         
         return ['value' => $value];
     }

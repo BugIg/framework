@@ -21,7 +21,7 @@ class PropertyController extends BaseController
     {
         $propertyTable = new PropertyTable(Property::class);
 
-        return view('avored::catalog.property.index')
+        return view('avored-admin::catalog.property.index')
             ->with('propertyTable', $propertyTable);
     }
 
@@ -36,7 +36,7 @@ class PropertyController extends BaseController
         $dataTypeOptions = Property::PROPERTY_DATATYPES;
         $fieldTypeOptions = Property::PROPERTY_FIELDTYPES;
 
-        return view('avored::catalog.property.create')
+        return view('avored-admin::catalog.property.create')
             ->with('tabs', $tabs)
             ->with('dataTypeOptions', $dataTypeOptions)
             ->with('fieldTypeOptions', $fieldTypeOptions);
@@ -70,7 +70,7 @@ class PropertyController extends BaseController
         $dataTypeOptions = Property::PROPERTY_DATATYPES;
         $fieldTypeOptions = Property::PROPERTY_FIELDTYPES;
 
-        return view('avored::catalog.property.edit')
+        return view('avored-admin::catalog.property.edit')
             ->with('property', $property)
             ->with('tabs', $tabs)
             ->with('dataTypeOptions', $dataTypeOptions)

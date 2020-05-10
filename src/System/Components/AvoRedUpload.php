@@ -41,7 +41,7 @@ class AvoRedUpload extends Component
      */
     public function render()
     {
-        return view('avored::system.components.upload');
+        return view('avored-admin::system.components.upload');
     }
 
 }

@@ -17,8 +17,8 @@ class AttributeTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.attribute.index'))
             ->assertStatus(200)
-            ->assertViewIs('avored::catalog.attribute.index')
-            ->assertSee(__('avored::catalog.attribute.title'));
+            ->assertViewIs('avored-admin::catalog.attribute.index')
+            ->assertSee(__('avored-admin::catalog.attribute.title'));
     }
 
     /* @runInSeparateProcess */
@@ -28,7 +28,7 @@ class AttributeTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.attribute.create'))
             ->assertStatus(200)
-            ->assertViewIs('avored::catalog.attribute.create');
+            ->assertViewIs('avored-admin::catalog.attribute.create');
     }
 
     /* @runInSeparateProcess */
@@ -63,7 +63,7 @@ class AttributeTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.attribute.edit', $attribute->id))
             ->assertStatus(200)
-            ->assertViewIs('avored::catalog.attribute.edit');
+            ->assertViewIs('avored-admin::catalog.attribute.edit');
     }
 
     /* @runInSeparateProcess */

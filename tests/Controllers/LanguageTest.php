@@ -17,7 +17,7 @@ class LanguageTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.language.index'))
             ->assertStatus(200)
-            ->assertViewIs(__('avored::system.language.index'));
+            ->assertViewIs(__('avored-admin::system.language.index'));
     }
 
     /* @runInSeparateProcess */
@@ -27,7 +27,7 @@ class LanguageTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.language.create'))
             ->assertStatus(200)
-            ->assertViewIs(__('avored::system.language.create'));
+            ->assertViewIs(__('avored-admin::system.language.create'));
     }
 
     /* @runInSeparateProcess */
@@ -50,7 +50,7 @@ class LanguageTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.language.edit', $language->id))
             ->assertStatus(200)
-            ->assertViewIs(__('avored::system.language.edit'));
+            ->assertViewIs(__('avored-admin::system.language.edit'));
     }
 
     /* @runInSeparateProcess */

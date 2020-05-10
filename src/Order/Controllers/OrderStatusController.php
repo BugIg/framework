@@ -21,7 +21,7 @@ class OrderStatusController extends BaseController
     {
         $orderStatusTable = new OrderStatusTable(OrderStatus::class);
 
-        return view('avored::order.order-status.index')
+        return view('avored-admin::order.order-status.index')
             ->with('orderStatusTable', $orderStatusTable);
     }
 
@@ -33,7 +33,7 @@ class OrderStatusController extends BaseController
     {
         $tabs = Tab::get('order.order-status');
 
-        return view('avored::order.order-status.create')
+        return view('avored-admin::order.order-status.create')
             ->with('tabs', $tabs);
     }
 
@@ -47,7 +47,7 @@ class OrderStatusController extends BaseController
         $orderStatus = OrderStatus::create($request->all());
 
         return redirect()->route('admin.order-status.index')
-            ->with('successNotification', __('avored::system.notification.store', ['attribute' => 'OrderStatus']));
+            ->with('successNotification', __('avored-admin::system.notification.store', ['attribute' => 'OrderStatus']));
     }
 
     /**
@@ -59,7 +59,7 @@ class OrderStatusController extends BaseController
     {
         $tabs = Tab::get('order.order-status');
 
-        return view('avored::order.order-status.edit')
+        return view('avored-admin::order.order-status.edit')
             ->with('orderStatus', $orderStatus)
             ->with('tabs', $tabs);
     }
@@ -75,7 +75,7 @@ class OrderStatusController extends BaseController
         $orderStatus->update($request->all());
 
         return redirect()->route('admin.order-status.index')
-            ->with('successNotification', __('avored::system.notification.updated', ['attribute' => 'OrderStatus']));
+            ->with('successNotification', __('avored-admin::system.notification.updated', ['attribute' => 'OrderStatus']));
     }
 
     /**

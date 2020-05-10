@@ -21,7 +21,7 @@ class CurrencyController extends BaseController
     {
         $currencyTable = new CurrencyTable(Currency::class);
 
-        return view('avored::system.currency.index')
+        return view('avored-admin::system.currency.index')
             ->with('currencyTable', $currencyTable);
     }
 
@@ -35,7 +35,7 @@ class CurrencyController extends BaseController
 
         $tabs = Tab::get('system.currency');
 
-        return view('avored::system.currency.create')
+        return view('avored-admin::system.currency.create')
             ->with('tabs', $tabs)
             ->with('options', $options);
     }
@@ -62,7 +62,7 @@ class CurrencyController extends BaseController
         $options = Country::all();
         $tabs = Tab::get('system.currency');
 
-        return view('avored::system.currency.edit')
+        return view('avored-admin::system.currency.edit')
             ->with('tabs', $tabs)
             ->with('currency', $currency)
             ->with('options', $options);

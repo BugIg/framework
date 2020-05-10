@@ -4,6 +4,7 @@ namespace AvoRed\Framework\Cms\Models;
 
 use AvoRed\Framework\Support\BaseModel;
 use AvoRed\Framework\Support\Casts\TranslatableCast;
+use AvoRed\Framework\Support\Facades\Widget;
 
 class Page extends BaseModel
 {
@@ -58,5 +59,13 @@ class Page extends BaseModel
             return $matches[1] ? substr($matches[0], 1) : "{$widgetContent}{$whitespace}";
         };
         return preg_replace_callback($pattern, $callback, $content);
+    }
+
+    public static function slug($slug)
+    {
+        $local = app()->getLocale();
+        $model = new static;
+
+        return $model->whereJsonContains('slug->' . $local, $slug)->first();
     }
 }

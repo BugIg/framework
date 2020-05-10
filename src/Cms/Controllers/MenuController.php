@@ -18,7 +18,7 @@ class MenuController extends BaseController
     {
         $menuTable = new MenuTable(Menu::class);
 
-        return view('avored::cms.menu.index')
+        return view('avored-admin::cms.menu.index')
             ->with('menuTable', $menuTable);
     }
 
@@ -31,7 +31,7 @@ class MenuController extends BaseController
         $categories = Category::all();
         $tabs = Tab::get('cms.menu');
 
-        return view('avored::cms.menu.create')
+        return view('avored-admin::cms.menu.create')
             ->with('tabs', $tabs)
             ->with('categories', $categories);
     }
@@ -46,7 +46,7 @@ class MenuController extends BaseController
        Menu::create($request->all());
 
        return redirect()->route('admin.menu.index')
-           ->with('successNotification', __('avored::system.notification.store', ['attribute' => 'Menu']));
+           ->with('successNotification', __('avored-admin::system.notification.store', ['attribute' => 'Menu']));
    }
 
    /**
@@ -59,7 +59,7 @@ class MenuController extends BaseController
        $tabs = Tab::get('cms.menu');
        $categories = Category::all();
 
-       return view('avored::cms.menu.edit')
+       return view('avored-admin::cms.menu.edit')
            ->with('menu', $menu)
            ->with('tabs', $tabs)
            ->with('categories', $categories);
@@ -76,7 +76,7 @@ class MenuController extends BaseController
        $menu->update($request->all());
 
        return redirect()->route('admin.menu.index')
-           ->with('successNotification', __('avored::system.notification.updated', ['attribute' => 'Menu']));
+           ->with('successNotification', __('avored-admin::system.notification.updated', ['attribute' => 'Menu']));
    }
 //
     /**

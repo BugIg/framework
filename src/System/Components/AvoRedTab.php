@@ -29,7 +29,7 @@ class AvoRedTab extends Component
      */
     public function render()
     {
-        return view('avored::system.components.tab');
+        return view('avored-admin::system.components.tab');
     }
 
 }

@@ -7,6 +7,7 @@
 $tablePrefix = 'avored_';
 
 return [
+    'front_url' => 'avored',
     'admin_url' => 'admin',
     'table_prefix' => $tablePrefix,
     'auth' => [

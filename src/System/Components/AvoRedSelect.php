@@ -55,7 +55,7 @@ class AvoRedSelect extends Component
      */
     public function render()
     {
-        return view('avored::system.components.select');
+        return view('avored-admin::system.components.select');
     }
 
 }

@@ -77,7 +77,7 @@ class AuthTest extends BaseTestCase
         $this
             ->get(route(self::ROUTE_PASSWORD_REQUEST))
             ->assertSuccessful()
-            ->assertViewIs('avored::user.auth.passwords.email');
+            ->assertViewIs('avored-admin::user.auth.passwords.email');
     }
 
     /* @runInSeparateProcess */
@@ -132,7 +132,7 @@ class AuthTest extends BaseTestCase
                 'token' => $token,
             ]))
             ->assertSuccessful()
-            ->assertViewIs('avored::user.auth.passwords.reset');
+            ->assertViewIs('avored-admin::user.auth.passwords.reset');
     }
 
     /* @runInSeparateProcess */

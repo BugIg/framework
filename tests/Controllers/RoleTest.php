@@ -17,7 +17,7 @@ class RoleTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.role.index'))
             ->assertStatus(200)
-            ->assertViewIs('avored::user.role.index');
+            ->assertViewIs('avored-admin::user.role.index');
     }
 
     /* @runInSeparateProcess */
@@ -27,7 +27,7 @@ class RoleTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.role.create'))
             ->assertStatus(200)
-            ->assertViewIs('avored::user.role.create');
+            ->assertViewIs('avored-admin::user.role.create');
     }
 
     /* @runInSeparateProcess */
@@ -50,7 +50,7 @@ class RoleTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.role.edit', $role->id))
             ->assertStatus(200)
-            ->assertViewIs('avored::user.role.edit');
+            ->assertViewIs('avored-admin::user.role.edit');
     }
 
     /* @runInSeparateProcess */

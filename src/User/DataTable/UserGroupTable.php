@@ -14,23 +14,23 @@ class UserGroupTable extends CoreTable
         return [
             'id' => [
                 'key' => 'id',
-                'title' => __('avored::system.comms.id'),
+                'title' => __('avored-admin::system.comms.id'),
                 'sortable' => true
             ],
             'name' => [
                 'key' => 'name',
-                'title' => __('avored::system.comms.name'),
+                'title' => __('avored-admin::system.comms.name'),
                 'sortable' => true
             ],
             'description' => [
                 'key' => 'slug',
-                'title' => __('avored::system.comms.description')
+                'title' => __('avored-admin::system.comms.description')
             ],
             'action' => [
                 'key' => 'action',
-                'title' => __('avored::system.comms.action'),
+                'title' => __('avored-admin::system.comms.action'),
                 'callable' => function ($model) {
-                    return view('avored::user.user-group._action')
+                    return view('avored-admin::user.user-group._action')
                         ->with('model', $model);
                 }
             ]

@@ -29,7 +29,7 @@ class AdminUserController extends BaseController
     {
         $adminUserTable = new AdminUserTable(AdminUser::class);
 
-        return view('avored::user.admin-user.index')
+        return view('avored-admin::user.admin-user.index')
             ->with('adminUserTable', $adminUserTable);
     }
 
@@ -43,7 +43,7 @@ class AdminUserController extends BaseController
         $roleOptions = Role::options('id', 'name');
         $countries = Country::all();;
 
-        return view('avored::user.admin-user.create')
+        return view('avored-admin::user.admin-user.create')
             ->with('tabs', $tabs)
             ->with('roleOptions', $roleOptions)
             ->with('countries', $countries);
@@ -59,7 +59,7 @@ class AdminUserController extends BaseController
         AdminUser::create($request->all());
 
         return redirect()->route('admin.admin-user.index')
-            ->with('successNotification', __('avored::system.notification.store', ['attribute' => 'AdminUser']));
+            ->with('successNotification', __('avored-admin::system.notification.store', ['attribute' => 'AdminUser']));
     }
 
     /**
@@ -74,7 +74,7 @@ class AdminUserController extends BaseController
         $countries = Country::all();
         $adminUser->load('media');
 
-        return view('avored::user.admin-user.edit')
+        return view('avored-admin::user.admin-user.edit')
             ->with('adminUser', $adminUser)
             ->with('tabs', $tabs)
             ->with('roleOptions', $roleOptions)
@@ -99,7 +99,7 @@ class AdminUserController extends BaseController
         
 
         return redirect()->route('admin.admin-user.index')
-            ->with('successNotification', __('avored::system.notification.updated', ['attribute' => 'AdminUser']));
+            ->with('successNotification', __('avored-admin::system.notification.updated', ['attribute' => 'AdminUser']));
     }
 
     /**

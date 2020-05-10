@@ -16,7 +16,7 @@ class ConfigurationController extends  BaseController
         $tabs = Tab::get('system.configuration');
         $configuration = new Configuration();
 
-        return view('avored::system.configuration.index')
+        return view('avored-admin::system.configuration.index')
             ->with('tabs', $tabs)
             ->with('configuration', $configuration);
     }

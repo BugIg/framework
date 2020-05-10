@@ -41,7 +41,7 @@ class AvoRedInput extends Component
      */
     public function render()
     {
-        return view('avored::system.components.input');
+        return view('avored-admin::system.components.input');
     }
 
 }

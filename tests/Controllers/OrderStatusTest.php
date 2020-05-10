@@ -16,8 +16,8 @@ class OrderStatusTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.order-status.index'))
             ->assertStatus(200)
-            ->assertViewIs('avored::order.order-status.index')
-            ->assertSee(__('avored::order.order-status.title'));
+            ->assertViewIs('avored-admin::order.order-status.index')
+            ->assertSee(__('avored-admin::order.order-status.title'));
     }
 
     /* @runInSeparateProcess */
@@ -27,7 +27,7 @@ class OrderStatusTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.order-status.create'))
             ->assertStatus(200)
-            ->assertViewIs('avored::order.order-status.create');
+            ->assertViewIs('avored-admin::order.order-status.create');
     }
 
     /* @runInSeparateProcess */
@@ -55,7 +55,7 @@ class OrderStatusTest extends BaseTestCase
             ->actingAs($this->user, 'admin')
             ->get(route('admin.order-status.edit', $orderStatus->id))
             ->assertStatus(200)
-            ->assertViewIs('avored::order.order-status.edit');
+            ->assertViewIs('avored-admin::order.order-status.edit');
     }
 
     /* @runInSeparateProcess */

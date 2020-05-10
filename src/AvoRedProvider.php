@@ -12,6 +12,7 @@ use AvoRed\Framework\User\Middleware\Permission;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Route;
 
 class AvoRedProvider extends ServiceProvider
 {
@@ -62,6 +63,10 @@ class AvoRedProvider extends ServiceProvider
     public function registerRoutePath()
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+
+        Route::middleware('web')
+            ->namespace('App\Http\Controllers\AvoRed')
+            ->group(__DIR__.'/../routes/avored.php');
     }
 
     /**
@@ -89,6 +94,7 @@ class AvoRedProvider extends ServiceProvider
      */
     public function registerViewPath()
     {
+        $this->loadViewsFrom(__DIR__.'/../resources/views/admin', 'avored-admin');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'avored');
     }
 
@@ -98,7 +104,7 @@ class AvoRedProvider extends ServiceProvider
      */
     public function registerTranslationPath()
     {
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'avored');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'avored-admin');
     }
 
     /**
@@ -148,7 +154,7 @@ class AvoRedProvider extends ServiceProvider
      */
     public function registerViewComposerData()
     {
-        View::composer('avored::layouts.admin', LayoutComposer::class);
+        View::composer('avored-admin::layouts.admin', LayoutComposer::class);
     }
 
    /**
