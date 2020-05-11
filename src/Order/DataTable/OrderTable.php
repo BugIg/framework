@@ -3,10 +3,10 @@ namespace AvoRed\Framework\Order\DataTable;
 
 use AvoRed\Framework\Support\CoreTable;
 
-class OrderStatusTable extends CoreTable
+class OrderTable extends CoreTable
 {
     /**
-     * Order Status Table Columns
+     * Order Table Columns
      * @return array[]
      */
     public function getColumns()
@@ -17,20 +17,21 @@ class OrderStatusTable extends CoreTable
                 'title' => __('avored-admin::system.comms.id'),
                 'sortable' => true
             ],
-            'name' => [
-                'key' => 'name',
-                'title' => __('avored-admin::system.comms.name'),
-                'sortable' => true
+            'payment_option' => [
+                'key' => 'payment_option',
+                'title' => __('avored-admin::system.comms.payment_option'),
             ],
-            'is_default' => [
-                'key' => 'slug',
-                'title' => __('avored-admin::system.comms.is_default')
+           
+            'shipping_option' => [
+                'key' => 'shipping_option',
+                'title' => __('avored-admin::system.comms.shipping_option'),
             ],
+           
             'action' => [
                 'key' => 'action',
                 'title' => __('avored-admin::system.comms.action'),
                 'callable' => function ($model) {
-                    return view('avored-admin::order.order-status._action')
+                    return view('avored-admin::order.order._action')
                         ->with('model', $model);
                 }
             ]

@@ -9,6 +9,7 @@ use AvoRed\Framework\Cms\Controllers\PageController;
 use AvoRed\Framework\Cms\Controllers\MenuController;
 
 use AvoRed\Framework\Order\Controllers\OrderStatusController;
+use AvoRed\Framework\Order\Controllers\OrderController;
 
 use AvoRed\Framework\User\Controllers\LoginController;
 use AvoRed\Framework\User\Controllers\UserGroupController;
@@ -80,18 +81,21 @@ Route::middleware(['web', 'admin.auth', 'permission', 'currency'])
         /******** CMS ROUTES  *********/
         Route::resource('page', PageController::class)
             ->except('show');
-
-
-        /******** CMS ROUTES  *********/
-        Route::resource('user-group', UserGroupController::class)
-            ->except('show');
         Route::resource('menu', MenuController::class)
             ->except('show');
+
+
+        /******** USER ROUTES  *********/
+        Route::resource('user-group', UserGroupController::class)
+            ->except('show');
+        
 
 
         /******** ORDER ROUTES  *********/
         Route::resource('order-status', OrderStatusController::class)
             ->except('show');
+        Route::resource('order', OrderController::class)
+            ->only('index', 'show');
 
         /******** USERS ROUTES  *********/
         Route::resource('role', RoleController::class)
