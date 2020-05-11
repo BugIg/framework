@@ -2,9 +2,15 @@
 
 namespace AvoRed\Framework\System\Console;
 
+use AvoRed\Framework\Order\Models\OrderStatus;
+use AvoRed\Framework\System\Models\Currency;
+use AvoRed\Framework\System\Models\Language;
 use AvoRed\Framework\User\Models\Role;
+use AvoRed\Framework\User\Models\UserGroup;
 use Illuminate\Console\Command;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Schema;
 
 class InstallCommand extends Command
 {
@@ -45,10 +51,10 @@ class InstallCommand extends Command
 //        }
         $roleData = ['name' => Role::ADMIN];
         Role::create($roleData);
-//        $this->createCurrency();
-//        $this->createLanguage();
-//        $this->createDefaultUserGroup();
-//        $this->createOrderStatus();
+       $this->createCurrency();
+       $this->createLanguage();
+       $this->createDefaultUserGroup();
+       $this->createOrderStatus();
 //        $this->alterUserTable();
 //
         $this->call('avored:admin:make');
@@ -68,7 +74,7 @@ class InstallCommand extends Command
             'conversation_rate' => 1,
             'status' => 'ENABLED',
         ];
-        $this->currencyRepository->create($data);
+        Currency::create($data);
     }
 
     /**
@@ -81,7 +87,7 @@ class InstallCommand extends Command
             'name' => 'Default Group',
             'is_default' => 1,
         ];
-        $this->userGroupRepository->create($data);
+        UserGroup::create($data);
     }
 
     /**
@@ -90,11 +96,11 @@ class InstallCommand extends Command
      */
     public function createOrderStatus()
     {
-        $defaultStatus = $this->orderStatusRepository->create(['name' => 'Pending']);
+        $defaultStatus = OrderStatus::create(['name' => 'Pending']);
         $defaultStatus->is_default = 1;
         $defaultStatus->save();
-        $this->orderStatusRepository->create(['name' => 'Processing']);
-        $this->orderStatusRepository->create(['name' => 'Completed']);
+        OrderStatus::create(['name' => 'Processing']);
+        OrderStatus::create(['name' => 'Completed']);
     }
 
     /**
@@ -108,7 +114,7 @@ class InstallCommand extends Command
             'code' => 'en',
             'is_default' => 1,
         ];
-        $this->languageRepository->create($data);
+        Language::create($data);
     }
 
     /**

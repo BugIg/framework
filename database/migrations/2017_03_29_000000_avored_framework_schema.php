@@ -233,6 +233,17 @@ class AvoredFrameworkSchema extends Migration
             $table->foreign('category_id')->references('id')->on($tablePrefix .  'categories')->onDelete('cascade');
         });
 
+        Schema::create($tablePrefix . 'countries', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name')->nullable()->default(null);
+            $table->string('code')->nullable()->default(null);
+            $table->string('phone_code')->nullable()->default(null);
+            $table->string('currency_code')->nullable()->default(null);
+            $table->string('currency_symbol')->nullable()->default(null);
+            $table->string('lang_code')->nullable()->default(null);
+            $table->timestamps();
+        });
+
         Schema::create($tablePrefix . 'addresses', function (Blueprint $table) use ($tablePrefix) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
@@ -282,16 +293,7 @@ class AvoredFrameworkSchema extends Migration
             $table->foreign('product_id')->references('id')->on($tablePrefix . 'products');
         });
 
-        Schema::create($tablePrefix . 'countries', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name')->nullable()->default(null);
-            $table->string('code')->nullable()->default(null);
-            $table->string('phone_code')->nullable()->default(null);
-            $table->string('currency_code')->nullable()->default(null);
-            $table->string('currency_symbol')->nullable()->default(null);
-            $table->string('lang_code')->nullable()->default(null);
-            $table->timestamps();
-        });
+        
 
         $path = __DIR__.'/../../assets/countries.json';
         $json = json_decode(file_get_contents($path), true);
@@ -329,7 +331,7 @@ class AvoredFrameworkSchema extends Migration
         Schema::dropIfExists($tablePrefix . 'admin_password_resets');
         Schema::dropIfExists($tablePrefix . 'categories');
         Schema::dropIfExists($tablePrefix . 'languages');
-        Schema::dropIfExists($tablePrefix . 'countries');
+        
         Schema::dropIfExists($tablePrefix . 'currencies');
         Schema::dropIfExists($tablePrefix . 'pages');
 
@@ -348,5 +350,8 @@ class AvoredFrameworkSchema extends Migration
         Schema::dropIfExists($tablePrefix . 'products');
         Schema::dropIfExists($tablePrefix . 'addresses');
         Schema::dropIfExists($tablePrefix . 'orders');
+
+
+        Schema::dropIfExists($tablePrefix . 'countries');
     }
 }

@@ -35,5 +35,8 @@ Route::prefix($baseFrontUrl)
         Route::post('order', [OrderController::class, 'place'])
             ->name('order.place');
 
+        Route::post('order', [OrderController::class, 'successful'])
+            ->name('order.successful');
+
 
     });

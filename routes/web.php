@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 $baseAdminUrl = config('avored.admin_url');
 
-Route::middleware(['web', 'currency', 'permission'])
+Route::middleware(['web'])
     ->prefix($baseAdminUrl)
     ->namespace('AvoRed\\Framework')
     ->name('admin.')
@@ -55,7 +55,7 @@ Route::middleware(['web', 'currency', 'permission'])
 
     });
 
-Route::middleware(['web', 'admin.auth', 'permission'])
+Route::middleware(['web', 'admin.auth', 'permission', 'currency'])
     ->prefix($baseAdminUrl)
     ->name('admin.')
     ->group(function () {
