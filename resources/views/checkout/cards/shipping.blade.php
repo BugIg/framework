@@ -1,4 +1,5 @@
-<div class="mt-6 hidden">
+<div class="hidden">
+<div class="mt-6">
     <h4 class="text-lg leading-6 font-medium text-gray-900">
         Shipping Information
     </h4>
@@ -122,4 +123,4 @@
        </div>
    </div>
 </div>
-
+</div>

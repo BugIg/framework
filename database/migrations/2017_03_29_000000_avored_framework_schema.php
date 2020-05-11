@@ -24,6 +24,16 @@ class AvoredFrameworkSchema extends Migration
             $table->timestamps();
         });
 
+        Schema::create($tablePrefix . 'users', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+
         Schema::create($tablePrefix . 'roles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable()->default(null);
@@ -223,6 +233,54 @@ class AvoredFrameworkSchema extends Migration
             $table->foreign('category_id')->references('id')->on($tablePrefix .  'categories')->onDelete('cascade');
         });
 
+        Schema::create($tablePrefix . 'addresses', function (Blueprint $table) use ($tablePrefix) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->enum('type', ['SHIPPING', 'BILLING']);
+            $table->string('first_name')->nullable()->default(null);
+            $table->string('last_name')->nullable()->default(null);
+            $table->string('company_name')->nullable()->default(null);
+            $table->string('address1')->nullable()->default(null);
+            $table->string('address2')->nullable()->default(null);
+            $table->string('postcode')->nullable()->default(null);
+            $table->string('city')->nullable()->default(null);
+            $table->string('state')->nullable()->default(null);
+            $table->unsignedBigInteger('country_id')->nullable()->default(null);
+            $table->string('phone')->nullable()->default(null);
+            $table->timestamps();
+            $table->foreign('user_id')->references('id')->on($tablePrefix .  'users')->onDelete('cascade');
+            $table->foreign('country_id')->references('id')->on($tablePrefix . 'countries')->onDelete('cascade');
+        });
+
+        Schema::create($tablePrefix . 'orders', function (Blueprint $table) use ($tablePrefix) {
+            $table->bigIncrements('id');
+            $table->string('shipping_option');
+            $table->string('payment_option');
+            $table->unsignedBigInteger('order_status_id');
+            $table->unsignedBigInteger('currency_id')->nullable()->default(null);
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('shipping_address_id')->nullable();
+            $table->unsignedBigInteger('billing_address_id')->nullable();
+            $table->string('track_code')->nullable()->default(null);
+            $table->timestamps();
+
+            $table->foreign('currency_id')->references('id')->on($tablePrefix . 'currencies');
+            $table->foreign('shipping_address_id')->references('id')->on($tablePrefix . 'addresses');
+            $table->foreign('billing_address_id')->references('id')->on($tablePrefix . 'addresses');
+            $table->foreign('order_status_id')->references('id')->on($tablePrefix . 'order_statuses');
+        });
+
+        Schema::create($tablePrefix . 'order_products', function (Blueprint $table) use ($tablePrefix) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('order_id');
+            $table->decimal('qty', 11, 6);
+            $table->decimal('price', 11, 6);
+            $table->decimal('tax_amount', 11, 6);
+            $table->timestamps();
+            $table->foreign('order_id')->references('id')->on($tablePrefix . 'orders');
+            $table->foreign('product_id')->references('id')->on($tablePrefix . 'products');
+        });
 
         Schema::create($tablePrefix . 'countries', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -286,6 +344,9 @@ class AvoredFrameworkSchema extends Migration
         Schema::dropIfExists($tablePrefix . 'menus');
 
         Schema::dropIfExists($tablePrefix . 'category_product');
+        Schema::dropIfExists($tablePrefix . 'order_products');
         Schema::dropIfExists($tablePrefix . 'products');
+        Schema::dropIfExists($tablePrefix . 'addresses');
+        Schema::dropIfExists($tablePrefix . 'orders');
     }
 }

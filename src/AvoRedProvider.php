@@ -7,6 +7,7 @@ use AvoRed\Framework\System\Composers\NavComposer;
 use AvoRed\Framework\System\Console\AdminMakeCommand;
 use AvoRed\Framework\System\Console\InstallCommand;
 use AvoRed\Framework\System\Middleware\AdminAuth;
+use AvoRed\Framework\System\Middleware\Currency;
 use AvoRed\Framework\System\Middleware\RedirectIfAdminAuth;
 use AvoRed\Framework\User\Middleware\Permission;
 use Illuminate\Support\Facades\View;
@@ -130,6 +131,7 @@ class AvoRedProvider extends ServiceProvider
         $router->aliasMiddleware('admin.auth', AdminAuth::class);
         $router->aliasMiddleware('admin.guest', RedirectIfAdminAuth::class);
         $router->aliasMiddleware('permission', Permission::class);
+        $router->aliasMiddleware('currency', Currency::class);
     }
 
     /**

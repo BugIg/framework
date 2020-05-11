@@ -11,6 +11,8 @@ Checkout
     :addresses="{{ $addresses }}"
 inline-template>
     <div>
+    <form id="checkout-form" method="post" action="{{ route('avored.order.place') }}">
+        @csrf
         <div class="flex">
             <div class="w-1/2">
                 @include('avored::checkout.cards.user')
@@ -19,7 +21,8 @@ inline-template>
             </div>    
             <div class="w-1/2 ml-5">
 
-                @include('avored::checkout.cards.payment')
+                @include('avored::checkout.cards.payment-options')
+                @include('avored::checkout.cards.shipping-options')
                 @include('avored::checkout.cards.cart')
 
                 
@@ -28,11 +31,12 @@ inline-template>
 
         <!-- PLACE ORDER BUTTON -->
         <div class="mt-5 flex justify-end items-end">
-            <a href="{{ route('avored.checkout.show') }}" 
+            <button type="button" @click="handleSubmit" 
                 class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                 Place Order
-            </a>
+            </button>
         </div>
+        </form>
     </div>
 </checkout-page>
 @endsection

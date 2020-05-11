@@ -1,4 +1,4 @@
-<div class="flex font-semibold border-b border-gray-200 pb-5">
+<div class="flex mt-6 font-semibold border-b border-gray-200 pb-5">
     <div class="w-9/12">
         Name
     </div>
