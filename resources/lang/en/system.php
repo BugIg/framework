@@ -37,6 +37,7 @@ return [
 
     'comms' => [
         'basic-info' => 'Basic Information',
+        
         'identifier' => 'Identifier',
         'is_default' => 'Is Default',
         'options' => 'Options',
@@ -88,18 +89,30 @@ return [
         'destroy' => 'Delete',
         'previous' => 'Previous',
         'next' => 'Next',
+        'view' => 'View',
         'cancel' => 'Cancel',
         'paginator-info' => 'Showing <span class="font-medium">1</span> to<span class="font-medium"> :perPage</span> of<span class="font-medium"> :total</span> results',
         'create-title' => 'Create :attribute',
         'edit-title' => 'Edit :attribute',
         'title' => ':attribute',
-        'general_site_name' => 'Site Name'
+        'general_site_name' => 'Site Name',
+        'created_at' => 'Created at',
+        'phone' => 'Phone',
+        'company_name' => 'Company Name',
+        'address1' => 'Address1',
+        'address2' => 'Address2',
+        'city' => 'City',
+        'state' => 'State',
+        'country' => 'Country',
+        'postcode' => 'Postcode',
+
     ],
 
     'terms' => [
         'menu' => 'Menu',
         'configuration' => 'Configuration',
-        'product' => 'Product'
+        'product' => 'Product',
+        'order' => 'Order'
     ],
     'dashboard' => [
         'title' => 'Dashboard'

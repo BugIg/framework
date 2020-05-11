@@ -5,6 +5,7 @@ namespace AvoRed\Framework\Order\Models;
 use AvoRed\Framework\Support\BaseModel;
 use AvoRed\Framework\System\Models\Currency;
 use AvoRed\Framework\User\Models\Address;
+use AvoRed\Framework\User\Models\User;
 
 class Order extends BaseModel
 {
@@ -38,9 +39,7 @@ class Order extends BaseModel
      */
     public function user()
     {
-        $userClass = config('avored.model.user');
-
-        return $this->belongsTo($userClass);
+        return $this->belongsTo(User::class);
     }
 
     /**
