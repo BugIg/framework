@@ -24,6 +24,7 @@ class AvoRedProvider extends ServiceProvider
         \AvoRed\Framework\Support\Providers\CartServiceProvider::class,
         \AvoRed\Framework\Support\Providers\ComponentProvider::class,
         \AvoRed\Framework\Support\Providers\MenuProvider::class,
+        \AvoRed\Framework\Support\Providers\ModuleProvider::class,
         \AvoRed\Framework\Support\Providers\PaymentProvider::class,
         \AvoRed\Framework\Support\Providers\PermissionProvider::class,
         \AvoRed\Framework\Support\Providers\ShippingProvider::class,

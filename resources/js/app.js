@@ -10,7 +10,13 @@
 //     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 // }
 
+import AvoRed from './avored'
+
+
 window.Vue = require('vue');
+window.AvoRed = AvoRed
+
+
 
 import CKEditor from '@ckeditor/ckeditor5-vue'
 Vue.use(CKEditor)
