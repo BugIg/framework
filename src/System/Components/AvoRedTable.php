@@ -68,7 +68,7 @@ class AvoRedTable extends Component
     public function value($row, $column)
     {
         $key = $column['key'];
-        return $row->{$key};
+        return $row->{$key} ?? '';
     }
 
     public function isSortable($col)
