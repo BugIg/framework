@@ -219,5 +219,16 @@ class MenuProvider extends ServiceProvider
                 ->route('avored.checkout.show');
         });
 
+        Menu::make('login', function (MenuItem $menu) {
+            $menu->label('Login')
+                ->type(MenuItem::FRONT)
+                ->route('avored.login');
+        });
+        Menu::make('register', function (MenuItem $menu) {
+            $menu->label('Register')
+                ->type(MenuItem::FRONT)
+                ->route('avored.register');
+        });
+
     }
 }

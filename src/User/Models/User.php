@@ -3,10 +3,11 @@
 namespace AvoRed\Framework\User\Models;
 
 use AvoRed\Framework\Support\BaseModel;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Notifications\Notifiable;
 
 class User extends BaseModel
 {
+    use Notifiable;
    /**
      * The attributes that are mass assignable.
      *

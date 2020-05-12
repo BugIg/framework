@@ -7,52 +7,20 @@
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline">
-              @foreach ($menus as $menu)
-                <a href="{{ route($menu['route'], $menu['params']) }}" 
-                  class="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-red-900 focus:outline-none focus:text-white focus:bg-red-700">
-                  {{ $menu['name'] }}
-                </a>
-              @endforeach
+              
               
             </div>
           </div>
         </div>
         <div class="hidden md:block">
-          <div class="ml-4 flex items-center md:ml-6">
-            <a href="{{ route('admin.dashboard') }}"
-              class="text-white"
-              target="_blank"
-            >
-              Admin
-            </a>
-
-            <!-- Profile dropdown -->
-            <div class="ml-3 relative">
-              <div>
-                <button class="max-w-xs flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid" id="user-menu" aria-label="User menu" aria-haspopup="true">
-                  <img class="h-8 w-8 rounded-full" src="https://placehold.it/100x100" alt="" />
-                </button>
-              </div>
-              <!--
-                Profile dropdown panel, show/hide based on dropdown state.
-
-                Entering: "transition ease-out duration-100"
-                  From: "transform opacity-0 scale-95"
-                  To: "transform opacity-100 scale-100"
-                Leaving: "transition ease-in duration-75"
-                  From: "transform opacity-100 scale-100"
-                  To: "transform opacity-0 scale-95"
-              -->
-              <div class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-                <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                  <a href="#" class="block px-4 py-2 text-sm text-red-700 hover:bg-red-100" role="menuitem">Your Profile</a>
-                  <a href="#" class="block px-4 py-2 text-sm text-red-700 hover:bg-red-100" role="menuitem">Settings</a>
-                  <a href="#" class="block px-4 py-2 text-sm text-red-700 hover:bg-red-100" role="menuitem">Sign out</a>
-                </div>
-              </div>
-            </div>
-          </div>
+            @foreach ($menus as $menu)
+                <a href="{{ route($menu['route'], $menu['params']) }}" 
+                  class="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-red-900 focus:outline-none focus:text-white focus:bg-red-700">
+                  {{ $menu['name'] }}
+                </a>
+            @endforeach
         </div>
+
         <div class="-mr-2 flex md:hidden">
           <!-- Mobile menu button -->
           <button class="inline-flex items-center justify-center p-2 rounded-md text-red-400 hover:text-white hover:bg-red-700 focus:outline-none focus:bg-red-700 focus:text-white">

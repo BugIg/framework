@@ -1,9 +1,9 @@
 <?php
 namespace AvoRed\Framework\Support;
 
-use Illuminate\Database\Eloquent\Model;
 use AvoRed\Framework\Support\Traits\BaseModelTrait;
 use Illuminate\Support\Collection;
+use Illuminate\Foundation\Auth\User as Model;
 
 class BaseModel extends Model
 {

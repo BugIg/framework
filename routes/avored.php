@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AvoRed\LoginController;
+use App\Http\Controllers\AvoRed\RegisterController;
 use App\Http\Controllers\AvoRed\HomeController;
 use App\Http\Controllers\AvoRed\CategoryController;
 use App\Http\Controllers\AvoRed\ProductController;
@@ -13,6 +15,15 @@ $baseFrontUrl = config('avored.front_url');
 Route::prefix($baseFrontUrl)
     ->name('avored.')
     ->group(function () {
+
+        Route::get('login', [LoginController::class, 'showLoginForm'])
+            ->name('login');
+        Route::post('login', [LoginController::class, 'login']);
+
+        Route::get('register', [RegisterController::class, 'showRegisterForm'])
+            ->name('register');
+        Route::post('register', [RegisterController::class, 'register']); 
+        
 
         Route::get('', [HomeController::class, 'index'])
             ->name('home');

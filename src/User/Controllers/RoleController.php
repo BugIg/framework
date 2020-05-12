@@ -24,6 +24,7 @@ class RoleController extends BaseController
     {
         $roleTable = new RoleTable(Role::class);
 
+
         return view('avored-admin::user.role.index')
             ->with('roleTable', $roleTable);
     }

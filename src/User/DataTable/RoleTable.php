@@ -20,7 +20,7 @@ class RoleTable extends CoreTable
                 'sortable' => true
             ],
             'description' => [
-                'key' => 'slug',
+                'key' => 'description',
                 'title' => __('avored-admin::system.comms.description')
             ],
             'action' => [
