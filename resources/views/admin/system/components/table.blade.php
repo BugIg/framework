@@ -4,7 +4,7 @@
             <table class="w-full">
                 <thead class="bg-gray-500">
                     <tr>
-                        @foreach($columns as $key => $column)
+                        @foreach($columns() as $key => $column)
                             <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
                                     @if ($isSortable($column) && $sortOrder($column) === 'asc')
 
@@ -36,7 +36,7 @@
                 <tbody>
                     @if ($items->count() <= 0)
                         <tr class="bg-white">
-                            <td colspan="{{ count($columns) }}"
+                            <td colspan="{{ count($columns()) }}"
                                 class="py-24  text-center"
                             >
                                 <svg class="h-6 w-6 text-gray-600 inline-block" stroke="currentColor" fill="none" viewBox="0 0 24 24">
