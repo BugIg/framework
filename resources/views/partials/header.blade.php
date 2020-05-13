@@ -14,10 +14,15 @@
         </div>
         <div class="hidden md:block">
             @foreach ($menus as $menu)
-                <a href="{{ route($menu['route'], $menu['params']) }}" 
-                  class="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-red-900 focus:outline-none focus:text-white focus:bg-red-700">
-                  {{ $menu['name'] }}
-                </a>
+                @php
+                    $menuObj = Menu::getMenuItem($menu['key']);
+                @endphp
+                @if ($menuObj === null || (isset($menuObj) && $menuObj->isVisible()))
+                  <a href="{{ route($menu['route'], $menu['params']) }}" 
+                    class="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-red-900 focus:outline-none focus:text-white focus:bg-red-700">
+                    {{ $menu['name'] }}
+                  </a>
+                @endif
             @endforeach
         </div>
 

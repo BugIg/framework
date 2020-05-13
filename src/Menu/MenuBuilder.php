@@ -47,6 +47,26 @@ class MenuBuilder
     }
 
     /**
+     * Return Menu Object.
+     * @var string
+     * @return \AvoRed\Framework\Menu\Menu
+     */
+    public function getMenuItem($key)
+    {
+        
+        return $this->collection->get($key);
+        return $this->collection->first(function($menu)  use ($key) {
+
+            if ($menu->hasSubMenu()) {
+                foreach ($menu->subMenu($menu->key()) as $subMenu) {
+                  
+                   return $subMenu->key() == $key; 
+                }
+            }
+        });
+    }
+
+    /**
      * Return all available Menu in Menu.
      * @param void
      * @return \Illuminate\Support\Collection
@@ -103,6 +123,7 @@ class MenuBuilder
                 $menu = new stdClass;
                 $menu->id = $i;
                 $menu->name = $item->label;
+                $menu->key = $item->key();
                 $menu->route = $item->route();
                 $menu->params = $item->params();
                 $menu->url = route($item->route(), $item->params());

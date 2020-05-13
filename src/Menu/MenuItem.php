@@ -43,7 +43,12 @@ class MenuItem implements MenuInterface
     /**
      * @var string
      */
-    public $key;
+    public $key;  
+    
+    /**
+     * @var string
+     */
+    public $isVisible;
 
     /**
      * @var string
@@ -136,6 +141,26 @@ class MenuItem implements MenuInterface
         }
 
         return $this->routeName;
+    } 
+    
+    /**
+     * Get/Set Admin Menu Is Visible Check
+     * @param mixed $isVisible
+     * @return mixed
+     */
+    public function isVisible(?callable $isVisible = null)
+    {
+        if (null !== $isVisible) {
+            $this->isVisible = $isVisible;
+
+            return $this;
+        }
+
+        if (is_callable($this->isVisible)) {
+            return call_user_func($this->isVisible);
+        }
+
+        return true;
     }
 
     /**

@@ -222,12 +222,18 @@ class MenuProvider extends ServiceProvider
         Menu::make('login', function (MenuItem $menu) {
             $menu->label('Login')
                 ->type(MenuItem::FRONT)
-                ->route('avored.login');
+                ->route('avored.login')
+                ->isVisible(function () {
+                    return !auth()->check();
+                });
         });
         Menu::make('register', function (MenuItem $menu) {
             $menu->label('Register')
                 ->type(MenuItem::FRONT)
-                ->route('avored.register');
+                ->route('avored.register')
+                ->isVisible(function () {
+                    return !auth()->check();
+                });
         });
 
     }

@@ -36,7 +36,7 @@
                 <tbody>
                     @if ($items->count() <= 0)
                         <tr class="bg-white">
-                            <td colspan="{{ count(call_user_func($columns)) }}"
+                            <td colspan="{{ count((is_callable($columns)) ? call_user_func($columns) : $columns) }}"
                                 class="py-24  text-center"
                             >
                                 <svg class="h-6 w-6 text-gray-600 inline-block" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -46,7 +46,7 @@
                             </td>
                         </tr>
                     @else
-                        @foreach($items() as $key => $row)
+                        @foreach($items as $key => $row)
                             <tr class="{{ ($loop->index % 2) ? 'bg-gray-100' : 'bg-white' }}">
                                 @foreach($columns as $colId => $col)
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">

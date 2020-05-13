@@ -167,6 +167,7 @@
         methods: {
             moveRightOnclick(menuItem, type = 'category') {
                 let menu = {};
+              
                 if (type === 'category') {
                     menu = {
                         name: menuItem.name,
@@ -180,7 +181,7 @@
                 if (type === 'frontMenu') {
                     menu = {
                         name: menuItem.name,
-                        key: 'front-menu-' + menuItem.key,
+                        key: menuItem.key,
                         route: menuItem.route,
                         params: menuItem.params
                     }
