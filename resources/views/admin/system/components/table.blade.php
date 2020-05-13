@@ -46,7 +46,10 @@
                             </td>
                         </tr>
                     @else
-                        @foreach($items as $key => $row)
+                        @php
+                            $models = is_callable($items) ? $items() : $items;
+                        @endphp
+                        @foreach($models as $key => $row)
                             <tr class="{{ ($loop->index % 2) ? 'bg-gray-100' : 'bg-white' }}">
                                 @foreach($columns as $colId => $col)
                                     <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
