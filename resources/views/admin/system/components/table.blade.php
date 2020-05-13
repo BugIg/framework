@@ -36,7 +36,7 @@
                 <tbody>
                     @if ($items->count() <= 0)
                         <tr class="bg-white">
-                            <td colspan="{{ count($columns()) }}"
+                            <td colspan="{{ count($columns) }}"
                                 class="py-24  text-center"
                             >
                                 <svg class="h-6 w-6 text-gray-600 inline-block" stroke="currentColor" fill="none" viewBox="0 0 24 24">
