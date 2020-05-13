@@ -35,6 +35,16 @@ class Manager
      */
     public function put($shipping)
     {
-        $this->collection->push($shipping);
+        $this->collection->put($shipping->identifier(), $shipping);
+    } 
+    
+    /**
+     * Gut Shipping class to an collection Collection.
+     * @return mixed
+     */
+    public function get($identifier)
+    {
+        return $this->collection->get($identifier);
     }
+
 }
