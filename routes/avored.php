@@ -8,6 +8,7 @@ use App\Http\Controllers\AvoRed\ProductController;
 use App\Http\Controllers\AvoRed\CartController;
 use App\Http\Controllers\AvoRed\CheckoutController;
 use App\Http\Controllers\AvoRed\OrderController;
+use App\Http\Controllers\AvoRed\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 $baseFrontUrl = config('avored.front_url');
@@ -48,6 +49,15 @@ Route::prefix($baseFrontUrl)
 
         Route::get('order', [OrderController::class, 'successful'])
             ->name('order.successful');
+
+        Route::middleware('auth')
+            ->name('account.')
+            ->prefix('account')
+            ->group(function () {
+
+                Route::get('profile', [ProfileController::class, 'show'])
+                    ->name('profile.show');
+            });
 
 
     });

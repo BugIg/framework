@@ -235,6 +235,14 @@ class MenuProvider extends ServiceProvider
                     return !auth()->check();
                 });
         });
+        Menu::make('profile-show', function (MenuItem $menu) {
+            $menu->label('My Account')
+                ->type(MenuItem::FRONT)
+                ->route('avored.account.profile.show')
+                ->isVisible(function () {
+                    return auth()->check();
+                });
+        });
 
     }
 }
