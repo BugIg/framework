@@ -1,0 +1,5 @@
+name: AvoRed DummyModule
+identifier: avored-dummy-module
+status: active
+description: AvoRed DummyModule Module
+namespace: AvoRed\DummyModule\

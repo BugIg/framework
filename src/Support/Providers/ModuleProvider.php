@@ -2,7 +2,7 @@
 
 namespace AvoRed\Framework\Support\Providers;
 
-use AvoRed\Framework\Modules\Manager;
+use AvoRed\Framework\Modules\ModuleManager;
 use Illuminate\Support\ServiceProvider;
 use AvoRed\Framework\Support\Facades\Module;
 
@@ -29,7 +29,7 @@ class ModuleProvider extends ServiceProvider
     {
         $this->registerModuleConsoleProvider();
         $this->registerModule();
-        $this->app->alias('module', Manager::class);
+        $this->app->alias('module', ModuleManager::class);
     }
 
     /**
@@ -42,7 +42,10 @@ class ModuleProvider extends ServiceProvider
         $this->app->singleton(
             'module',
             function ($app) {
-                return new Manager($app['files']);
+                $manager =  new ModuleManager($app['files']);
+                //$manager->setBasePath(base_path('modules'));
+
+                return $manager;
             }
         );
     }
@@ -64,6 +67,6 @@ class ModuleProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['module', Manager::class];
+        return ['module', ModuleManager::class];
     }
 }

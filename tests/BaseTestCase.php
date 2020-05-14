@@ -32,6 +32,7 @@ abstract class BaseTestCase extends OrchestraTestCase
 
         $this->withFactories(__DIR__.('/../database/factories'));
         $this->setUpDatabase();
+        $this->testModulePath = __DIR__.('/modules');
         Notification::fake();
     }
 
@@ -97,13 +98,16 @@ abstract class BaseTestCase extends OrchestraTestCase
             //'Image' => 'AvoRed\\Framework\\Image\\Facade',
 //            'Breadcrumb' => \AvoRed\Framework\Support\Facades\Breadcrumb::class,
             'Menu' => \AvoRed\Framework\Support\Facades\Menu::class,
+            'Module' => \AvoRed\Framework\Support\Facades\Module::class,
+            'Payment' => \AvoRed\Framework\Support\Facades\Payment::class,
+            'Shipping' => \AvoRed\Framework\Support\Facades\Shipping::class,
             'Tab' => \AvoRed\Framework\Support\Facades\Tab::class,
 //            'Module' => \AvoRed\Framework\Support\Facades\Module::class,
 //            'Permission' => \AvoRed\Framework\Support\Facades\Permission::class,
 //            'GraphQL' => \Rebing\GraphQL\Support\Facades\GraphQL::class,
             //'Payment' => 'AvoRed\\Framework\\Payment\\Facade',
             //'Permission' => 'AvoRed\\Framework\\Permission\\Facade',
-            //'Shipping' => 'AvoRed\\Framework\\Shipping\\Facade',
+            // 'Shipping' => 'AvoRed\\Framework\\Shipping\\Facade',
 
             //'Theme' => 'AvoRed\\Framework\\Theme\\Facade',
             //'Widget' => 'AvoRed\\Framework\\Widget\\Facade'

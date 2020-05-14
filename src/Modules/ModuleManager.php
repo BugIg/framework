@@ -13,13 +13,19 @@ use League\Flysystem\Filesystem as Flysystem;
 use League\Flysystem\Adapter\Local as LocalAdapter;
 use Symfony\Component\Finder\Iterator\RecursiveDirectoryIterator;
 
-class Manager
+class ModuleManager
 {
     /**
      * existing module list.
      * @var array
      */
     public $moduleList;
+
+    /**
+     * base path for the modules.
+     * @var string $basePath
+     */
+    public $basePath;
 
     /**
      * existing files list.
@@ -40,6 +46,7 @@ class Manager
     public function __construct(Filesystem $files)
     {
         $this->files = $files;
+        $this->setBasePath(base_path('modules'));
         $this->moduleList = Collection::make([]);
     }
 
@@ -62,9 +69,11 @@ class Manager
      */
     protected function loadModules()
     {
-        $modulePath = base_path('modules');
+        $modulePath = $this->getBasePath();
+       
 
         if (File::exists($modulePath)) {
+           
             $iterator = new RecursiveIteratorIterator(
                 new RecursiveDirectoryIterator($modulePath, RecursiveDirectoryIterator::FOLLOW_SYMLINKS)
             );
@@ -120,7 +129,7 @@ class Manager
      * Sort module based on their dependency declarations
      * @return \Illuminate\Support\Collection
      */
-    public function sortByDependency(Collection $moduleList)
+    public function sortByDependency($moduleList)
     {
         $modules = $moduleList->sort(function ($moduleA, $moduleB) {
             if (count($moduleA->dependencies()) === 0 && count($moduleA->dependencies()) === 0) {
@@ -234,5 +243,26 @@ class Manager
     protected function pathSlashFix($path)
     {
         return (DIRECTORY_SEPARATOR === '\\') ? str_replace('/', '\\', $path) : str_replace('\\', '/', $path);
+    }
+
+    /**
+     * Get the base path for the modules
+      * @return string
+     */
+    private function getBasePath()
+    {
+        return $this->basePath;
+    }
+
+    /**
+     * Set the base path for the modules
+     * @param string $path
+     * @return self $this
+     */
+    public function setBasePath($path)
+    {
+        $this->basePath = $path;
+
+        return $this;
     }
 }
