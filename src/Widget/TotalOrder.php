@@ -21,7 +21,7 @@ class TotalOrder
      * @var string $view
      */
 
-    protected $type = "cms";
+    protected $type = WidgetManager::WIDGET_TYPES_CMS;
 
     /**
      * Widget unique identifier

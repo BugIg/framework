@@ -11,6 +11,8 @@ class WidgetManager
      */
     protected $collection;
 
+    public const WIDGET_TYPES_CMS = 'cms';
+
     /**
      * Construct for the Widget manager
      * @return void
@@ -24,12 +26,12 @@ class WidgetManager
      * Add Widget Class to a collection
      * @param string $key
      * @param \AvoRed\Framework\Widget\Widget $widget
-     * @return \AvoRed\Framework\Widget\Widget $widget
+     * @return self $this
      */
     public function make($key, $widget)
     {
         $this->collection->put($key, $widget);
-        return $widget;
+        return $this;
     }
 
     /**
