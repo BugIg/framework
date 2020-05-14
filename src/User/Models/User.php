@@ -2,6 +2,7 @@
 
 namespace AvoRed\Framework\User\Models;
 
+use AvoRed\Framework\Order\Models\Order;
 use AvoRed\Framework\Support\BaseModel;
 use Illuminate\Notifications\Notifiable;
 
@@ -29,6 +30,10 @@ class User extends BaseModel
     public function addresses()
     {
         return $this->hasMany(Address::class);
+    }
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 
 }

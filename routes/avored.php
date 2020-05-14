@@ -21,6 +21,9 @@ Route::prefix($baseFrontUrl)
             ->name('login');
         Route::post('login', [LoginController::class, 'login']);
 
+        Route::post('logout', [LoginController::class, 'logout'])
+        ->name('logout');
+
         Route::get('register', [RegisterController::class, 'showRegisterForm'])
             ->name('register');
         Route::post('register', [RegisterController::class, 'register']); 
@@ -57,6 +60,23 @@ Route::prefix($baseFrontUrl)
 
                 Route::get('profile', [ProfileController::class, 'show'])
                     ->name('profile.show');
+
+                Route::get('profile/edit', [ProfileController::class, 'edit'])
+                    ->name('profile.edit');
+                Route::put('profile', [ProfileController::class, 'update'])
+                    ->name('profile.update');
+
+                Route::get('profile/order', [ProfileController::class, 'order'])
+                    ->name('profile.order');
+                Route::get('profile/order/{order}', [ProfileController::class, 'orderView'])
+                    ->name('profile.order.view');
+
+                Route::get('profile/address', [ProfileController::class, 'address'])
+                    ->name('profile.address');
+                Route::get('profile/address/{address}', [ProfileController::class, 'addressEdit'])
+                    ->name('profile.address.edit');
+                Route::put('profile/address{address}', [ProfileController::class, 'addressUpdate'])
+                    ->name('profile.address.update');
             });
 
 
