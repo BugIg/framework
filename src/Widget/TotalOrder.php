@@ -1,6 +1,8 @@
 <?php
 namespace AvoRed\Framework\Widget;
 
+use AvoRed\Framework\Order\Models\Order;
+
 class TotalOrder
 {
     /**
@@ -68,7 +70,7 @@ class TotalOrder
      */
     public function with()
     {
-        $value = rand(1000, 5000);
+        $value = Order::count();
         
         return ['value' => $value];
     }

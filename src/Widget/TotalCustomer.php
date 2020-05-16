@@ -1,6 +1,7 @@
 <?php
 namespace AvoRed\Framework\Widget;
 
+use AvoRed\Framework\User\Models\User;
 use Illuminate\Support\Carbon;
 
 class TotalCustomer
@@ -91,7 +92,6 @@ class TotalCustomer
 
     private function getUserModel()
     {
-        $model = config('avored.model.user');
-        return new $model;
+        return new User;
     }
 }

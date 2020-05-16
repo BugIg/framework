@@ -37,7 +37,9 @@ return [
 
     'comms' => [
         'basic-info' => 'Basic Information',
-        
+        'total-order' => 'Total Order',
+        'total-customer' => 'Total Customer',
+        'total-revenue' => 'Total Revenue',
         'identifier' => 'Identifier',
         'is_default' => 'Is Default',
         'options' => 'Options',

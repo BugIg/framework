@@ -1,8 +1,13 @@
 <?php
 namespace AvoRed\Framework\Support\Providers;
 ;
+
+use AvoRed\Framework\Widget\TotalCustomer;
+use AvoRed\Framework\Widget\TotalOrder;
+use AvoRed\Framework\Widget\TotalRevenue;
 use AvoRed\Framework\Widget\WidgetManager;
 use Illuminate\Support\ServiceProvider;
+use AvoRed\Framework\Support\Facades\Widget;
 
 class WidgetProvider extends ServiceProvider
 {
@@ -57,11 +62,11 @@ class WidgetProvider extends ServiceProvider
      */
     protected function registerWidget()
     {
-        // $totalRevenue = new TotalRevenue;
-        // $totalCustomer = new TotalCustomer;
-        // $totalOrder = new TotalOrder;
-        // Widget::make($totalCustomer->identifier(), $totalCustomer);
-        // Widget::make($totalOrder->identifier(), $totalOrder);
-        // Widget::make($totalRevenue->identifier(), $totalRevenue);
+        $totalRevenue = new TotalRevenue;
+        $totalCustomer = new TotalCustomer;
+        $totalOrder = new TotalOrder;
+        Widget::make($totalCustomer->identifier(), $totalCustomer);
+        Widget::make($totalOrder->identifier(), $totalOrder);
+        Widget::make($totalRevenue->identifier(), $totalRevenue);
     }
 }
