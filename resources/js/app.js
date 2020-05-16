@@ -16,10 +16,15 @@ import AvoRed from './avored'
 window.Vue = require('vue');
 window.AvoRed = AvoRed
 
-
-
 import CKEditor from '@ckeditor/ckeditor5-vue'
 Vue.use(CKEditor)
+
+
+import { 
+    AvoRedInput
+  } from 'avored-components'
+
+Vue.component('avored-input', AvoRedInput)
 
 Vue.component('a-layout', require('../components/core/layout/AvoRedLayout').default)
 
@@ -30,7 +35,7 @@ Vue.component('avored-attribute-fields', () => import('../components/core/catalo
 
 Vue.component('avored-menu-builder', require('../components/core/cms/AvoRedMenuBuilder').default)
 Vue.component('avored-upload', require('../components/core/form/AvoRedUpload').default)
-Vue.component('a-input', require('../components/core/form/AvoRedInput').default)
+// Vue.component('a-input', require('../components/core/form/AvoRedInput').default)
 Vue.component('login-fields', require('../components/user/auth/LoginFields.vue').default)
 
 /**
