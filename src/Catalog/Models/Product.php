@@ -62,4 +62,13 @@ class Product extends BaseModel
     }
 
 
+    public function getMainImageUrlAttribute(): string
+    {
+        $mediaModel = ($this->images !== null) ? $this->images->first() : null;
+
+        if (isset($mediaModel->path->url)) {
+            return $mediaModel->path->url;
+        }
+        return 'https://placehold.it/250x250';
+    }
 }
