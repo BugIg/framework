@@ -4,6 +4,11 @@
 @tailwind components;
 
 @import "forms";
+
+.dropdown:hover > .dropdown-content {
+	display: block;
+}
+
 .brand {
     background-image: url(/vendor/avored/images/logo.svg);
     width: 100%;

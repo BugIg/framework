@@ -18,10 +18,29 @@
                     $menuObj = Menu::getMenuItem($menu['key']);
                 @endphp
                 @if ($menuObj === null || (isset($menuObj) && $menuObj->isVisible()))
-                  <a href="{{ route($menu['route'], $menu['params']) }}" 
-                    class="px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-red-900 focus:outline-none focus:text-white focus:bg-red-700">
-                    {{ $menu['name'] }}
-                  </a>
+                  <span class="dropdown">
+                    <a href="{{ route($menu['route'], $menu['params']) }}" 
+                      class="dropdown px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-red-900 focus:outline-none focus:text-white focus:bg-red-700">
+                      {{ $menu['name'] }}
+                    </a>
+                    @if (isset($menu['children']) && count($menu['children']) > 0)
+                      <ul class="dropdown-content absolute hidden text-gray-700 pt-1">
+                        @foreach ($menu['children'] as $subMenu)
+                          @php  
+                            $subMenuObj = Menu::getMenuItem($subMenu['key']);
+                          @endphp
+                          @if ($subMenuObj === null || (isset($subMenuObj) && $subMenuObj->isVisible()))
+                            <li>
+                              <a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" 
+                                href="{{ route($subMenu['route'], $subMenu['params']) }}" >
+                                {{ $subMenu['name'] }}
+                              </a>
+                            </li>
+                          @endif
+                        @endforeach
+                    </ul>
+                  @endif
+                </span>
                 @endif
             @endforeach
         </div>

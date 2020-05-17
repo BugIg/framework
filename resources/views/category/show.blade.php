@@ -8,13 +8,14 @@
 @section('content')
     <div>
     @foreach ($category->products as $product)
-        @if ($loop->index % 3 === 0 || $loop->first() === true)
-        <div class="w-full">
+        
+        @if ($loop->index % 3 === 0 || $loop->first === true)
+        <div class="w-full flex">
         @endif
 
-        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <div class="w-1/3 rounded overflow-hidden shadow-lg">
             <a href="{{ route('avored.product.show', $product->slug) }}">
-            <img class="w-full" src="https://placehold.it/250x250" alt="{{ $product->name }}">
+                <img class="w-full" src="https://placehold.it/250x250" alt="{{ $product->name }}">
             </a>
             <div class="px-6 py-4">
                 <div class="font-bold text-xl mb-2">{{ $product->name }}</div>
@@ -29,7 +30,7 @@
             </div>
         </div>
 
-        @if ($loop->index % 3 === 0 || $loop->first() === true)
+        @if ($loop->index % 3 === 0 || $loop->first === true)
         </div>
         @endif
     @endforeach

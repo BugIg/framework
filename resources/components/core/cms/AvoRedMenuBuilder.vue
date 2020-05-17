@@ -74,6 +74,8 @@
                                         </a>
                                     </div>
                                 </div>
+                        
+                                
                             </div>
                         </li>
                     </ul>
@@ -109,7 +111,20 @@
                                                     </span>
                                                 </div>
                                             </div>
+
+                                            <div class="ml-5 flex-shrink-0">
+                                                <a href="#"
+                                                class="hover:bg-gray-50 focus:outline-none focus:bg-gray-50"
+                                                @click.prevent="moveTrashOnClick(node)"
+                                                >
+                                                    <svg class="h-6 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                                        <path class="heroicon-ui" d="M8 6V4c0-1.1.9-2 2-2h4a2 2 0 012 2v2h5a1 1 0 010 2h-1v12a2 2 0 01-2 2H6a2 2 0 01-2-2V8H3a1 1 0 110-2h5zM6 8v12h12V8H6zm8-2V4h-4v2h4zm-4 4a1 1 0 011 1v6a1 1 0 01-2 0v-6a1 1 0 011-1zm4 0a1 1 0 011 1v6a1 1 0 01-2 0v-6a1 1 0 011-1z"/>
+                                                    </svg>
+                                                </a>
+                                            </div>
                                         </div>
+
+                                        
                                     </div>
                                 </Tree>
                             </li>
@@ -165,6 +180,10 @@
           }
         },
         methods: {
+            moveTrashOnClick(menu) {
+                const index = this.treeData.findIndex(ele => ele.key === menu.key)
+                this.treeData.splice(index, 1)
+            },
             moveRightOnclick(menuItem, type = 'category') {
                 let menu = {};
               
