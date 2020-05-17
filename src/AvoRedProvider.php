@@ -159,7 +159,7 @@ class AvoRedProvider extends ServiceProvider
     public function registerViewComposerData()
     {
         View::composer('avored-admin::layouts.admin', LayoutComposer::class);
-        View::composer('avored::layouts.app', NavComposer::class);
+        View::composer('layouts.app', NavComposer::class);
     }
 
    /**
