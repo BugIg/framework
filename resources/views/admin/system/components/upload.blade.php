@@ -1,7 +1,9 @@
 
 <div class="mt-1 sm:mt-0 sm:col-span-2 relative">
     <div class="max-w-lg flex rounded-md shadow-sm">
-        <avored-upload value="{{ $value }}" name="{{ $name }}" path="users">
+        <avored-upload 
+            value="{{ $value }}" 
+            name="{{ $name }}" path="users">
             
         </avored-upload>
     </div>

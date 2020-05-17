@@ -66,6 +66,13 @@ class TabProvider extends ServiceProvider
                 ->view('avored-admin::catalog.product._fields');
         });
 
+        Tab::put('catalog.product', function (TabItem $tab) {
+            $tab->key('catalog.product.images')
+                ->label('avored-admin::system.comms.image-tab-title')
+                ->description('avored-admin::catalog.product.image-tab-desc')
+                ->view('avored-admin::catalog.product._images');
+        });
+
         Tab::put('catalog.category', function (TabItem $tab) {
             $tab->key('catalog.category.info')
                 ->label('avored-admin::system.comms.basic-info')

@@ -13,8 +13,8 @@ class Attribute extends BaseModel
      * @var array
      */
     const DISPLAY_AS = [
-        'IMAGE' => 'Image',
-        'Text' => 'Text',
+        ['label' => 'Image', 'value'=> 'IMAGE'],
+        ['label' => 'Text', 'value'=> 'TEXT']
     ];
 
     /**

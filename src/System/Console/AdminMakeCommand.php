@@ -38,6 +38,7 @@ class AdminMakeCommand extends Command
         $role = Role::findAdminRole();
         $data['role_id'] = $role->id;
         $data['is_super_admin'] = 1;
+        $data['language'] = 'us_en';
         $data['password'] = bcrypt($data['password']);
         AdminUser::create($data);
 

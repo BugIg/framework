@@ -2,7 +2,7 @@
 @extends('avored-admin::layouts.admin')
 
 @section('pageTitle')
-    {{ __('avored-admin::user.admin-user.create-title') }}
+    {{ __('avored-admin::system.comms.create') . ' ' .__('avored-admin::system.terms.admin_user') }}
 @endsection
 
 @section('actions')

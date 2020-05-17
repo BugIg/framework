@@ -26,10 +26,16 @@
     label="avored-admin::system.comms.display_as"
     for="display_as"
 >
-    <x-avored-select
+    <avored-select 
+        name="display_as"
+        :options="{{ json_encode($displayAsOptions) }}"
+        value="{{ $attribute->display_as ?? '' }}"
+    ></avored-select>
+    
+    {{-- <x-avored-select
         name="display_as"
         :options="$displayAsOptions"
         :value="$currency->display_as ?? ''"
     >
-    </x-avored-select>
+    </x-avored-select> --}}
 </x-avored-field>

@@ -6,7 +6,7 @@
             </div>
             <input class="cursor-pointer p-12 z-20 absolute block opacity-0 top-0 left-0" 
                 @change="handleFiles($event)"
-                type="file" name="vacancyImageFiles" :multiple="multiple"
+                type="file" :multiple="multiple"
             />
           
             <div class="mt-3">
@@ -14,16 +14,12 @@
                 <div v-for="(file, index) in mediaCollection" :key="index">
                     <div class="rounded-md relative p-3 w-1/3 border">
                         <img class="h-24" :src="file.path.url" />
-                          <div class="hidden">
-                            
-
+                        <div class="hidden">
                             <input type="hidden" 
                                 v-if="!multiple"
-                                name="media[]" 
+                                :name="name" 
                                 v-model="file.id" />
                         </div>
-
-
                         <a href="#" @click.prevent="deleteMedia(file)">
                          <div class="absolute mr-1 mb-1 bottom-0 right-0">
                              <svg fill="fillColor" class="h-6 w-6 text-red-300" viewBox="0 0 24 24">
@@ -32,7 +28,6 @@
                          </div>
                         </a>
                     </div>
-                   
                 </div>
             </div>
         </div>
@@ -80,7 +75,6 @@
                 return 'media_id'
             },
             deleteMedia(file) {
-            
                 var app = this
                 axios.delete(urls.deleteUrl + file.id)
                     .then(function (response) {
@@ -115,8 +109,7 @@
                 }
             },
             dropHandler(e) {
-                e.preventDefault();
-                
+                e.preventDefault() 
             }
         },
         watch: {

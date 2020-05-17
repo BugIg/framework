@@ -15,13 +15,13 @@
     label="avored-admin::system.comms.category_id"
     for="categories[]"
 >
-    <x-avored-select
+    <avored-select
         name="categories[]"
-        :options="$categoryOptions"
-        multiple
-        :value="$product->categories ?? ''"
+        :options="{{ $categoryOptions }}"
+        :multiple="true"
+        :value="{{ $product->categories ?? ''  }}"
     >
-    </x-avored-select>
+    </avored-select>
 </x-avored-field>
 
 

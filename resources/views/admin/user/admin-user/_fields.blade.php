@@ -39,7 +39,7 @@
     for="email"
 >
 
-
+    
     <x-avored-input
         name="email"
         :value="$adminUser->email ?? ''"
@@ -80,44 +80,36 @@
     label="avored-admin::system.comms.image"
     for="upload"
 >
-    <x-avored-upload
-        name="image_path"
-        :value="$adminUser->media ?? ''"
-    >
-    </x-avored-upload>
+    <avored-upload 
+            name="media"
+            path="users"
+            :init-media-collection="{{ isset($adminUser->media) ?  json_encode($adminUser->media) : '{}' }}"
+            upload-url="{{ route('admin.upload.post') }}"
+    ></avored-upload>
+    
 </x-avored-field>
 
 <x-avored-field
     label="avored-admin::system.comms.role_id"
     for="role_id"
 >
-    <x-avored-select
+    <avored-select
         name="role_id"
-        :options="$roleOptions"
-        :value="$currency->role_id ?? ''"
+        :options="{{ json_encode($roleOptions) }}"
+        value="{{ $adminUser->role_id ?? '' }}"
     >
-    </x-avored-select>
+    </avored-select>
 </x-avored-field>
 
 <x-avored-field
     label="avored-admin::system.comms.language"
     for="language"
 >
-    <x-avored-select
+    <avored-select
         name="language"
-        :options="$countries"
-        :value="$adminUser->language ?? ''"
+        :options="{{ json_encode($languageOptions) }}"
+        value="{{ $adminUser->language ?? '' }}"
     >
-        <x-slot name="optionSlot">
-            @foreach($countries as $option)
-                <option
-                    {{ (isset($adminUser) && $option->id . '_' . $option->lang_code === $adminUser->language) ? 'selected' : ''  }}
-                    value="{{ $option->id . '_' . $option->lang_code }}"
-                >
-                    {{ $option->lang_code . " :: "  . $option->name }}
-                </option>
-            @endforeach
-        </x-slot>
-    </x-avored-select>
-
+    </avored-select>
+    
 </x-avored-field>

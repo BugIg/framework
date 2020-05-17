@@ -21,10 +21,14 @@ Vue.use(CKEditor)
 
 
 import { 
-    AvoRedInput
+    AvoRedInput,
+    AvoRedSelect,
+    AvoRedUpload,
   } from 'avored-components'
 
 Vue.component('avored-input', AvoRedInput)
+Vue.component('avored-select', AvoRedSelect)
+Vue.component('avored-upload', AvoRedUpload)
 
 Vue.component('a-layout', require('../components/core/layout/AvoRedLayout').default)
 
@@ -34,7 +38,7 @@ Vue.component('avored-property-fields', () => import('../components/core/catalog
 Vue.component('avored-attribute-fields', () => import('../components/core/catalog/AvoRedAttributeFields'))
 
 Vue.component('avored-menu-builder', require('../components/core/cms/AvoRedMenuBuilder').default)
-Vue.component('avored-upload', require('../components/core/form/AvoRedUpload').default)
+Vue.component('a-upload', require('../components/core/form/AvoRedUpload').default)
 // Vue.component('a-input', require('../components/core/form/AvoRedInput').default)
 Vue.component('login-fields', require('../components/user/auth/LoginFields.vue').default)
 

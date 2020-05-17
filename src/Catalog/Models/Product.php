@@ -4,6 +4,8 @@ namespace AvoRed\Framework\Catalog\Models;
 
 use AvoRed\Framework\Support\BaseModel;
 use AvoRed\Framework\Support\Casts\TranslatableCast;
+use AvoRed\Framework\System\Models\Media;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Product extends BaseModel
 {
@@ -49,4 +51,15 @@ class Product extends BaseModel
     {
         return $this->belongsToMany(Category::class);
     }
+
+    /**
+     * Product has many images
+     * @return MorphMany $images
+     */
+    public function images()
+    {
+        return $this->morphMany(Media::class, 'owner');
+    }
+
+
 }

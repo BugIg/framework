@@ -306,7 +306,7 @@ class AvoredFrameworkSchema extends Migration
                     'phone_code' => Arr::get($country, 'callingCodes.0'),
                     'currency_code' => Arr::get($country, 'currencies.0.code'),
                     'currency_symbol' => Arr::get($country, 'currencies.0.symbol'),
-                    'lang_code' => (Arr::get($country, 'languages.0.iso639_1') !== null) ? Arr::get($country, 'languages.0.iso639_1') : Arr::get($country, 'languages.0.name'),
+                    'lang_code' => strtolower(Arr::get($country, 'alpha2Code')) . '_' . (Arr::get($country, 'languages.0.iso639_1') !== null) ? Arr::get($country, 'languages.0.iso639_1') : Arr::get($country, 'languages.0.name'),
                 ]);
         }
 

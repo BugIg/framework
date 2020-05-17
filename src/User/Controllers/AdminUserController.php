@@ -3,24 +3,20 @@
 namespace AvoRed\Framework\User\Controllers;
 
 use AvoRed\Framework\System\Models\Country;
-use AvoRed\Framework\System\Models\Currency;
 use AvoRed\Framework\User\DataTable\AdminUserTable;
 use AvoRed\Framework\System\Controllers\BaseController;
-use AvoRed\Framework\User\Models\Permission;
 use AvoRed\Framework\User\Models\Role;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Collection;
 use AvoRed\Framework\Support\Facades\Tab;
+use AvoRed\Framework\Support\Traits\Controller\MediaTrait;
 use AvoRed\Framework\User\Models\AdminUser;
-use AvoRed\Framework\Support\Facades\Permission as PermissionFacade;
-use AvoRed\Framework\System\Models\Media;
 use AvoRed\Framework\User\Requests\AdminUserRequest;
-use Illuminate\Support\Arr;
 use Illuminate\View\View;
 
 class AdminUserController extends BaseController
 {
+    use MediaTrait;
     /**
      * Display a listing of the resource.
      * @return View
@@ -41,12 +37,18 @@ class AdminUserController extends BaseController
     {
         $tabs = Tab::get('user.admin-user');
         $roleOptions = Role::options('id', 'name');
-        $countries = Country::all();;
+        $languageOptions = Country::options(
+        function ($model) {
+            return $model->code . "_" . $model->lang_code;
+        }, 
+        function ($model) {
+            return $model->name . ": " . $model->code;
+        });
 
         return view('avored-admin::user.admin-user.create')
             ->with('tabs', $tabs)
             ->with('roleOptions', $roleOptions)
-            ->with('countries', $countries);
+            ->with('languageOptions', $languageOptions);
     }
 
     /**
@@ -71,14 +73,21 @@ class AdminUserController extends BaseController
     {
         $tabs = Tab::get('user.admin-user');
         $roleOptions = Role::options('id', 'name');
-        $countries = Country::all();
         $adminUser->load('media');
+
+        $languageOptions = Country::options(
+        function ($model) {
+            return $model->code . "_" . $model->lang_code;
+        }, 
+        function ($model) {
+            return $model->name . ": " . $model->code;
+        });
 
         return view('avored-admin::user.admin-user.edit')
             ->with('adminUser', $adminUser)
             ->with('tabs', $tabs)
             ->with('roleOptions', $roleOptions)
-            ->with('countries', $countries);
+            ->with('languageOptions', $languageOptions);
     }
 
     /**
@@ -90,12 +99,8 @@ class AdminUserController extends BaseController
     public function update(AdminUserRequest $request, AdminUser $adminUser)
     {
         $adminUser->update($request->all());
-        $mediaId = Arr::get($request->get('media'), '0', null);
-        
-        if ((!isset($adminUser->media) && $mediaId !== null) || ($mediaId !== null && $adminUser->media->id !== $mediaId)) {
-            $media = Media::find($mediaId);
-            $media->owner()->associate($adminUser)->save();
-        }
+        $mediaId = $request->get('media', null);
+        $this->mediaSync($adminUser, $adminUser->media, $request->get('media'));
         
 
         return redirect()->route('admin.admin-user.index')

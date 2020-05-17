@@ -7,12 +7,14 @@ use AvoRed\Framework\Catalog\Models\Category;
 use AvoRed\Framework\Catalog\Models\Product;
 use AvoRed\Framework\Catalog\Requests\ProductRequest;
 use AvoRed\Framework\Support\Facades\Tab;
+use AvoRed\Framework\Support\Traits\Controller\MediaTrait;
 use Illuminate\Http\Request;
 use AvoRed\Framework\System\Controllers\BaseController;
 use Illuminate\Http\Response;
 
 class ProductController extends BaseController
 {
+    use MediaTrait;
     /**
      * Display a listing of the resource.
      *
@@ -51,7 +53,8 @@ class ProductController extends BaseController
     {
         $product = Product::create($request->all());
         $this->saveProductCategory($product, $request);
-
+        $this->mediaSync($product, $product->images, $request->get('media'));
+        
         return redirect()->route('admin.product.index');
     }
 
@@ -84,6 +87,7 @@ class ProductController extends BaseController
     {
         $product->update($request->all());
         $this->saveProductCategory($product, $request);
+        $this->mediaSync($product, $product->images, $request->get('media'));
 
         return redirect()->route('admin.product.index');
     }

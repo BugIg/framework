@@ -114,7 +114,8 @@ return [
         'menu' => 'Menu',
         'configuration' => 'Configuration',
         'product' => 'Product',
-        'order' => 'Order'
+        'order' => 'Order',
+        'admin_user' => 'Admin User',
     ],
     'dashboard' => [
         'title' => 'Dashboard'

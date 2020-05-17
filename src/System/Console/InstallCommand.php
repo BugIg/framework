@@ -46,9 +46,9 @@ class InstallCommand extends Command
         }
 
         $this->call('storage:link');
-//        if ($this->confirm('Would you like to install Dummy Data?')) {
-//            $this->call('avored:module:install', ['identifier' => 'avored-demodata']);
-//        }
+       if ($this->confirm('Would you like to install Dummy Data?')) {
+           $this->call('avored:module:install', ['identifier' => 'avored-demodata']);
+       }
         $roleData = ['name' => Role::ADMIN];
         Role::create($roleData);
        $this->createCurrency();
@@ -111,7 +111,7 @@ class InstallCommand extends Command
     {
         $data = [
             'name' => 'English',
-            'code' => 'en',
+            'code' => 'fen',
             'is_default' => 1,
         ];
         Language::create($data);

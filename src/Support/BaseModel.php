@@ -28,10 +28,25 @@ class BaseModel extends Model
      * @param $optionLabel
      * @return Collection
      */
-    public static function options($optionValue = 'id', string $optionLabel): Collection
+    public static function options($optionValue, $optionLabel): Collection
     {
-        $query = self::query();
-        return $query->pluck($optionLabel, $optionValue);
+        return self::get()
+            ->map(function ($model)  use ($optionLabel, $optionValue) {
+                if (is_callable($optionLabel)) {
+                    $label = $optionLabel($model);
+                } else {
+                    $label = $model->{$optionLabel} ?? '';
+                }
+                if (is_callable($optionValue)) {
+                    $value = $optionValue($model);
+                } else {
+                    $value = $model->{$optionValue} ?? '';
+                }
+                return [
+                    'label' => $label,
+                    'value' => $value,
+                ];
+            });
     }
 
     /**
