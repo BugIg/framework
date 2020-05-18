@@ -5,7 +5,7 @@ use AvoRed\Framework\Cart\CartManager;
 use AvoRed\Framework\Catalog\Models\Product;
 use AvoRed\Framework\Tests\BaseTestCase;
 
-class ModuleFunctionalTest extends BaseTestCase
+class CartFunctionalTest extends BaseTestCase
 {
     /** @test **/
     public function test_cart_manager_all()
