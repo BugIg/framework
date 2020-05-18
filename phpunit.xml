@@ -20,7 +20,11 @@
         </whitelist>
     </filter>
     <php>
+        <env name="APP_ENV" value="testing"/>
         <env name="APP_KEY" value="AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"/>
+        <env name="DB_DATABASE" value="ecommerce_test"/>
+        <env name="DB_USERNAME" value="test_user"/>
+        <env name="DB_PASSWORD" value="passw0rd"/>
     </php>
 
     <logging>

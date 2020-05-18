@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Session\SessionManager;
 use AvoRed\Framework\Catalog\Models\Product;
 
-class Manager
+class CartManager
 {
     /**
      * Cart Product collection.
@@ -72,11 +72,8 @@ class Manager
 
         $this->cartCollection->put($slug, $cartProduct);
         $this->updateSessionCollection();
-        $status = true;
-        $message = __('avored-admin::catalog.cart_success_notification');
         
-
-        return [$status, $message];
+        return true;
     }
 
     /**

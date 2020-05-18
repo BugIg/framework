@@ -59,6 +59,7 @@ class BaseModel extends Model
         $local = app()->getLocale();
         $model = new static;
         
+        
         return $model->whereJsonContains('slug->' . $local, $slug)->first();
     }
     

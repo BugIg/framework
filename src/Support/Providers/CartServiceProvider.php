@@ -2,7 +2,7 @@
 
 namespace AvoRed\Framework\Support\Providers;
 
-use AvoRed\Framework\Cart\Manager;
+use AvoRed\Framework\Cart\CartManager;
 use Illuminate\Support\ServiceProvider;
 
 class CartServiceProvider extends ServiceProvider
@@ -29,7 +29,7 @@ class CartServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerServices();
-        $this->app->alias('cart', Manager::class);
+        $this->app->alias('cart', CartManager::class);
     }
 
     /**
@@ -42,7 +42,7 @@ class CartServiceProvider extends ServiceProvider
         $this->app->singleton(
             'cart',
             function ($app) {
-                return new Manager($app['session']);
+                return new CartManager($app['session']);
             }
         );
     }
@@ -54,6 +54,6 @@ class CartServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['cart', Manager::class];
+        return ['cart', CartManager::class];
     }
 }

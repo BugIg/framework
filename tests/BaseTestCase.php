@@ -43,7 +43,7 @@ abstract class BaseTestCase extends OrchestraTestCase
     private function resetDatabase(): void
     {
         $this->artisan('migrate:fresh', [
-            '--database' => 'sqlite',
+            '--database' => 'mysql',
         ]);
     }
 
@@ -66,12 +66,12 @@ abstract class BaseTestCase extends OrchestraTestCase
      */
     protected function getEnvironmentSetUp($app): void
     {
-        $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', array(
-            'driver' => 'sqlite',
-            'database' => ':memory:',
-            'prefix' => '',
-        ));
+        $app['config']->set('database.default', 'mysql');
+        // $app['config']->set('database.connections.sqlite', array(
+        //     'driver' => 'sqlite',
+        //     'database' => ':memory:',
+        //     'prefix' => '',
+        // ));
     }
 
     /**
