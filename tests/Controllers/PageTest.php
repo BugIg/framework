@@ -40,7 +40,7 @@ class PageTest extends BaseTestCase
             ->assertRedirect(route('admin.page.index'));
 
         $this->assertDatabaseHas($this->tablePrefix . 'pages',
-            ['name' => json_encode([$this->getDefaultLocale() => 'test page name'])]
+            ['name' => $this->castToJson(json_encode([$this->getDefaultLocale() => 'test page name']))]
         );
     }
 
@@ -68,7 +68,7 @@ class PageTest extends BaseTestCase
             ->assertRedirect(route('admin.page.index'));
 
         $this->assertDatabaseHas( $this->tablePrefix . 'pages',
-            ['name' => json_encode([$this->getDefaultLocale() => 'updated page name'])]
+            ['name' => $this->castToJson(json_encode([$this->getDefaultLocale() => 'updated page name']))]
         );
     }
 

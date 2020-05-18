@@ -48,10 +48,10 @@ class AttributeTest extends BaseTestCase
             ->assertRedirect(route('admin.attribute.index'));
 
         $this->assertDatabaseHas($this->tablePrefix . 'attributes', [
-            'name' => json_encode([$this->getDefaultLocale() => 'test attribute name'])
+            'name' => $this->castToJson(json_encode([$this->getDefaultLocale() => 'test attribute name']))
         ]);
         $this->assertDatabaseHas($this->tablePrefix . 'attribute_dropdown_options', [
-            'display_text' => json_encode([$this->getDefaultLocale() => 'option 1'])
+            'display_text' => $this->castToJson(json_encode([$this->getDefaultLocale() => 'option 1']))
         ]);
     }
 
@@ -87,10 +87,10 @@ class AttributeTest extends BaseTestCase
             ->assertRedirect(route('admin.attribute.index'));
 
         $this->assertDatabaseHas( $this->tablePrefix . 'attributes',
-            ['name' => json_encode([$this->getDefaultLocale() => 'updated attribute name'])]
+            ['name' => $this->castToJson(json_encode([$this->getDefaultLocale() => 'updated attribute name']))]
         );
         $this->assertDatabaseHas($this->tablePrefix . 'attribute_dropdown_options', [
-            'display_text' => json_encode([$this->getDefaultLocale() => 'updated option 1'])
+            'display_text' => $this->castToJson(json_encode([$this->getDefaultLocale() => 'updated option 1']))
         ]);
     }
 

@@ -41,7 +41,7 @@ class CategoryTest extends BaseTestCase
 
         $this->assertDatabaseHas(
             $this->tablePrefix . 'categories', 
-            ['name' => json_encode([$this->getDefaultLocale() => 'test category name'], true)]
+            ['name' => $this->castToJson(json_encode([$this->getDefaultLocale() => 'test category name'], true))]
         );
     }
 
@@ -69,7 +69,7 @@ class CategoryTest extends BaseTestCase
             ->assertRedirect(route('admin.category.index'));
 
         $this->assertDatabaseHas( $this->tablePrefix . 'categories', [
-            'name' => json_encode([$this->getDefaultLocale() => 'updated category name'])
+            'name' => $this->castToJson(json_encode([$this->getDefaultLocale() => 'updated category name']))
         ]);
     }
 

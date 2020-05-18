@@ -61,7 +61,7 @@ class ProductTest extends BaseTestCase
             ->post(route('admin.product.store', $data))
             ->assertRedirect(route('admin.product.index'));
 
-        $this->assertDatabaseHas($this->tablePrefix . 'products', ['name' => json_encode([$this->getDefaultLocale() => $name])]);
+        $this->assertDatabaseHas($this->tablePrefix . 'products', ['name' => $this->castToJson(json_encode([$this->getDefaultLocale() => $name]))]);
     }
 
     /* @runInSeparateProcess */
@@ -88,7 +88,7 @@ class ProductTest extends BaseTestCase
             ->assertRedirect(route('admin.product.index'));
 
         $this->assertDatabaseHas($this->tablePrefix . 'products', [
-            'name' => json_encode([$this->getDefaultLocale() => 'updated product name'])
+            'name' => $this->castToJson(json_encode([$this->getDefaultLocale() => 'updated product name']))
         ]);
     }
 

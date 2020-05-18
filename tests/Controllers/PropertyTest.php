@@ -50,7 +50,7 @@ class PropertyTest extends BaseTestCase
             ->assertRedirect(route('admin.property.index'));
 
         $this->assertDatabaseHas($this->tablePrefix . 'properties', [
-            'name' => json_encode([$this->getDefaultLocale() => 'test property name'])
+            'name' => $this->castToJson(json_encode([$this->getDefaultLocale() => 'test property name']))
         ]);
     }
 
@@ -76,10 +76,10 @@ class PropertyTest extends BaseTestCase
             ->assertRedirect(route('admin.property.index'));
 
         $this->assertDatabaseHas($this->tablePrefix . 'properties', [
-            'name' => json_encode([$this->getDefaultLocale() => 'test property name'])
+            'name' => $this->castToJson(json_encode([$this->getDefaultLocale() => 'test property name']))
         ]);
         $this->assertDatabaseHas($this->tablePrefix . 'property_dropdown_options', [
-            'display_text' => json_encode([$this->getDefaultLocale() => 'test option 1'])
+            'display_text' => $this->castToJson(json_encode([$this->getDefaultLocale() => 'test option 1']))
         ]);
     }
 
@@ -106,9 +106,11 @@ class PropertyTest extends BaseTestCase
             ->put(route('admin.property.update', $property->id), $data)
             ->assertRedirect(route('admin.property.index'));
 
-        $this->assertDatabaseHas( $this->tablePrefix . 'properties',
-            ['name' => json_encode([$this->getDefaultLocale() => 'updated property name'])]
-        );
+        $this->assertDatabaseHas(
+            $this->tablePrefix . 'properties',
+            [
+                'name' => $this->castToJson(json_encode([$this->getDefaultLocale() => 'updated property name']))
+            ]);
     }
 
     /* @runInSeparateProcess */
@@ -128,10 +130,10 @@ class PropertyTest extends BaseTestCase
             ->assertRedirect(route('admin.property.index'));
 
         $this->assertDatabaseHas( $this->tablePrefix . 'properties',
-            ['name' => json_encode([$this->getDefaultLocale() => 'updated property name'])]
+            ['name' => $this->castToJson(json_encode([$this->getDefaultLocale() => 'updated property name']))]
         );
         $this->assertDatabaseHas($this->tablePrefix . 'property_dropdown_options', [
-            'display_text' => json_encode([$this->getDefaultLocale() => 'updated option 1'])
+            'display_text' => $this->castToJson(json_encode([$this->getDefaultLocale() => 'updated option 1']))
         ]);
     }
 

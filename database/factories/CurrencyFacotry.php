@@ -8,7 +8,7 @@ $factory->define(Currency::class, function (Faker $faker) {
         'name' => 'US Dollar',
         'code' => $faker->currencyCode,
         'symbol' => '$',
-        'conversation_rate' => $faker->randomFloat,
+        'conversation_rate' => rand(0, 100) . '.' . rand (0, 100),
         'status' => 'ENABLED',
     ];
 });
