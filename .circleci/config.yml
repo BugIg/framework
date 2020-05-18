@@ -38,4 +38,4 @@ jobs:
       - run:
           name: "Run tests"
           command: phpdbg -qrr vendor/bin/phpunit --coverage-html build/coverage-report
-          path:  build/coverage-report
+          # path:  build/coverage-report
