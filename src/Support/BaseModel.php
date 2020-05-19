@@ -16,7 +16,7 @@ class BaseModel extends Model
 
     public function __construct(array $attributes = [])
     {
-        $this->tablePrefix  = config('avored.table_prefix');
+        $this->tablePrefix  = isset($this->tablePrefix) ? $this->tablePrefix : config('avored.table_prefix');
 
         $tableName = $this->tablePrefix . $this->getTable();
         $this->table = $tableName;

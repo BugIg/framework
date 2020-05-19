@@ -5,16 +5,14 @@ namespace AvoRed\Framework\Support\Contracts;
 interface WidgetInterface
 {
     /**
-     * Get/Set Widget Type.
-     * @param  string $type
+     * Get Widget Type.
      * @return $type|self
      */
-    public function type($type = null);
+    public function type();
 
     /**
-     * Get/Set Widget Label.
-     * @param  string $label
+     * Get Widget Label.
      * @return $label|self
      */
-    public function label($label = null);
+    public function label();
 }

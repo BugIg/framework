@@ -23,17 +23,19 @@ trait MediaTrait
             $requestMediaCollection = collect($requestMediaIds);
         }
 
+
+        // dd($requestMediaCollection, $existingFiles);
         foreach ($requestMediaCollection as $mediaId) {
+            
             $mediaModel = Media::find($mediaId);
             $mediaModel->owner()->associate($model)->save();
 
            
-            $existingFiles = $existingFiles->filter(function($item) use ($mediaId) {
+            $existingFiles = $existingFiles->reject(function($item) use ($mediaId) {
                 return $item->id == $mediaId;
             });
         }
 
-        
         foreach ($existingFiles as $deletedExisting) {
             File::delete($deletedExisting->path->absolutePath);
             $deletedExisting->delete();

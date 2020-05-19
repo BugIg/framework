@@ -58,7 +58,8 @@ class AdminUserController extends BaseController
      */
     public function store(AdminUserRequest $request)
     {
-        AdminUser::create($request->all());
+        $adminUser = AdminUser::create($request->all());
+        $this->mediaSync($adminUser, $adminUser->media, $request->get('media'));
 
         return redirect()->route('admin.admin-user.index')
             ->with('successNotification', __('avored-admin::system.notification.store', ['attribute' => 'AdminUser']));
@@ -99,7 +100,6 @@ class AdminUserController extends BaseController
     public function update(AdminUserRequest $request, AdminUser $adminUser)
     {
         $adminUser->update($request->all());
-        $mediaId = $request->get('media', null);
         $this->mediaSync($adminUser, $adminUser->media, $request->get('media'));
         
 
