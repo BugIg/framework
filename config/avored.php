@@ -10,6 +10,22 @@ return [
     'front_url' => 'avored',
     'admin_url' => 'admin',
     'table_prefix' => $tablePrefix,
+    'graphql' => [
+        'schema' => [
+            'register' => __DIR__ . '/../graphql/schema.graphql'
+        ],
+        'namespaces' => [
+            'models' => ['App', 'App\\Models', 'AvoRed\\Framework\\Catalog\\Models'],
+            'queries' => 'App\\GraphQL\\Queries',
+            'mutations' => 'App\\GraphQL\\Mutations',
+            'subscriptions' => 'App\\GraphQL\\Subscriptions',
+            'interfaces' => 'App\\GraphQL\\Interfaces',
+            'unions' => 'App\\GraphQL\\Unions',
+            'scalars' => 'App\\GraphQL\\Scalars',
+            'directives' => ['App\\GraphQL\\Directives'],
+        ],
+
+    ],
     'auth' => [
         'guards' => [
             'admin' => [
