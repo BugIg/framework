@@ -20,7 +20,10 @@ return [
                 'App\\Models',
                 'AvoRed\\Framework\\Catalog\\Models'
             ],
-            'queries' => 'App\\GraphQL\\Queries',
+            'queries' => [
+                'App\\GraphQL\\Queries',
+                'AvoRed\\Framework\\Catalog\\GraphQL\\Queries'
+            ],
             'mutations' => 'App\\GraphQL\\Mutations',
             'subscriptions' => 'App\\GraphQL\\Subscriptions',
             'interfaces' => 'App\\GraphQL\\Interfaces',

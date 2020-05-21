@@ -11,12 +11,6 @@ scalar DateTimeTz @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Da
 #import modules/*/*.graphql
 
 
-type Query {
-    users: [User!]! @paginate(defaultCount: 10)
-    user(id: ID @eq): User @find
-    categories: [Category!]! @paginate(defaultCount: 10)
-}
-
 type User {
     id: ID!
     name: String!

@@ -1,0 +1,5 @@
+
+type Query {
+    CategoryQuery(slug: String!): Category!
+    AllCategories: [Category!]! @paginate(defaultCount: 10)
+}
