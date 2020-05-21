@@ -15,7 +15,11 @@ return [
             'register' => __DIR__ . '/../graphql/schema.graphql'
         ],
         'namespaces' => [
-            'models' => ['App', 'App\\Models', 'AvoRed\\Framework\\Catalog\\Models'],
+            'models' => [
+                'App',
+                'App\\Models',
+                'AvoRed\\Framework\\Catalog\\Models'
+            ],
             'queries' => 'App\\GraphQL\\Queries',
             'mutations' => 'App\\GraphQL\\Mutations',
             'subscriptions' => 'App\\GraphQL\\Subscriptions',
