@@ -11,20 +11,20 @@ scalar DateTimeTz @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Da
 #import modules/*/*.graphql
 
 
-type User {
-    id: ID!
-    name: String!
-    email: String!
-    created_at: DateTime!
-    updated_at: DateTime!
-}
+# type User {
+#     id: ID!
+#     name: String!
+#     email: String!
+#     created_at: DateTime!
+#     updated_at: DateTime!
+# }
 
-type Category {
-    id: ID!
-    name: String!
-    slug: String!
-    meta_title: String
-    meta_description: String
-    created_at: DateTime!
-    updated_at: DateTime!
-}
+# type Category {
+#     id: ID!
+#     name: String!
+#     slug: String!
+#     meta_title: String
+#     meta_description: String
+#     created_at: DateTime!
+#     updated_at: DateTime!
+# }

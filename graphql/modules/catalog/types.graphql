@@ -6,4 +6,28 @@ type Category {
     meta_description: String
     created_at: DateTime!
     updated_at: DateTime!
+    products: [Product!] @paginate(defaultCount: 9)
+}
+
+
+type Product {
+    id: ID!
+    name: String!
+    type: String!
+    slug: String!
+    sku: String
+    main_image_url: String
+    barcode: String
+    status: Boolean!
+    in_stock: Boolean!
+    track_stock: Boolean!
+    qty: Float
+    price: Float
+    cost_price: Float
+    weight: Float
+    width: Float
+    height: Float
+    length: Float
+    meta_title: String
+    meta_description: String
 }
