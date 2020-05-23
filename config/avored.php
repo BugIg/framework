@@ -24,7 +24,10 @@ return [
                 'App\\GraphQL\\Queries',
                 'AvoRed\\Framework\\Catalog\\GraphQL\\Queries'
             ],
-            'mutations' => 'App\\GraphQL\\Mutations',
+            'mutations' => [
+                'App\\GraphQL\\Mutations',
+                'AvoRed\\Framework\\Catalog\\GraphQL\\Mutations'
+            ],
             'subscriptions' => 'App\\GraphQL\\Subscriptions',
             'interfaces' => 'App\\GraphQL\\Interfaces',
             'unions' => 'App\\GraphQL\\Unions',
@@ -44,12 +47,20 @@ return [
                 'provider' => 'admin-users',
                 'hash' => false,
             ],
+            'front-user-api' => [
+                'driver' => 'passport',
+                'provider' => 'front-users',
+            ],
         ],
 
         'providers' => [
             'admin-users' => [
                 'driver' => 'eloquent',
                 'model' => AvoRed\Framework\User\Models\AdminUser::class,
+            ],
+            'front-users' => [
+                'driver' => 'eloquent',
+                'model' => AvoRed\Framework\User\Models\User::class,
             ],
         ],
 

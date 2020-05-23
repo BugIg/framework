@@ -6,7 +6,7 @@ use AvoRed\Framework\Catalog\Models\Category;
 use GraphQL\Type\Definition\ResolveInfo;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
 
-class CategoryQuery
+class GetCategory
 {
     /**
      * Return a value for the field.

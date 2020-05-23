@@ -45,6 +45,7 @@
 		"illuminate/validation": "^7.0",
 		"symfony/yaml": "^5.0",
 		"mll-lab/laravel-graphql-playground": "^2.1",
+		"laravel/passport": "^9.2",
         "nuwave/lighthouse": "^4.13"
     },
 	"require-dev" : {

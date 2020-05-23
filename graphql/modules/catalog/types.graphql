@@ -6,9 +6,15 @@ type Category {
     meta_description: String
     created_at: DateTime!
     updated_at: DateTime!
-    products: [Product!] @paginate(defaultCount: 9)
+    products: [Product] @belongsToMany
 }
 
+type Token {
+    token_type: String!
+    access_token: String!
+    expires_in: Int!
+    refresh_token: String!
+}
 
 type Product {
     id: ID!
@@ -30,4 +36,5 @@ type Product {
     length: Float
     meta_title: String
     meta_description: String
+    categories: [Category!] @belongsToMany
 }
