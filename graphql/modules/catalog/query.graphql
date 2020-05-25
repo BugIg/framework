@@ -1,6 +1,5 @@
-
 extend type Query {
     getCategory(slug: String!): Category!
     categories: [Category!]! @paginate(defaultCount: 10)
-    all_roducts: [Product!]! @paginate(defaultCount: 10)
+    all_products: [Product!]! @paginate(defaultCount: 10)
 }

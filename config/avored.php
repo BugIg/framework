@@ -26,7 +26,8 @@ return [
             ],
             'mutations' => [
                 'App\\GraphQL\\Mutations',
-                'AvoRed\\Framework\\Catalog\\GraphQL\\Mutations'
+                'AvoRed\\Framework\\Catalog\\GraphQL\\Mutations',
+                'AvoRed\\Framework\\Order\\GraphQL\\Mutations'
             ],
             'subscriptions' => 'App\\GraphQL\\Subscriptions',
             'interfaces' => 'App\\GraphQL\\Interfaces',

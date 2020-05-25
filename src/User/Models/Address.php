@@ -14,16 +14,16 @@ class Address extends BaseModel
     protected $fillable = [
         'type',
         'user_id',
-        'company_name',
         'first_name',
         'last_name',
+        'company_name',
+        'phone',
         'address1',
         'address2',
         'postcode',
         'city',
         'state',
         'country_id',
-        'phone',
     ];
 
     const TYPEOPTIONS = [

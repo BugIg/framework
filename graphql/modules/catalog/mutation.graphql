@@ -1,10 +1,9 @@
-
 extend type Mutation {
     userAuth(
         email: String! @rules(apply: ["email", "required"]),
         password: String!
     ): Token!
-    
+
     registerUser(
         first_name: String!,
         last_name: String!,
