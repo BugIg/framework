@@ -1,20 +1,22 @@
 input RegisterUserInput {
-    first_name: String!
-    last_name: String!
-    email: String!
-    password: String!
-    password_confirmation: String!
+    first_name: String
+    last_name: String
+    email: String
+    password: String
+    password_confirmation: String
 }
 
 input AddressInput {
-    first_name: String!
-    last_name: String!
-    compant_name: String
-    phone: String!
-    address1: String!
+    first_name: String
+    last_name: String
+    company_name: String
+    phone: String
+    address1: String
     address2: String
-    city: String!
-    country_id: Int!
+    city: String
+    country_id: Int
+    state: String
+    postcode: String
 }
 
 
@@ -22,10 +24,8 @@ extend type Mutation {
     placeOrder (
         user: RegisterUserInput,
         user_id: Int,
-        shipping_address: AddressInput,
-        shipping_address_id: Int,
-        billing_address: AddressInput,
-        billing_address_id: Int,
+        shipping: AddressInput,
+        billing: AddressInput,
         shipping_option: String!,
         payment_option: String!
     ): Order!

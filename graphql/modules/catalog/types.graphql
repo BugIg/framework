@@ -9,19 +9,13 @@ type Category {
     products: [Product] @belongsToMany
 }
 
-type Token {
-    token_type: String!
-    access_token: String!
-    expires_in: Int!
-    refresh_token: String!
-}
-
 type Product {
     id: ID!
     name: String!
     type: String!
     slug: String!
     sku: String
+    description: String
     main_image_url: String
     barcode: String
     status: Boolean!

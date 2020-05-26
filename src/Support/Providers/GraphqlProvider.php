@@ -38,10 +38,8 @@ class GraphqlProvider extends ServiceProvider
         
         $this->app['config']->set(
             'lighthouse',
-            array_replace_recursive($lightHouseConfig, $avoredConfig['graphql'],)
+            array_replace_recursive($lightHouseConfig, $avoredConfig['graphql'])
         );
-
-        //dd($this->app['config']->get('lighthouse'));
     }
 
     /**
